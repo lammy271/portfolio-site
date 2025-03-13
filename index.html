@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="assets/css/main.css">
 	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
 	<script type="module">
-		import motion from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
+		import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
+		
+		animate("#about-buttons .btn", {opacity: 1, y: [50, 0]}, { delay: stagger(0.08) });
 	</script>
     <script src="assets/js/main.js"></script>
 </head>

@@ -218,3 +218,7 @@ p {
 	justify-content: flex-end;
 	gap: 20px;
 }
+
+#about-buttons .btn {
+	opacity: 0;
+}
