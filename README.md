@@ -4,7 +4,7 @@ This is a website meant to show off my resume and design portfolio to the world.
 
 # Background
 
-The website uses [Font Awesome](https://fontawesome.com/) for the icons and [motion.dev](https://motion.dev/) for smooth animations.
+The website uses [Font Awesome](https://fontawesome.com/) for its icons and [motion.dev](https://motion.dev/) for smooth animations.
 
 # Contributing
 
