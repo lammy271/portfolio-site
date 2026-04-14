@@ -6,29 +6,71 @@
     <link rel="stylesheet" href="assets/css/main.css">
 	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
 	<script type="module">
-		import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
-		
-		animate("#about-buttons .btn", {opacity: 1, y: [50, 0]}, { delay: stagger(0.08) });
+		import { animate, hover } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
+
+		// Navbar icons lift up on hover
+		const navIconEase = { duration: 0.1, ease: "easeInOut" };
+		const monogramEase = { duration: 0.2, ease: "easeInOut" };
+		hover("#nav-buttons a", (link) => {
+			// Move the icon only (not the <a>) so the link's hover hit area stays put.
+			const icon = link.querySelector("img");
+			if (!icon) return;
+			const up = animate(icon, { y: [0, -5] }, navIconEase);
+			return () => {
+				up.stop();
+				animate(icon, { y: 0 }, navIconEase);
+			};
+		});
+
+		hover("#nav-section-right > a[href='index.html']", (link) => {
+			const mono = link.querySelector("#monogram");
+			if (!mono) return;
+			const grow = animate(mono, { scale: [1, 1.15] }, monogramEase);
+			return () => {
+				grow.stop();
+				animate(mono, { scale: 1 }, monogramEase);
+			};
+		});
+
+		// Hero section appears and lifts up on page load
+		animate("#hero-section", { opacity: [0, 1], y: [30, 0] }, { duration: 1.5, ease: "easeInOut" });
 	</script>
     <script src="assets/js/main.js"></script>
 </head>
 <body>
+	<nav id="nav-section">
+		<div id="nav-section-left">
+			<div id="name">ANNY LONG</div>
+			<div id="location">
+				<p>Based in</p>
+				<p>San Francisco, CA</p>
+			</div>
+			<div id="contact">
+				<p>Let's chat!</p>
+				<p><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
+			</div>
+		</div>
+		<div id="nav-section-right">
+			<div id="nav-buttons">
+				<a href="#pdf" aria-label="Download portfolio as PDF"><img src="assets/image/download.png" alt="PDF Icon" height="20px" /></a>
+				<a href="#linkedin" aria-label="Open LinkedIn profile"><img src="assets/image/linkedin.svg" alt="LinkedIn Icon" height="20px" /></a>
+				<a href="#projects" aria-label="View projects"><img src="assets/image/folder.svg" alt="Projects Icon" height="20px" /></a>
+				<a href="#fun" aria-label="Fun"><img src="assets/image/smile.svg" alt="Fun Icon" height="20px" /></a>
+				<a href="#about" aria-label="About Me"><img src="assets/image/tea.svg" alt="About me Icon" height="20px" /></a>
+			</div>
+			<a href="index.html">
+				<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="80px" />
+			</a>
+		</div>
+	</nav>
 	<div id=content>
-		<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="187px" />
-		<h1 id="blurb">
-			I'm a big picture thinking designer energized by collaborative and experiential design, and I just love seafood from San Francisco.
-		</h1>
-		<div id="about-section">
-			<div id="about-section-header">
-				<div class="divider"></div>
-				<h2>About me</h2>
-			</div>
-			<p>I believe in the power of simplicity in design. I create meaningful connections between people, products, and services through a user-centered approach to create sustainable design. Collaboration energizes me—I love exploring new ideas and transforming abstract concepts into practical solutions for developers. Working with larger teams, I've learned to effectively bridge communication between engineers, designers, and other team members to bring ideas to life.</p>
-			<div id="about-buttons">
-				<button class="btn"><i class="fa-solid fa-angles-down"></i></i> Portfolio</button>
-				<button class="btn"><i class="fa-solid fa-paperclip"></i></i> Resume</button>
-				<button class="btn"><i class="fa-regular fa-paper-plane"></i></i> Email me</button>
-			</div>
+		<div id="hero-section">
+			<p id="greeting1" class="boska">Hello,</p>
+			<h1 id="greeting2" class="daisy">I’m <span class="daisy-i">Anny Long</span></h1>
+			<div class="divider" style="width: 3rem;"></div>
+			<p id="blurb" class="light">
+				A multidisciplinary designer focused on product, transforming the monotonous into dynamic design, and a compulsive tinkerer of all things pixel.
+			</p>
 		</div>
 	</div>
 </body>

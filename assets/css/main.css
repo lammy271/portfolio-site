@@ -72,21 +72,21 @@ textarea:not([rows]) {
 @property --main-bg-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #F4E8F8;
+	initial-value: white;
 }
 
 /*** Defined Constants ***/
 @property --main-button-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #C35DC3;
+	initial-value: black;
 }
 
 
 @property --main-accent-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #BB09A1;
+	initial-value: gray;
 }
 
 @font-face {
@@ -103,6 +103,42 @@ textarea:not([rows]) {
 	font-family: "Inter";
 	src: url("../fonts/Inter.ttf");
 }
+
+@font-face {
+	font-family: "Metropolis";
+	src: url("../fonts/Metropolis-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Metropolis Light";
+	src: url("../fonts/Metropolis-Light.ttf");
+}
+
+@font-face {
+	font-family: "Metropolis Bold";
+	src: url("../fonts/Metropolis-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Boska";
+	src: url("../fonts/Boska-Variable.ttf");
+}
+
+@font-face {
+	font-family: "Boska Italic";
+	src: url("../fonts/Boska-VariableItalic.ttf");
+}
+
+@font-face {
+	font-family: "Swarsh Daisy";
+	src: url("../fonts/swarsh-daisy-regular.ttf");
+}
+
+@font-face {
+	font-family: "Swarsh Daisy Italic";
+	src: url("../fonts/swarsh-daisy-italic.ttf");
+}
+
 
 /*** Styles ***/
 
@@ -129,16 +165,41 @@ h1 a:hover {
 	border-bottom: 5px solid var(--main-accent-color);
 }
 
-h2, p {
-	font-family: "Sofia Sans Condensed", Arial, sans-serif;
-}
-
 h2 {
 	font-size: 28px;
 }
 
 p {
-	font-size: 24px;
+	font-family: "Metropolis", Arial, sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+}
+
+.boska {
+	font-family: "Boska", Arial, sans-serif;
+}
+
+.boska-i {
+	font-family: "Boska Italic", Arial, sans-serif;
+	font-style: italic;
+}
+
+.daisy {
+	font-family: "Swarsh Daisy", Times New Roman, serif;
+}
+
+.daisy-i {
+	font-family: "Swarsh Daisy Italic", Times New Roman, serif;
+}
+
+p.light {
+	font-family: "Metropolis Light", Arial, sans-serif;
+	font-weight: 300;
+}
+
+p.bold {
+	font-family: "Metropolis Bold", Arial, sans-serif;
+	font-weight: 700;
 }
 
 .btn {
@@ -161,15 +222,163 @@ p {
 }
 
 #blurb {
-	padding-left: 92px;
 	position: relative;
-	top: -4rem;
 }
 
 #content {
 	position: absolute;
 	width: 100vw;
-	padding: 40px 100px;
+	padding: 120px 100px;
+}
+
+/* Navbar. Elements in a flex container, aligned horizontally, spaced evenly*/
+#nav-section {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding-bottom: 2px;
+	padding-inline: 5rem;
+	padding-block: 2rem;
+	border-bottom: 1px solid var(--main-button-color);
+}
+
+#nav-section-left {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 60px;
+}
+
+#name {
+	font-family: "Metropolis Bold", Arial, sans-serif;
+	font-size: 30px;
+	letter-spacing: 19%;
+}
+
+#location, #contact {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+#location p, #contact p {
+	margin-block: 0;
+	font-size: 16px;
+}
+
+#location p a, #contact p a {
+	text-decoration: none;
+	color: var(--main-button-color);
+}
+
+#nav-section-right {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 30px;
+}
+
+#nav-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+}
+
+#nav-buttons a {
+	position: relative;
+	padding: 10px;
+	margin: -10px;
+}
+
+/* Action tooltips: bubble + tail above icon (label text from aria-label) */
+#nav-buttons a::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: calc(100% + 5px);
+	translate: -50% 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 8px solid var(--main-button-color);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	z-index: 2;
+}
+
+#nav-buttons a::after {
+	content: attr(aria-label);
+	position: absolute;
+	left: 50%;
+	bottom: calc(100% + 5px + 8px);
+	translate: -50% 0;
+	padding: 0.45rem 0.65rem;
+	max-width: 14rem;
+	width: max-content;
+	text-align: center;
+	font-family: "Metropolis", Arial, sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.25;
+	color: var(--main-bg-color);
+	background-color: var(--main-button-color);
+	border-radius: 8px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	z-index: 3;
+}
+
+#nav-buttons a:hover::before,
+#nav-buttons a:hover::after,
+#nav-buttons a:focus-visible::before,
+#nav-buttons a:focus-visible::after {
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#nav-buttons a::before,
+	#nav-buttons a::after {
+		transition: none;
+	}
+}
+
+/* Hero Section. Elements aligned centered horizontally, content has horizontal margins of 25vw*/
+#hero-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-inline: 10vw;
+}
+
+#hero-section p {
+	text-align: center;
+}
+
+#greeting1 {
+	letter-spacing: 15%;
+	font-size: 33px;
+	margin-block: 0;
+}
+
+#greeting2 {
+	letter-spacing: 13%;
+	font-size: 69px;
+	margin-block: 1.5rem;
+}
+
+#blurb {
+	letter-spacing: 9%;
+	line-height: 62px;
 }
 
 #about-section {
@@ -192,8 +401,8 @@ p {
 .divider {
 	flex-grow: 1;
 	height: 1px;
-	margin-left: 5vw;
-	background-color: #9f9f9f;
+	background-color: black;
+	margin-block: 20px;
 }
 
 #about-section h2 {
