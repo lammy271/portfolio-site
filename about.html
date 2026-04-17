@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>About — Anny Long</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/about.css">
+	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
+	<script type="module">
+		import { animate, hover } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
+
+		// Navbar icons lift up on hover (active page icon excluded)
+		const navIconEase = { duration: 0.1, ease: "easeInOut" };
+		const monogramEase = { duration: 0.2, ease: "easeInOut" };
+		hover("#nav-buttons a:not(.active)", (link) => {
+			const icon = link.querySelector("img");
+			if (!icon) return;
+			const up = animate(icon, { y: [0, -5] }, navIconEase);
+			return () => {
+				up.stop();
+				animate(icon, { y: 0 }, navIconEase);
+			};
+		});
+
+		hover("#nav-buttons > a[href='index.html']", (link) => {
+			const mono = link.querySelector("#monogram");
+			if (!mono) return;
+			const grow = animate(mono, { scale: [1, 1.15] }, monogramEase);
+			return () => {
+				grow.stop();
+				animate(mono, { scale: 1 }, monogramEase);
+			};
+		});
+	</script>
+    <script src="assets/js/main.js"></script>
+</head>
+<body>
+	<nav id="nav-section">
+		<div id="nav-section-left">
+			<a id="name" href="index.html">ANNY LONG</a>
+		</div>
+		<div id="nav-section-right">
+			<div id="location" class="info-pair">
+				<p>Based in</p>
+				<p>San Francisco, CA</p>
+			</div>
+			<div id="contact" class="info-pair">
+				<p>Let's work together!</p>
+				<p><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
+			</div>
+			<a href="index.html">
+				<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="60px" />
+			</a>
+		</div>
+	</nav>
+	<div id=content>
+		<div id="nothing"></div>
+		<div id="main-section">
+			<div id="main-section-header">
+				<h1 id="main-section-header-text">about me</h1>
+				<div id="nav-buttons">
+					<a href="#pdf" aria-label="Download Portfolio"><img src="assets/image/folder.svg" alt="Portfolio Icon" height="20px" /></a>
+					<a href="#pdf" aria-label="Download Resume"><img src="assets/image/doc.svg" alt="Resume Icon" height="20px" /></a>
+					<a href="https://www.linkedin.com/in/annylong" aria-label="LinkedIn profile"><img src="assets/image/linkedin.png" alt="LinkedIn Icon" height="20px" /></a>
+					<a href="#fun" aria-label="Fun"><img src="assets/image/smile.svg" alt="Fun Icon" height="20px" /></a>
+					<a href="about.html" class="active" aria-label="About Me"><img src="assets/image/tea.svg" alt="About me Icon" height="20px" /></a>
+				</div>
+			</div>
+			<div id="about-content">
+				<p class="satoshi-reg">Anny Long raised and based in the Bay area is a designer interested in products, Identity, systems, packaging and UX design.</p>
+				<p class="satoshi-reg">Collaboration energizes me; I thrive working across teams with many disciplines—this has led to various projects such as Google Tone, community exhibitions, and The Children's Creativity Museum. In my downtime, I watch bad 80s films for the set design, and I'm a lover of all things pixel and coffee.</p>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<p id="footer-left">Design by Anny Long</p>
+		<p id="footer-right">Copyright © 2026 Anny Long. All rights reserved.</p>
+	</footer>
+</body>
+</html>

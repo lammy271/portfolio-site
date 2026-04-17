@@ -4,14 +4,15 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/index.css">
 	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
 	<script type="module">
-		import { animate, hover } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
+		import { animate, hover, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
 
 		// Navbar icons lift up on hover
 		const navIconEase = { duration: 0.1, ease: "easeInOut" };
 		const monogramEase = { duration: 0.2, ease: "easeInOut" };
-		hover("#nav-buttons a", (link) => {
+		hover("#nav-buttons a:not(.active)", (link) => {
 			// Move the icon only (not the <a>) so the link's hover hit area stays put.
 			const icon = link.querySelector("img");
 			if (!icon) return;
@@ -22,10 +23,10 @@
 			};
 		});
 
-		hover("#nav-section-right > a[href='index.html']", (link) => {
+		hover("#nav-buttons > a[href='index.html']", (link) => {
 			const mono = link.querySelector("#monogram");
 			if (!mono) return;
-			const grow = animate(mono, { scale: [1, 1.15] }, monogramEase);
+			const grow = animate(mono, { scale: [1, 1.5] }, monogramEase);
 			return () => {
 				grow.stop();
 				animate(mono, { scale: 1 }, monogramEase);
@@ -33,45 +34,116 @@
 		});
 
 		// Hero section appears and lifts up on page load
-		animate("#hero-section", { opacity: [0, 1], y: [30, 0] }, { duration: 1.5, ease: "easeInOut" });
+		animate("#hero-section", { opacity: [0, 1], y: [30, 0] }, { duration: 1, ease: "easeInOut" });
+
+		// Case study cards float in on page load, staggered
+		animate(
+			".case-study-card",
+			{ opacity: [0, 1], y: [20, 0] },
+			{ delay: stagger(0.15, { startDelay: 1 }), duration: 0.6, ease: "easeOut" }
+		);
 	</script>
     <script src="assets/js/main.js"></script>
 </head>
 <body>
 	<nav id="nav-section">
 		<div id="nav-section-left">
-			<div id="name">ANNY LONG</div>
-			<div id="location">
+			<a id="name" href="index.html">ANNY LONG</a>
+		</div>
+		<div id="nav-section-right">
+			<div id="location" class="info-pair">
 				<p>Based in</p>
 				<p>San Francisco, CA</p>
 			</div>
-			<div id="contact">
-				<p>Let's chat!</p>
+			<div id="contact" class="info-pair">
+				<p>Let's work together!</p>
 				<p><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
 			</div>
-		</div>
-		<div id="nav-section-right">
-			<div id="nav-buttons">
-				<a href="#pdf" aria-label="Download portfolio as PDF"><img src="assets/image/download.png" alt="PDF Icon" height="20px" /></a>
-				<a href="https://www.linkedin.com/in/annylong" aria-label="LinkedIn profile"><img src="assets/image/linkedin.svg" alt="LinkedIn Icon" height="20px" /></a>
-				<a href="#projects" aria-label="View projects"><img src="assets/image/folder.svg" alt="Projects Icon" height="20px" /></a>
-				<a href="#fun" aria-label="Fun"><img src="assets/image/smile.svg" alt="Fun Icon" height="20px" /></a>
-				<a href="#about" aria-label="About Me"><img src="assets/image/tea.svg" alt="About me Icon" height="20px" /></a>
-			</div>
 			<a href="index.html">
-				<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="80px" />
+				<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="60px" />
 			</a>
 		</div>
 	</nav>
 	<div id=content>
 		<div id="hero-section">
-			<p id="greeting1" class="boska">Hello,</p>
-			<h1 id="greeting2" class="daisy">I’m <span class="daisy-i">Anny Long</span></h1>
-			<div class="divider" style="width: 3rem;"></div>
-			<p id="blurb" class="light">
-				A multidisciplinary designer focused on product, transforming the monotonous into dynamic design, and a compulsive tinkerer of all things pixel.
-			</p>
+			<p id="blurb" class="metro-lite">Hello, I’m Anny. A multidisciplinary designer <span class="metro-med-i">focused</span> on product, transforming the monotonous into dynamic design, and compulsive tinker of all things pixel.</p>
+		</div>
+		<div id="main-section">
+			<div id="main-section-header">
+				<h1 id="main-section-header-text">case studies</h1>
+				<div id="nav-buttons">
+					<a href="#pdf" aria-label="Download Portfolio"><img src="assets/image/folder.svg" alt="Portfolio Icon" height="20px" /></a>
+					<a href="#pdf" aria-label="Download Resume"><img src="assets/image/doc.svg" alt="Resume Icon" height="20px" /></a>
+					<a href="https://www.linkedin.com/in/annylong" aria-label="LinkedIn profile"><img src="assets/image/linkedin.png" alt="LinkedIn Icon" height="20px" /></a>
+					<a href="#fun" aria-label="Fun"><img src="assets/image/smile.svg" alt="Fun Icon" height="20px" /></a>
+					<a href="about.html" aria-label="About Me"><img src="assets/image/tea.svg" alt="About me Icon" height="20px" /></a>
+				</div>
+			</div>
+			<div id="main-section-content">
+				<div id="case-studies">
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-1.jpg" alt="Case Study 1" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 1</h2>
+							<p class="case-study-description">This is a description of case study 1.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-2.png" alt="Case Study 2" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 2</h2>
+							<p class="case-study-description">This is a description of case study 2.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-3.png" alt="Case Study 3" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 3</h2>
+							<p class="case-study-description">This is a description of case study 3.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-4.jpg" alt="Case Study 4" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 4</h2>
+							<p class="case-study-description">This is a description of case study 4.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-5.png" alt="Case Study 5" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 5</h2>
+							<p class="case-study-description">This is a description of case study 5.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-6.jpg" alt="Case Study 6" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 6</h2>
+							<p class="case-study-description">This is a description of case study 6.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-7.png" alt="Case Study 7" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 7</h2>
+							<p class="case-study-description">This is a description of case study 7.</p>
+						</div>
+					</a>
+					<a href="index.html" class="case-study-card">
+						<img class="case-study-image" src="assets/image/case-study-8.jpg" alt="Case Study 8" />
+						<div class="case-study-body">
+							<h2 class="case-study-title">Case Study 8</h2>
+							<p class="case-study-description">This is a description of case study 8.</p>
+						</div>
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
+	<footer>
+		<p id="footer-left">Design by Anny Long</p>
+		<p id="footer-right">Copyright © 2026 Anny Long. All rights reserved.</p>
+	</footer>
 </body>
 </html>

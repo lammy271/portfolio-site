@@ -28,6 +28,8 @@ ol[role='list'] {
 /* Set core body defaults */
 body {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	line-height: 1.5;
 	margin: 0;
 }
@@ -76,12 +78,11 @@ textarea:not([rows]) {
 }
 
 /*** Defined Constants ***/
-@property --main-button-color {
+@property --main-text-color {
 	syntax: "<color>";
 	inherits: false;
 	initial-value: black;
 }
-
 
 @property --main-accent-color {
 	syntax: "<color>";
@@ -89,34 +90,75 @@ textarea:not([rows]) {
 	initial-value: gray;
 }
 
-@font-face {
-	font-family: "Sofia Sans";
-	src: url("../fonts/SofiaSans.ttf");
+@property --main-fade-color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #757575;
 }
-
-@font-face {
-	font-family: "Sofia Sans Condensed";
-	src: url("../fonts/SofiaSansCondensed.ttf");
-}
-
-@font-face {
-	font-family: "Inter";
-	src: url("../fonts/Inter.ttf");
-}
-
-@font-face {
-	font-family: "Metropolis";
-	src: url("../fonts/Metropolis-Regular.ttf");
+.faded {
+	color: var(--main-fade-color);
 }
 
 @font-face {
 	font-family: "Metropolis Light";
-	src: url("../fonts/Metropolis-Light.ttf");
+	src: url("../fonts/metropolis-latin-300-normal.ttf");
+}
+.metro-lite {
+	font-family: "Metropolis Light", Arial, sans-serif;
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: "Metropolis Medium";
+	src: url("../fonts/metropolis-latin-500-normal.ttf");
+}
+.metro-med {
+	font-family: "Metropolis Medium", Arial, sans-serif;
+	font-weight: 500;
 }
 
 @font-face {
 	font-family: "Metropolis Bold";
 	src: url("../fonts/Metropolis-Bold.ttf");
+}
+.metro-bold {
+	font-family: "Metropolis Bold", Arial, sans-serif;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Metropolis Extra Bold";
+	src: url("../fonts/metropolis-latin-800-normal.ttf");
+}
+.metro-xbold {
+	font-family: "Metropolis Extra Bold", Arial, sans-serif;
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: "Metropolis Medium Italic";
+	src: url("../fonts/metropolis-latin-500-italic.ttf");
+}
+.metro-med-i {
+	font-family: "Metropolis Medium Italic", Arial, sans-serif;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Satoshi";
+	src: url("../fonts/Satoshi-Variable.ttf")
+}
+.satoshi-lite {
+	font-family: "Satoshi", Arial, sans-serif;
+	font-weight: 300;
+}
+.satoshi-reg {
+	font-family: "Satoshi", Arial, sans-serif;
+	font-weight: 400;
+}
+.satoshi-med {
+	font-family: "Satoshi", Arial, sans-serif;
+	font-weight: 500;
 }
 
 @font-face {
@@ -152,96 +194,27 @@ h1 {
 	font-weight: 400;
 }
 
-h1 a {
-	color: var(--main-accent-color);
-	text-decoration: none;
-	line-height: 72px;
-}
-
-h1 a:hover {
-	/*text-decoration: underline 5px;
-	text-underline-offset: 12px;
-	text-decoration-skip-ink: none;*/
-	border-bottom: 5px solid var(--main-accent-color);
-}
-
-h2 {
-	font-size: 28px;
-}
-
-p {
-	font-family: "Metropolis", Arial, sans-serif;
-	font-weight: 400;
-	font-size: 30px;
-}
-
-.boska {
-	font-family: "Boska", Arial, sans-serif;
-}
-
-.boska-i {
-	font-family: "Boska Italic", Arial, sans-serif;
-	font-style: italic;
-}
-
-.daisy {
-	font-family: "Swarsh Daisy", Times New Roman, serif;
-}
-
-.daisy-i {
-	font-family: "Swarsh Daisy Italic", Times New Roman, serif;
-}
-
-p.light {
-	font-family: "Metropolis Light", Arial, sans-serif;
-	font-weight: 300;
-}
-
-p.bold {
-	font-family: "Metropolis Bold", Arial, sans-serif;
-	font-weight: 700;
-}
-
-.btn {
-	background-color: var(--main-button-color);
-	font-family: "Inter", Arial, sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	border: none;
-	color: white;
-	text-decoration: none;
-	border-radius: 42px;
-	height: 69px;
-	padding: 20px 45px;
-	filter: drop-shadow(0 4px 2px rgba(0,0,0,0.5));
-	cursor: pointer;
-}
-
-.btn i {
-	font-size: 16px;
-}
-
-#blurb {
-	position: relative;
-}
-
 #content {
-	position: absolute;
-	width: 100vw;
-	padding: 120px 100px;
+	flex: 1;
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	width: 100%;
+	max-width: 100vw;
+	padding-inline: 3rem;
+	box-sizing: border-box;
 }
 
 /* Navbar. Elements in a flex container, aligned horizontally, spaced evenly*/
 #nav-section {
+	flex-shrink: 0;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	padding-bottom: 2px;
-	padding-inline: 5rem;
+	padding-inline: 3rem;
 	padding-block: 2rem;
-	border-bottom: 1px solid var(--main-button-color);
 }
 
 #nav-section-left {
@@ -253,26 +226,46 @@ p.bold {
 }
 
 #name {
-	font-family: "Metropolis Bold", Arial, sans-serif;
-	font-size: 30px;
-	letter-spacing: 19%;
+	font-family: "Metropolis Extra Bold", Arial, sans-serif;
+	font-size: 40px;
+	line-height: 26px;
+	letter-spacing: 32%;
+	margin: 0;
+	text-decoration: none;
+	color: inherit;
 }
 
-#location, #contact {
+#name:visited {
+	color: inherit;
+}
+
+/* info pairs: used for location and contact info */
+.info-pair {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
 }
 
-#location p, #contact p {
+.info-pair p {
+	font-size: 18px;
+	line-height: 30px;
+	letter-spacing: 10%;
 	margin-block: 0;
-	font-size: 16px;
 }
 
-#location p a, #contact p a {
+.info-pair p a {
 	text-decoration: none;
-	color: var(--main-button-color);
+	color: var(--main-text-color);
+}
+
+.info-pair p:first-child {
+	font-family: "Metropolis Medium", Arial, sans-serif;
+}
+
+.info-pair p:last-child {
+	font-family: "Satoshi", Arial, sans-serif;
+	font-weight: 400;
 }
 
 #nav-section-right {
@@ -280,7 +273,7 @@ p.bold {
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-end;
-	gap: 30px;
+	gap: 8rem;
 }
 
 #nav-buttons {
@@ -297,6 +290,25 @@ p.bold {
 	margin: -10px;
 }
 
+#nav-buttons a img {
+	opacity: 0.45;
+	transition: opacity 0.15s ease;
+}
+
+#nav-buttons a:hover img,
+#nav-buttons a:focus-visible img {
+	opacity: 1;
+}
+
+#nav-buttons a.active img {
+	opacity: 1;
+}
+
+#nav-buttons a.active:hover img,
+#nav-buttons a.active:focus-visible img {
+	opacity: 1;
+}
+
 /* Action tooltips: bubble + tail above icon (label text from aria-label) */
 #nav-buttons a::before {
 	content: "";
@@ -306,7 +318,7 @@ p.bold {
 	translate: -50% 0;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-top: 8px solid var(--main-button-color);
+	border-top: 8px solid var(--main-text-color);
 	pointer-events: none;
 	opacity: 0;
 	transition: opacity 0.15s ease;
@@ -328,7 +340,7 @@ p.bold {
 	font-weight: 400;
 	line-height: 1.25;
 	color: var(--main-bg-color);
-	background-color: var(--main-button-color);
+	background-color: var(--main-text-color);
 	border-radius: 8px;
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 	pointer-events: none;
@@ -351,83 +363,46 @@ p.bold {
 	}
 }
 
-/* Hero Section. Elements aligned centered horizontally, content has horizontal margins of 25vw*/
-#hero-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding-inline: 10vw;
-}
-
-#hero-section p {
-	text-align: center;
-}
-
-#greeting1 {
-	letter-spacing: 15%;
-	font-size: 33px;
-	margin-block: 0;
-}
-
-#greeting2 {
-	letter-spacing: 13%;
-	font-size: 69px;
-	margin-block: 1.5rem;
-}
-
-#blurb {
-	letter-spacing: 9%;
-	line-height: 62px;
-}
-
-#about-section {
-	position: relative;
-	float: right;
-	width: 50vw;
-}
-
-#about-section-header {
+#main-section {
+	grid-area: 1 / 1;
 	position: relative;
 	width: 100%;
+	padding-top: 140px;
+	box-sizing: border-box;
+}
+
+#main-section-header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	gap: 3rem;
-	padding-inline: 30px;
-}
-
-.divider {
-	flex-grow: 1;
-	height: 1px;
-	background-color: black;
-	margin-block: 20px;
-}
-
-#about-section h2 {
-	position: relative;
-	flex-grow: 0;
-	margin-block: 0;
-}
-
-#about-section p {
-	position: relative;
-	line-height: 42px;
-	text-align: justify;
-}
-
-#about-buttons {
 	width: 100%;
+}
+
+#main-section-header-text {
+	font-family: "Satoshi", Arial, sans-serif;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 26px;
+	letter-spacing: 22%;
+	margin: 0;
+	color: var(--main-fade-color);
+}
+
+footer {
 	position: relative;
-	padding-top: 45px;
+	flex-shrink: 0;
+	width: 100%;
+	max-width: 100vw;
+	box-sizing: border-box;
+	padding: 2rem 3rem;
+	background-color: var(--main-bg-color);
 	display: flex;
 	flex-direction: row;
-	flex: 0 0 auto;
-	justify-content: flex-end;
-	gap: 20px;
-}
-
-#about-buttons .btn {
-	opacity: 0;
+	align-items: center;
+	justify-content: space-between;
+	font-family: "Metropolis Light", Arial, sans-serif;
+	font-size: 12px;
+	line-height: 26px;
+	letter-spacing: 38%; /* 32% for Rojerflint */
 }
