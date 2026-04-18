@@ -1,5 +1,10 @@
 /* about.html — legacy about panel (when markup exists) */
 
+/* Absolutely positioned photos don't contribute to height; reserve space for layout */
+#main-section {
+	min-height: 900px;
+}
+
 #about-section {
 	position: relative;
 	float: right;
@@ -52,11 +57,46 @@
 }
 
 #about-content {
-	position: relative;
-	width: 50%;
+	position: absolute;
+	left: 268px;
+	top: 270px;
+	width: 656px;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
 	gap: 20px;
+}
+
+#about-content p {
+	font-family: "Satoshi", Arial, sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	line-height: 50px;
+	letter-spacing: 10%;
+	text-align: right;
+	margin: 0;
+}
+
+.square-pic {
+	position: absolute;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 22px;
+	overflow: hidden;
+}
+
+#friends.square-pic {
+	left: 660px;
+	top: -20px;
+}
+
+#bay.square-pic {
+	left: -30px;
+	top: 275px;
+}
+
+#latte.square-pic {
+	left: 1240px;
+	top: 560px;
 }
