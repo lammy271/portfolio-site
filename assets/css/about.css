@@ -9,3 +9,39 @@
 	line-height: 1.75;
 	margin: 0;
 }
+
+.about-link {
+	text-decoration-line: underline;
+	text-decoration-color: var(--secondary-fade-color);
+	text-decoration-thickness: 5px;
+	text-underline-offset: 3px;
+	cursor: pointer;
+}
+
+.about-link:hover {
+	text-decoration-color: var(--secondary-accent-color);
+}
+
+/* Modal overlay */
+#modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.72);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	cursor: pointer;
+}
+
+#modal-overlay[hidden] {
+	display: none;
+}
+
+#modal-image {
+	max-width: min(80vw, 900px);
+	max-height: 80vh;
+	object-fit: contain;
+	display: block;
+	pointer-events: none;
+}
