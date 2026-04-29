@@ -83,20 +83,44 @@ textarea:not([rows]) {
 	inherits: false;
 	initial-value: black;
 }
+.main-text {
+	color: var(--main-text-color);
+}
 
 @property --main-accent-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: gray;
+	initial-value: #0376CE;
+}
+.main-accent {
+	color: var(--main-accent-color);
 }
 
 @property --main-fade-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #757575;
+	initial-value: #ADDBFF;
 }
-.faded {
+.main-fade {
 	color: var(--main-fade-color);
+}
+
+@property --secondary-accent-color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #6DBA64;
+}
+.secondary-accent {
+	color: var(--secondary-accent-color);
+}
+
+@property --secondary-fade-color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #A3F799;
+}
+.secondary-fade {
+	color: var(--secondary-fade-color);
 }
 
 @font-face {
@@ -145,64 +169,194 @@ textarea:not([rows]) {
 }
 
 @font-face {
-	font-family: "Satoshi";
-	src: url("../fonts/Satoshi-Variable.ttf")
+	font-family: "Lenia Sans ExtraLight";
+	src: url("../fonts/LeniaSans-ExtraLight.ttf");
 }
-.satoshi-lite {
-	font-family: "Satoshi", Arial, sans-serif;
-	font-weight: 300;
+.lenia-xlite {
+	font-family: "Lenia Sans ExtraLight", Arial, sans-serif;
+	font-weight: 200;
 }
-.satoshi-reg {
-	font-family: "Satoshi", Arial, sans-serif;
+
+@font-face {
+	font-family: "Lenia Sans Regular";
+	src: url("../fonts/LeniaSans-Regular.ttf");
+}
+.lenia-reg {
+	font-family: "Lenia Sans Regular", Arial, sans-serif;
 	font-weight: 400;
 }
-.satoshi-med {
-	font-family: "Satoshi", Arial, sans-serif;
-	font-weight: 500;
+
+@font-face {
+	font-family:"Lenia Sans SemiBold";
+	src: url("../fonts/LeniaSans-SemiBold.ttf");
+}
+.lenia-semi {
+	font-family: "Lenia Sans SemiBold", Arial, sans-serif;
+	font-weight: 600;
 }
 
 @font-face {
-	font-family: "Boska";
-	src: url("../fonts/Boska-Variable.ttf");
+	font-family: "Lenia Sans Bold";
+	src: url("../fonts/LeniaSans-Bold.ttf");
+}
+.lenia-bold {
+	font-family: "Lenia Sans Bold", Arial, sans-serif;
+	font-weight: 700;
 }
 
 @font-face {
-	font-family: "Boska Italic";
-	src: url("../fonts/Boska-VariableItalic.ttf");
+	font-family: "Lenia Mono ExtraBold";
+	src: url("../fonts/LeniaMono-ExtraBold.ttf");
+}
+.lenia-mono-xbold {
+	font-family: "Lenia Mono ExtraBold", "Courier New", monospace;
+	font-weight: 800;
 }
 
 @font-face {
-	font-family: "Swarsh Daisy";
-	src: url("../fonts/swarsh-daisy-regular.ttf");
+	font-family: "Lenia Mono SemiBold";
+	src: url("../fonts/LeniaMono-SemiBold.ttf");
+}
+.lenia-mono-semi {
+	font-family: "Lenia Mono SemiBold", "Courier New", monospace;
+	font-weight: 600;
 }
 
 @font-face {
-	font-family: "Swarsh Daisy Italic";
-	src: url("../fonts/swarsh-daisy-italic.ttf");
+	font-family: "Lenia Mono Regular";
+	src: url("../fonts/LeniaMono-Regular.ttf");
+}
+.lenia-mono-reg {
+	font-family: "Lenia Mono Regular", "Courier New", monospace;
+	font-weight: 400;
 }
 
+@font-face {
+	font-family: "Lenia Sans Light";
+	src: url("../fonts/LeniaSans-Light.ttf");
+}
+.lenia-lite {
+	font-family: "Lenia Sans Light", Arial, sans-serif;
+	font-weight: 300;
+}
 
 /*** Styles ***/
+.txt-sm {
+	font-size: 11.5px;
+}
+
+.txt-md {
+	font-size: 15px;
+}
+
+.txt-lg {
+	font-size: 25px;
+}
+
+.spc-sm {
+	letter-spacing: 10%;
+}
+
+.spc-md {
+	letter-spacing: 15%;
+}
+
+.spc-lg {
+	letter-spacing: 20%;
+}
 
 body {
     background: var(--main-bg-color);
 }
 
 h1 {
-	font-family: "Sofia Sans", Arial, sans-serif;
-	font-size: 50px;
-	font-weight: 400;
+	font-family: "Lenia Mono", "Courier New", monospace;
+	font-size: 15px;
+}
+
+#header {
+	display: grid;
+	grid-template-columns: 3fr 3fr 3fr 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "name location contact-info monogram";
+	align-items: center;
+	padding: 2rem 3rem;
+}
+
+#header > a:last-child {
+	justify-self: end;
+}
+
+#location {
+	margin-block: 0;
+}
+
+#contact-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 5px;
+}
+
+#contact-info p {
+	margin-block: 0;
+}
+
+#contact-info a {
+	text-decoration: none;
+	color: inherit;
 }
 
 #content {
 	flex: 1;
-	position: relative;
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 3fr 3fr 3fr 1fr;
+	grid-template-rows: auto;
 	width: 100%;
 	max-width: 100vw;
 	padding-inline: 3rem;
+	padding-bottom: 3rem;
 	box-sizing: border-box;
+}
+
+#sidebar {
+	grid-column: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding-top: 2rem;
+	padding-right: 2rem;
+}
+
+#sidebar-intro {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+#sidebar-greeting {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 7px;
+}
+
+#sidebar-greeting img {
+	filter: brightness(0) invert(41%) sepia(1) saturate(540%) hue-rotate(168deg) brightness(87%);
+}
+
+#sidebar-greeting p {
+	margin: 0;
+	font-size: 11px;
+	letter-spacing: 12%;
+}
+
+#sidebar-divider {
+	width: 36px;
+	border: none;
+	border-top: 1.5px solid var(--main-text-color);
+	margin: 0.25rem 0 0;
 }
 
 /* Navbar. Elements in a flex container, aligned horizontally, spaced evenly*/
@@ -226,10 +380,6 @@ h1 {
 }
 
 #name {
-	font-family: "Metropolis Extra Bold", Arial, sans-serif;
-	font-size: 35px;
-	line-height: 26px;
-	letter-spacing: 32%;
 	margin: 0;
 	text-decoration: none;
 	color: inherit;
@@ -254,20 +404,6 @@ h1 {
 	margin-block: 0;
 }
 
-.info-pair p a {
-	text-decoration: none;
-	color: var(--main-text-color);
-}
-
-.info-pair p:first-child {
-	font-family: "Metropolis Medium", Arial, sans-serif;
-}
-
-.info-pair p:last-child {
-	font-family: "Satoshi", Arial, sans-serif;
-	font-weight: 400;
-}
-
 #nav-section-right {
 	display: flex;
 	flex-direction: row;
@@ -278,115 +414,74 @@ h1 {
 
 #nav-buttons {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	gap: 81px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
 }
 
 #nav-buttons a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
 	position: relative;
-	padding: 10px;
-	margin: -10px;
+	padding: 9px 8px;
+	margin: 0 -8px;
+	text-decoration: none;
+}
+
+.linked-text {
+	margin: 0;
+	color: var(--main-accent-color);
+	opacity: 1;
+	transition: opacity 0.15s ease;
+}
+
+#nav-buttons a.active .linked-text {
+	opacity: 0.35;
 }
 
 #nav-buttons a img {
-	opacity: 0.45;
+	opacity: 1;
+	/* Convert black SVG to --main-accent-color (#0376CE) */
+	filter: brightness(0) invert(41%) sepia(1) saturate(540%) hue-rotate(168deg) brightness(87%);
 	transition: opacity 0.15s ease;
 }
 
-#nav-buttons a:hover img,
-#nav-buttons a:focus-visible img {
-	opacity: 1;
+#nav-buttons a:last-child img {
+	transform: rotate(-90deg);
 }
 
 #nav-buttons a.active img {
-	opacity: 1;
-}
-
-#nav-buttons a.active:hover img,
-#nav-buttons a.active:focus-visible img {
-	opacity: 1;
-}
-
-/* Action tooltips: bubble + tail above icon (label text from aria-label) */
-#nav-buttons a::before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	bottom: calc(100% + 5px);
-	translate: -50% 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-top: 8px solid var(--main-text-color);
-	pointer-events: none;
-	opacity: 0;
-	transition: opacity 0.15s ease;
-	z-index: 2;
-}
-
-#nav-buttons a::after {
-	content: attr(aria-label);
-	position: absolute;
-	left: 50%;
-	bottom: calc(100% + 5px + 8px);
-	translate: -50% 0;
-	padding: 0.45rem 0.65rem;
-	max-width: 14rem;
-	width: max-content;
-	text-align: center;
-	font-family: "Metropolis", Arial, sans-serif;
-	font-size: 13px;
-	font-weight: 400;
-	line-height: 1.25;
-	color: var(--main-bg-color);
-	background-color: var(--main-text-color);
-	border-radius: 8px;
-	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-	pointer-events: none;
-	opacity: 0;
-	transition: opacity 0.15s ease;
-	z-index: 3;
-}
-
-#nav-buttons a:hover::before,
-#nav-buttons a:hover::after,
-#nav-buttons a:focus-visible::before,
-#nav-buttons a:focus-visible::after {
-	opacity: 1;
+	opacity: 0.35;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	#nav-buttons a::before,
-	#nav-buttons a::after {
-		transition: none;
-	}
 }
 
 #main-section {
-	grid-area: 1 / 1;
-	position: relative;
-	width: 100%;
-	padding-top: 140px;
+	grid-column: 2 / 5;
+	display: grid;
+	grid-template-columns: 3fr 3fr 1fr;
+	align-content: start;
+	padding-top: 2rem;
 	box-sizing: border-box;
 }
 
 #main-section-header {
+	grid-column: 1 / 3;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
+}
+
+#main-section-content {
+	grid-column: 1 / 3;
 }
 
 #main-section-header-text {
-	font-family: "Satoshi", Arial, sans-serif;
-	font-weight: 300;
-	font-size: 18px;
-	line-height: 26px;
-	letter-spacing: 22%;
 	margin: 0;
-	color: var(--main-fade-color);
 }
 
 footer {
@@ -401,8 +496,4 @@ footer {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	font-family: "Metropolis Light", Arial, sans-serif;
-	font-size: 12px;
-	line-height: 26px;
-	letter-spacing: 38%; /* 32% for Rojerflint */
 }

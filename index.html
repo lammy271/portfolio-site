@@ -33,108 +33,115 @@
 			};
 		});
 
-		// Hero section appears and lifts up on page load
-		animate("#hero-section", { opacity: [0, 1], y: [30, 0] }, { duration: 1, ease: "easeInOut" });
-
 		// Case study cards float in on page load, staggered
 		animate(
 			".case-study-card",
 			{ opacity: [0, 1], y: [20, 0] },
-			{ delay: stagger(0.15, { startDelay: 1 }), duration: 0.6, ease: "easeOut" }
+			{ delay: stagger(0.15, { startDelay: 0.3 }), duration: 0.6, ease: "easeOut" }
 		);
 	</script>
     <script src="assets/js/main.js"></script>
 </head>
 <body>
-	<nav id="nav-section">
-		<div id="nav-section-left">
-			<a id="name" href="index.html">ANNY LONG</a>
+	<div id="header">
+		<a id="name" class="metro-xbold txt-lg spc-lg main-text" href="index.html">ANNY LONG</a>
+		<p id="location" class="lenia-bold txt-sm spc-md main-text" grid-area="location">Based in San Francisco, CA</p>
+		<div id="contact-info" grid-area="contact-info">
+			<p class="lenia-semi txt-md spc-md main-accent">Let's chat!</p>
+			<img id="contact-arrow" src="assets/image/arrow.svg" alt="right arrow" height="14px" />
+			<p class="lenia-mono-semi txt-sm spc-md main-accent"><a href="mailto:hi@annylongdesign.com">HI@ANNYLONGDESIGN.COM</a></p>
 		</div>
-		<div id="nav-section-right">
-			<div id="location" class="info-pair">
-				<p>Based in</p>
-				<p>San Francisco, CA</p>
+		<a href="index.html" grid-area="monogram">
+			<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="60px" />
+		</a>
+	</div>
+	<div id="content">
+		<div id="sidebar">
+			<div id="sidebar-intro">
+				<div id="sidebar-greeting" class="lenia-bold main-accent">
+					<img src="assets/image/pixelarticons--human-arms-up.svg" alt="" height="14px" />
+					<p>HELLO, I'M ANNY LONG!</p>
+				</div>
+				<p id="blurb" class="metro-lite">A multidisciplinary designer <span class="metro-med-i">focused</span> on product, transforming the monotonous into dynamic design, and compulsive tinker of all things pixel.</p>
+				<hr id="sidebar-divider" />
 			</div>
-			<div id="contact" class="info-pair">
-				<p>Let's work together!</p>
-				<p><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
+			<div id="nav-buttons">
+				<a href="about.html" aria-label="About Me"><img src="assets/image/pixelarticons--laugh.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">ABOUT ME</p></a>
+				<a href="index.html" aria-label="Case Studies"><img src="assets/image/pixelarticons--folder.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">CASE STUDIES</p></a>
+				<a href="fun.html" aria-label="Fun"><img src="assets/image/pixelarticons--balloon.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">FUN STUFF</p></a>
+				<a href="#pdf" aria-label="Download Resume"><img src="assets/image/pixelarticons--download-sharp.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">RESUME</p></a>
+				<a href="#pdf" aria-label="Download Portfolio PDF"><img src="assets/image/pixelarticons--download-sharp.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">PORTFOLIO PDF</p></a>
+				<a href="https://www.linkedin.com/in/annylong" aria-label="LinkedIn profile"><img src="assets/image/pixelarticons--arrow-big-down-sharp.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">LINKEDIN</p></a>
 			</div>
-			<a href="index.html">
-				<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="60px" />
-			</a>
-		</div>
-	</nav>
-	<div id=content>
-		<div id="hero-section">
-			<p id="blurb" class="metro-lite">Hello, I’m Anny. A multidisciplinary designer <span class="metro-med-i">focused</span> on product, transforming the monotonous into dynamic design, and compulsive tinker of all things pixel.</p>
 		</div>
 		<div id="main-section">
 			<div id="main-section-header">
-				<h1 id="main-section-header-text">case studies</h1>
-				<div id="nav-buttons">
-					<a href="#pdf" aria-label="Download Portfolio"><img src="assets/image/folder.svg" alt="Portfolio Icon" height="20px" /></a>
-					<a href="#pdf" aria-label="Download Resume"><img src="assets/image/doc.svg" alt="Resume Icon" height="20px" /></a>
-					<a href="https://www.linkedin.com/in/annylong" aria-label="LinkedIn profile"><img src="assets/image/linkedin.png" alt="LinkedIn Icon" height="20px" /></a>
-					<a href="#fun" aria-label="Fun"><img src="assets/image/smile.svg" alt="Fun Icon" height="20px" /></a>
-					<a href="about.html" aria-label="About Me"><img src="assets/image/tea.svg" alt="About me Icon" height="20px" /></a>
-				</div>
+				<h1 id="main-section-header-text" class="secondary-accent lenia-mono-reg txt-md spc-md">case studies</h1>
 			</div>
 			<div id="main-section-content">
 				<div id="case-studies">
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-1.jpg" alt="Case Study 1" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/Google_tone_cover.png" alt="Google Tone" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 1</h2>
-							<p class="case-study-description">This is a description of case study 1.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">GOOGLE TONE / DESIGN SPRINT</h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-2.png" alt="Case Study 2" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/hobbihole.png" alt="Case Study 2" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 2</h2>
-							<p class="case-study-description">This is a description of case study 2.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">HOBBI HOLE / B2C / UI/UX / PROTOTYPE</h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-3.png" alt="Case Study 3" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/433taphouse.png" alt="4!33 Taphouse" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 3</h2>
-							<p class="case-study-description">This is a description of case study 3.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">4!33 TAP HOUSE / BRANDING / IDENTITY</h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-4.jpg" alt="Case Study 4" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/purutan.png" alt="Purutan" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 4</h2>
-							<p class="case-study-description">This is a description of case study 4.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">PURUTAN / PACKAGE DESIGN</h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-5.png" alt="Case Study 5" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/potrerohill.png" alt="On The Hill" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 5</h2>
-							<p class="case-study-description">This is a description of case study 5.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">ON THE HILL / PUBLISHING / EXPO</h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-6.jpg" alt="Case Study 6" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/pill.png" alt="Pill Dispenser" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 6</h2>
-							<p class="case-study-description">This is a description of case study 6.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">PILL DISPENSER / PROTOTYPING / AI VOICE TRAINING</h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-7.png" alt="Case Study 7" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/interviewisland.png" alt="Interview Island" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 7</h2>
-							<p class="case-study-description">This is a description of case study 7.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">INTERVIEW ISLAND / INTERACTIVE </h2>
 						</div>
 					</a>
 					<a href="index.html" class="case-study-card">
-						<img class="case-study-image" src="assets/image/case-study-8.jpg" alt="Case Study 8" />
+						<div class="case-study-image-wrapper">
+							<img class="case-study-image" src="assets/image/childrenmuseum.png" alt="Children's Creativity Museum" />
+						</div>
 						<div class="case-study-body">
-							<h2 class="case-study-title">Case Study 8</h2>
-							<p class="case-study-description">This is a description of case study 8.</p>
+							<h2 class="case-study-title lenia-lite txt-md spc-md main-text">CREATIVITY MUSEUM / EXPERIENCE DESIGN</h2>
 						</div>
 					</a>
 				</div>
