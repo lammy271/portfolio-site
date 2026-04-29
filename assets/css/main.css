@@ -321,6 +321,11 @@ h1 {
 	color: inherit;
 }
 
+#contact-arrow {
+	padding-inline: 8px;
+	height: 10px;
+}
+
 #content {
 	flex: 1;
 	display: grid;
