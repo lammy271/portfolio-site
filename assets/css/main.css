@@ -449,7 +449,7 @@ h1 {
 }
 
 #nav-buttons a:last-child img {
-	transform: rotate(-90deg);
+	rotate: -90deg;
 }
 
 #nav-buttons a.active img {
