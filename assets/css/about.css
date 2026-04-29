@@ -15,6 +15,7 @@
 	text-decoration-color: var(--secondary-fade-color);
 	text-decoration-thickness: 5px;
 	text-underline-offset: 3px;
+	text-decoration-skip-ink: none;
 	cursor: pointer;
 }
 
