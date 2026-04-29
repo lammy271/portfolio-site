@@ -6,7 +6,8 @@
 }
 
 #about-content p {
-	line-height: 1.75;
+	line-height: 63px;
+	max-width: 45vw;
 	margin: 0;
 }
 
