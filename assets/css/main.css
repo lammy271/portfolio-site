@@ -282,11 +282,6 @@ body {
     background: var(--main-bg-color);
 }
 
-h1 {
-	font-family: "Lenia Mono", "Courier New", monospace;
-	font-size: 15px;
-}
-
 #header {
 	display: grid;
 	grid-template-columns: 3fr 3fr 3fr 1fr;
@@ -310,6 +305,7 @@ h1 {
 	align-items: center;
 	justify-content: flex-start;
 	gap: 5px;
+	padding-left: 1.5rem;
 }
 
 #contact-info p {
@@ -342,7 +338,7 @@ h1 {
 	grid-column: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 4rem;
 	padding-top: 2rem;
 	padding-right: 2rem;
 }
@@ -366,15 +362,13 @@ h1 {
 
 #sidebar-greeting p {
 	margin: 0;
-	font-size: 11px;
-	letter-spacing: 12%;
 }
 
 #sidebar-divider {
 	width: 36px;
 	border: none;
 	border-top: 1.5px solid var(--main-text-color);
-	margin: 0.25rem 0 0;
+	margin: 5rem 0 0;
 }
 
 /* Navbar. Elements in a flex container, aligned horizontally, spaced evenly*/
@@ -413,13 +407,6 @@ h1 {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
-}
-
-.info-pair p {
-	font-size: 18px;
-	line-height: 30px;
-	letter-spacing: 10%;
-	margin-block: 0;
 }
 
 #nav-section-right {

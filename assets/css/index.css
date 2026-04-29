@@ -1,11 +1,16 @@
 /* index.html — sidebar intro + case studies */
 
+.highlight {
+	background-color: var(--secondary-fade-color);
+	padding: 0 2px;
+}
+
 #blurb {
 	font-size: 13px;
 	line-height: 22px;
 	letter-spacing: 5%;
 	margin-block: 0;
-	max-width: 290px;
+	max-width: 340px;
 }
 
 #case-studies,
