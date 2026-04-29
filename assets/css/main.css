@@ -187,6 +187,15 @@ textarea:not([rows]) {
 }
 
 @font-face {
+	font-family: "Lenia Sans Italic";
+	src: url("../fonts/LeniaSans-Italic.ttf");
+}
+.lenia-reg-i {
+	font-family: "Lenia Sans Italic", Arial, sans-serif;
+	font-weight: 400;
+}
+
+@font-face {
 	font-family:"Lenia Sans SemiBold";
 	src: url("../fonts/LeniaSans-SemiBold.ttf");
 }
@@ -243,6 +252,10 @@ textarea:not([rows]) {
 /*** Styles ***/
 .txt-sm {
 	font-size: 11.5px;
+}
+
+.txt-lk {
+	font-size: 13px;
 }
 
 .txt-md {
