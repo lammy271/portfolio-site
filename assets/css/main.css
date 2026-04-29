@@ -28,6 +28,8 @@ ol[role='list'] {
 /* Set core body defaults */
 body {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	line-height: 1.5;
 	margin: 0;
 }
@@ -72,153 +74,426 @@ textarea:not([rows]) {
 @property --main-bg-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #F4E8F8;
+	initial-value: white;
 }
 
 /*** Defined Constants ***/
-@property --main-button-color {
+@property --main-text-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #C35DC3;
+	initial-value: black;
 }
-
+.main-text {
+	color: var(--main-text-color);
+}
 
 @property --main-accent-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #BB09A1;
+	initial-value: #0376CE;
+}
+.main-accent {
+	color: var(--main-accent-color);
+}
+
+@property --main-fade-color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #ADDBFF;
+}
+.main-fade {
+	color: var(--main-fade-color);
+}
+
+@property --secondary-accent-color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #6DBA64;
+}
+.secondary-accent {
+	color: var(--secondary-accent-color);
+}
+
+@property --secondary-fade-color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #A3F799;
+}
+.secondary-fade {
+	color: var(--secondary-fade-color);
 }
 
 @font-face {
-	font-family: "Sofia Sans";
-	src: url("../fonts/SofiaSans.ttf");
+	font-family: "Metropolis Light";
+	src: url("../fonts/metropolis-latin-300-normal.ttf");
+}
+.metro-lite {
+	font-family: "Metropolis Light", Arial, sans-serif;
+	font-weight: 300;
 }
 
 @font-face {
-	font-family: "Sofia Sans Condensed";
-	src: url("../fonts/SofiaSansCondensed.ttf");
+	font-family: "Metropolis Medium";
+	src: url("../fonts/metropolis-latin-500-normal.ttf");
+}
+.metro-med {
+	font-family: "Metropolis Medium", Arial, sans-serif;
+	font-weight: 500;
 }
 
 @font-face {
-	font-family: "Inter";
-	src: url("../fonts/Inter.ttf");
+	font-family: "Metropolis Bold";
+	src: url("../fonts/Metropolis-Bold.ttf");
+}
+.metro-bold {
+	font-family: "Metropolis Bold", Arial, sans-serif;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Metropolis Extra Bold";
+	src: url("../fonts/metropolis-latin-800-normal.ttf");
+}
+.metro-xbold {
+	font-family: "Metropolis Extra Bold", Arial, sans-serif;
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: "Metropolis Medium Italic";
+	src: url("../fonts/metropolis-latin-500-italic.ttf");
+}
+.metro-med-i {
+	font-family: "Metropolis Medium Italic", Arial, sans-serif;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Lenia Sans ExtraLight";
+	src: url("../fonts/LeniaSans-ExtraLight.ttf");
+}
+.lenia-xlite {
+	font-family: "Lenia Sans ExtraLight", Arial, sans-serif;
+	font-weight: 200;
+}
+
+@font-face {
+	font-family: "Lenia Sans Regular";
+	src: url("../fonts/LeniaSans-Regular.ttf");
+}
+.lenia-reg {
+	font-family: "Lenia Sans Regular", Arial, sans-serif;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family:"Lenia Sans SemiBold";
+	src: url("../fonts/LeniaSans-SemiBold.ttf");
+}
+.lenia-semi {
+	font-family: "Lenia Sans SemiBold", Arial, sans-serif;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Lenia Sans Bold";
+	src: url("../fonts/LeniaSans-Bold.ttf");
+}
+.lenia-bold {
+	font-family: "Lenia Sans Bold", Arial, sans-serif;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Lenia Mono ExtraBold";
+	src: url("../fonts/LeniaMono-ExtraBold.ttf");
+}
+.lenia-mono-xbold {
+	font-family: "Lenia Mono ExtraBold", "Courier New", monospace;
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: "Lenia Mono SemiBold";
+	src: url("../fonts/LeniaMono-SemiBold.ttf");
+}
+.lenia-mono-semi {
+	font-family: "Lenia Mono SemiBold", "Courier New", monospace;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Lenia Mono Regular";
+	src: url("../fonts/LeniaMono-Regular.ttf");
+}
+.lenia-mono-reg {
+	font-family: "Lenia Mono Regular", "Courier New", monospace;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Lenia Sans Light";
+	src: url("../fonts/LeniaSans-Light.ttf");
+}
+.lenia-lite {
+	font-family: "Lenia Sans Light", Arial, sans-serif;
+	font-weight: 300;
 }
 
 /*** Styles ***/
+.txt-sm {
+	font-size: 11.5px;
+}
+
+.txt-md {
+	font-size: 15px;
+}
+
+.txt-lg {
+	font-size: 25px;
+}
+
+.spc-sm {
+	letter-spacing: 10%;
+}
+
+.spc-md {
+	letter-spacing: 15%;
+}
+
+.spc-lg {
+	letter-spacing: 20%;
+}
 
 body {
     background: var(--main-bg-color);
 }
 
 h1 {
-	font-family: "Sofia Sans", Arial, sans-serif;
-	font-size: 50px;
-	font-weight: 400;
+	font-family: "Lenia Mono", "Courier New", monospace;
+	font-size: 15px;
 }
 
-h1 a {
-	color: var(--main-accent-color);
+#header {
+	display: grid;
+	grid-template-columns: 3fr 3fr 3fr 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "name location contact-info monogram";
+	align-items: center;
+	padding: 2rem 3rem;
+}
+
+#header > a:last-child {
+	justify-self: end;
+}
+
+#location {
+	margin-block: 0;
+}
+
+#contact-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 5px;
+}
+
+#contact-info p {
+	margin-block: 0;
+}
+
+#contact-info a {
 	text-decoration: none;
-	line-height: 72px;
-}
-
-h1 a:hover {
-	/*text-decoration: underline 5px;
-	text-underline-offset: 12px;
-	text-decoration-skip-ink: none;*/
-	border-bottom: 5px solid var(--main-accent-color);
-}
-
-h2, p {
-	font-family: "Sofia Sans Condensed", Arial, sans-serif;
-}
-
-h2 {
-	font-size: 28px;
-}
-
-p {
-	font-size: 24px;
-}
-
-.btn {
-	background-color: var(--main-button-color);
-	font-family: "Inter", Arial, sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	border: none;
-	color: white;
-	text-decoration: none;
-	border-radius: 42px;
-	height: 69px;
-	padding: 20px 45px;
-	filter: drop-shadow(0 4px 2px rgba(0,0,0,0.5));
-	cursor: pointer;
-}
-
-.btn i {
-	font-size: 16px;
-}
-
-#blurb {
-	padding-left: 92px;
-	position: relative;
-	top: -4rem;
+	color: inherit;
 }
 
 #content {
-	position: absolute;
-	width: 100vw;
-	padding: 40px 100px;
-}
-
-#about-section {
-	position: relative;
-	float: right;
-	width: 50vw;
-}
-
-#about-section-header {
-	position: relative;
+	flex: 1;
+	display: grid;
+	grid-template-columns: 3fr 3fr 3fr 1fr;
+	grid-template-rows: auto;
 	width: 100%;
+	max-width: 100vw;
+	padding-inline: 3rem;
+	padding-bottom: 3rem;
+	box-sizing: border-box;
+}
+
+#sidebar {
+	grid-column: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding-top: 2rem;
+	padding-right: 2rem;
+}
+
+#sidebar-intro {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+#sidebar-greeting {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 7px;
+}
+
+#sidebar-greeting img {
+	filter: brightness(0) invert(41%) sepia(1) saturate(540%) hue-rotate(168deg) brightness(87%);
+}
+
+#sidebar-greeting p {
+	margin: 0;
+	font-size: 11px;
+	letter-spacing: 12%;
+}
+
+#sidebar-divider {
+	width: 36px;
+	border: none;
+	border-top: 1.5px solid var(--main-text-color);
+	margin: 0.25rem 0 0;
+}
+
+/* Navbar. Elements in a flex container, aligned horizontally, spaced evenly*/
+#nav-section {
+	flex-shrink: 0;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	gap: 3rem;
-	padding-inline: 30px;
+	width: 100%;
+	padding-inline: 3rem;
+	padding-block: 2rem;
 }
 
-.divider {
-	flex-grow: 1;
-	height: 1px;
-	margin-left: 5vw;
-	background-color: #9f9f9f;
+#nav-section-left {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 60px;
 }
 
-#about-section h2 {
-	position: relative;
-	flex-grow: 0;
+#name {
+	margin: 0;
+	text-decoration: none;
+	color: inherit;
+}
+
+#name:visited {
+	color: inherit;
+}
+
+/* info pairs: used for location and contact info */
+.info-pair {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.info-pair p {
+	font-size: 18px;
+	line-height: 30px;
+	letter-spacing: 10%;
 	margin-block: 0;
 }
 
-#about-section p {
-	position: relative;
-	line-height: 42px;
-	text-align: justify;
-}
-
-#about-buttons {
-	width: 100%;
-	position: relative;
-	padding-top: 45px;
+#nav-section-right {
 	display: flex;
 	flex-direction: row;
-	flex: 0 0 auto;
+	align-items: center;
 	justify-content: flex-end;
-	gap: 20px;
+	gap: 8rem;
 }
 
-#about-buttons .btn {
-	opacity: 0;
+#nav-buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
+}
+
+#nav-buttons a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+	position: relative;
+	padding: 9px 8px;
+	margin: 0 -8px;
+	text-decoration: none;
+}
+
+.linked-text {
+	margin: 0;
+	color: var(--main-accent-color);
+	opacity: 1;
+	transition: opacity 0.15s ease;
+}
+
+#nav-buttons a.active .linked-text {
+	opacity: 0.35;
+}
+
+#nav-buttons a img {
+	opacity: 1;
+	/* Convert black SVG to --main-accent-color (#0376CE) */
+	filter: brightness(0) invert(41%) sepia(1) saturate(540%) hue-rotate(168deg) brightness(87%);
+	transition: opacity 0.15s ease;
+}
+
+#nav-buttons a:last-child img {
+	transform: rotate(-90deg);
+}
+
+#nav-buttons a.active img {
+	opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+}
+
+#main-section {
+	grid-column: 2 / 5;
+	display: grid;
+	grid-template-columns: 3fr 3fr 1fr;
+	align-content: start;
+	padding-top: 2rem;
+	box-sizing: border-box;
+}
+
+#main-section-header {
+	grid-column: 1 / 3;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#main-section-content {
+	grid-column: 1 / 3;
+}
+
+#main-section-header-text {
+	margin: 0;
+}
+
+footer {
+	position: relative;
+	flex-shrink: 0;
+	width: 100%;
+	max-width: 100vw;
+	box-sizing: border-box;
+	padding: 2rem 3rem;
+	background-color: var(--main-bg-color);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }

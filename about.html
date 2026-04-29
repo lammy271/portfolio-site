@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>About — Anny Long</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/about.css">
+	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
+	<script type="module">
+		import { animate, hover } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
+
+		const navIconEase = { duration: 0.1, ease: "easeInOut" };
+		hover("#nav-buttons a:not(.active)", (link) => {
+			const icon = link.querySelector("img");
+			if (!icon) return;
+			const up = animate(icon, { y: [0, -5] }, navIconEase);
+			return () => {
+				up.stop();
+				animate(icon, { y: 0 }, navIconEase);
+			};
+		});
+
+		animate("#about-content", { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, ease: "easeOut" });
+	</script>
+    <script src="assets/js/main.js"></script>
+</head>
+<body>
+	<div id="header">
+		<a id="name" class="metro-xbold txt-lg spc-lg main-text" href="index.html">ANNY LONG</a>
+		<p id="location" class="lenia-bold txt-sm spc-md main-text">Based in San Francisco, CA</p>
+		<div id="contact-info">
+			<p class="lenia-semi txt-md spc-md main-accent">Let's chat!</p>
+			<img id="contact-arrow" src="assets/image/arrow.svg" alt="right arrow" height="14px" />
+			<p class="lenia-mono-semi txt-sm spc-md main-accent"><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
+		</div>
+		<a href="index.html">
+			<img id="monogram" src="assets/image/monogram.png" alt="Anny Long Monogram" height="60px" />
+		</a>
+	</div>
+	<div id="content">
+		<div id="sidebar">
+			<div id="nav-buttons">
+				<a href="about.html" aria-label="About Me" class="active"><img src="assets/image/pixelarticons--laugh.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">ABOUT ME</p></a>
+				<a href="index.html" aria-label="Case Studies"><img src="assets/image/pixelarticons--folder.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">CASE STUDIES</p></a>
+				<a href="fun.html" aria-label="Fun"><img src="assets/image/pixelarticons--balloon.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">FUN STUFF</p></a>
+				<a href="#pdf" aria-label="Download Resume"><img src="assets/image/pixelarticons--download-sharp.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">RESUME</p></a>
+				<a href="#pdf" aria-label="Download Portfolio PDF"><img src="assets/image/pixelarticons--download-sharp.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">PORTFOLIO PDF</p></a>
+				<a href="https://www.linkedin.com/in/annylong" aria-label="LinkedIn profile"><img src="assets/image/pixelarticons--arrow-big-down-sharp.svg" alt="" height="16px" /><p class="linked-text lenia-bold txt-md spc-md main-accent">LINKEDIN</p></a>
+			</div>
+		</div>
+		<div id="main-section">
+			<div id="main-section-header">
+				<h1 id="main-section-header-text" class="secondary-accent lenia-mono-reg txt-md spc-md">about me</h1>
+			</div>
+			<div id="about-content">
+				<p class="lenia-xlite txt-lg spc-sm main-text">I'm Anny Long, an interdisciplinary designer interested in products, Identity, systems, packaging and UX design. I graduated from CCA in Communication Design, and I am currently based in San Francisco. Collaboration energizes me; I thrive working across teams with many disciplines—this has led to various projects such as Google Tone, community exhibitions, and The Children's Creativity Museum. In my downtime, I watch bad 80s films for the set design, and I'm a lover of all things pixel and coffee.</p>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<p id="footer-left">Design by Anny Long</p>
+		<p id="footer-right">Copyright © 2026 Anny Long. All rights reserved.</p>
+	</footer>
+</body>
+</html>
