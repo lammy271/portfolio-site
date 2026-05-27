@@ -90,7 +90,7 @@ textarea:not([rows]) {
 @property --main-accent-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #92E18A;
+	initial-value: #82C57B;
 }
 .main-accent {
 	color: var(--main-accent-color);
