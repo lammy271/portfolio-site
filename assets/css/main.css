@@ -90,7 +90,7 @@ textarea:not([rows]) {
 @property --main-accent-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #0376CE;
+	initial-value: #92E18A;
 }
 .main-accent {
 	color: var(--main-accent-color);
@@ -241,6 +241,24 @@ textarea:not([rows]) {
 }
 
 @font-face {
+	font-family: "Lenia Mono Medium";
+	src: url("../fonts/LeniaMono-Medium.ttf");
+}
+.lenia-mono-med {
+	font-family: "Lenia Mono Medium", "Courier New", monospace;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Lenia Mono Bold";
+	src: url("../fonts/LeniaMono-Bold.ttf");
+}
+.lenia-mono-bold {
+	font-family: "Lenia Mono Bold", "Courier New", monospace;
+	font-weight: 700;
+}
+
+@font-face {
 	font-family: "Lenia Sans Light";
 	src: url("../fonts/LeniaSans-Light.ttf");
 }
@@ -259,11 +277,15 @@ textarea:not([rows]) {
 }
 
 .txt-md {
-	font-size: 15px;
+	font-size: 20px;
 }
 
 .txt-lg {
 	font-size: 25px;
+}
+
+.txt-xlg {
+	font-size: 45px;
 }
 
 .spc-sm {
