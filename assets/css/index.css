@@ -13,13 +13,20 @@
 	max-width: 260px;
 }
 
+#sidebar-divider {
+	width: 36px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	width: 80%;
+}
+
 #case-studies,
 #about-me-content {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-auto-rows: auto;
-	column-gap: 3rem;
-	row-gap: 3.5rem;
+	column-gap: 15px;
+	row-gap: 15px;
 	padding-top: 1.5rem;
 }
 

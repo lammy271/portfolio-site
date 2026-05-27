@@ -103,7 +103,7 @@ textarea:not([rows]) {
 @property --main-fade-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #ADDBFF;
+	initial-value: #909090;
 }
 .main-fade {
 	color: var(--main-fade-color);
@@ -319,9 +319,9 @@ body {
 
 #header {
 	display: grid;
-	grid-template-columns: 3fr 3fr 3fr 1fr;
+	grid-template-columns: 1.75fr 3fr 3fr;
 	grid-template-rows: 1fr;
-	grid-template-areas: "name location contact-info monogram";
+	grid-template-areas: "name location contact-info";
 	align-items: center;
 	padding: 3rem 3rem;
 }
@@ -384,13 +384,17 @@ body {
 	gap: 3.5rem;
 }
 
+#monogram-link {
+	margin-left: -15px;
+	margin-top: 5px;
+}
+
 #contact-info {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
+	flex-direction: column;
+	align-items: flex-start;
 	justify-content: flex-start;
 	gap: 5px;
-	padding-left: 1.5rem;
 }
 
 #contact-info p {
@@ -410,7 +414,7 @@ body {
 #content {
 	flex: 1;
 	display: grid;
-	grid-template-columns: 3fr 3fr 3fr 1fr;
+	grid-template-columns: 1.75fr 3fr 3fr;
 	grid-template-rows: auto;
 	width: 100%;
 	max-width: 100vw;
@@ -557,7 +561,7 @@ body {
 #main-section {
 	grid-column: 2 / 5;
 	display: grid;
-	grid-template-columns: 3fr 3fr 1fr;
+	grid-template-columns: 3fr 3fr;
 	align-content: start;
 	padding-top: 2rem;
 	box-sizing: border-box;
@@ -589,6 +593,6 @@ footer {
 	background-color: var(--main-bg-color);
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-end;
+	justify-content: flex-end;
 }
