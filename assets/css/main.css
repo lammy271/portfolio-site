@@ -85,7 +85,7 @@ textarea:not([rows]) {
 @property --main-text-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #9C9C9C;
+	initial-value: #909090;
 }
 .main-text {
 	color: var(--main-text-color);
@@ -103,7 +103,7 @@ textarea:not([rows]) {
 @property --main-fade-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #909090;
+	initial-value: #9C9C9C;
 }
 .main-fade {
 	color: var(--main-fade-color);
@@ -370,10 +370,20 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: 15px;
+	text-decoration: none;
+}
+
+.icon-link p {
+	text-decoration: none;
+	margin-block: 0;
 }
 
 .icon-link-text {
-	margin-block: 0;
+	text-decoration: none;
+}
+
+#downloads a {
+	text-decoration: none;
 }
 
 #navicons {
@@ -430,7 +440,6 @@ body {
 	align-items: flex-start;
 	justify-content: flex-start;
 	gap: 4rem;
-	padding-top: 2rem;
 	padding-right: 2rem;
 }
 
@@ -563,7 +572,6 @@ body {
 	display: grid;
 	grid-template-columns: 3fr 3fr;
 	align-content: start;
-	padding-top: 2rem;
 	box-sizing: border-box;
 }
 
