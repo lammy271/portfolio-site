@@ -78,10 +78,14 @@ textarea:not([rows]) {
 }
 
 /*** Defined Constants ***/
+.black-text {
+	color: black;
+}
+
 @property --main-text-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: black;
+	initial-value: #9C9C9C;
 }
 .main-text {
 	color: var(--main-text-color);
@@ -133,6 +137,15 @@ textarea:not([rows]) {
 }
 
 @font-face {
+	font-family: "Metropolis Regular Italic";
+	src: url("../fonts/metropolis-latin-400-italic.woff2");
+}
+.metro-reg-i {
+	font-family: "Metropolis Regular Italic", Arial, sans-serif;
+	font-weight: 400;
+}
+
+@font-face {
 	font-family: "Metropolis Medium";
 	src: url("../fonts/metropolis-latin-500-normal.ttf");
 }
@@ -143,7 +156,7 @@ textarea:not([rows]) {
 
 @font-face {
 	font-family: "Metropolis Bold";
-	src: url("../fonts/Metropolis-Bold.ttf");
+	src: url("../fonts/metropolis-latin-700-normal.woff2");
 }
 .metro-bold {
 	font-family: "Metropolis Bold", Arial, sans-serif;
@@ -152,7 +165,7 @@ textarea:not([rows]) {
 
 @font-face {
 	font-family: "Metropolis Extra Bold";
-	src: url("../fonts/metropolis-latin-800-normal.ttf");
+	src: url("../fonts/metropolis-latin-800-normal.woff2");
 }
 .metro-xbold {
 	font-family: "Metropolis Extra Bold", Arial, sans-serif;
@@ -310,7 +323,7 @@ body {
 	grid-template-rows: 1fr;
 	grid-template-areas: "name location contact-info monogram";
 	align-items: center;
-	padding: 2rem 3rem;
+	padding: 3rem 3rem;
 }
 
 #header > a:last-child {
@@ -319,6 +332,56 @@ body {
 
 #location {
 	margin-block: 0;
+}
+
+#name-container {
+	display: flex;
+	width: fit-content;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
+#name {
+	font-size: 45px;
+	letter-spacing: 13%;
+	line-height: 37px;
+}
+
+#name-subtext {
+	margin-top: 7px;
+	margin-right: 7px;
+	font-size: 20px;
+	letter-spacing: 4%;
+	line-height: 18px;
+}
+
+#downloads {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 60px;
+}
+
+.icon-link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.icon-link-text {
+	margin-block: 0;
+}
+
+#navicons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 3.5rem;
 }
 
 #contact-info {
@@ -360,6 +423,8 @@ body {
 	grid-column: 1;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
 	gap: 4rem;
 	padding-top: 2rem;
 	padding-right: 2rem;
@@ -368,7 +433,9 @@ body {
 #sidebar-intro {
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 1rem;
 }
 
 #sidebar-greeting {
@@ -384,6 +451,7 @@ body {
 
 #sidebar-greeting p {
 	margin: 0;
+	margin-top: 4rem;
 }
 
 #sidebar-divider {
