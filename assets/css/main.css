@@ -323,7 +323,7 @@ body {
 	grid-template-rows: 1fr;
 	grid-template-areas: "name location contact-info";
 	align-items: center;
-	padding: 3rem 3rem;
+	padding: 2rem 3rem;
 }
 
 #header > a:last-child {
