@@ -80,6 +80,7 @@ textarea:not([rows]) {
 /*** Defined Constants ***/
 .black-text {
 	color: black;
+	fill: black;
 }
 
 @property --main-text-color {
@@ -89,6 +90,7 @@ textarea:not([rows]) {
 }
 .main-text {
 	color: var(--main-text-color);
+	fill: var(--main-text-color);
 }
 
 @property --main-accent-color {
@@ -98,6 +100,7 @@ textarea:not([rows]) {
 }
 .main-accent {
 	color: var(--main-accent-color);
+	fill: var(--main-accent-color);
 }
 
 @property --main-fade-color {
@@ -107,6 +110,7 @@ textarea:not([rows]) {
 }
 .main-fade {
 	color: var(--main-fade-color);
+	fill: var(--main-fade-color);
 }
 
 @property --secondary-accent-color {
@@ -116,6 +120,7 @@ textarea:not([rows]) {
 }
 .secondary-accent {
 	color: var(--secondary-accent-color);
+	fill: var(--secondary-accent-color);
 }
 
 @property --secondary-fade-color {
@@ -125,6 +130,7 @@ textarea:not([rows]) {
 }
 .secondary-fade {
 	color: var(--secondary-fade-color);
+	fill: var(--secondary-fade-color);
 }
 
 @font-face {
