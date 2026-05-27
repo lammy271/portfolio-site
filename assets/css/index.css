@@ -35,6 +35,66 @@
 	fill: var(--main-text-color);
 }
 
+#navicons > a:not(#monogram-link) {
+	position: relative;
+	text-decoration: none;
+}
+
+.navicon-label {
+	position: absolute;
+	left: 50%;
+	top: calc(50% + 15px + 8px);
+	white-space: nowrap;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateX(-50%) translateY(-8px);
+	transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#navicons > a:not(#monogram-link):hover .navicon-label,
+#navicons > a:not(#monogram-link):focus-visible .navicon-label {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+	color: var(--main-accent-color);
+}
+
+#monogram-link {
+	position: relative;
+	text-decoration: none;
+}
+
+#monogram {
+	transition: transform 0.2s ease-in-out;
+	transform-origin: center;
+}
+
+#monogram-link:hover #monogram,
+#monogram-link:focus-visible #monogram {
+	transform: scale(1.1);
+}
+
+#monogram-link:hover .navicon-label,
+#monogram-link:focus-visible .navicon-label {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+#navicons > a:not(#monogram-link) svg,
+#downloads a svg,
+#downloads a .icon-link-text {
+	transition: fill 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#navicons > a:not(#monogram-link):hover svg,
+#navicons > a:not(#monogram-link):focus-visible svg,
+#downloads a:hover svg,
+#downloads a:focus-visible svg,
+#downloads a:hover .icon-link-text,
+#downloads a:focus-visible .icon-link-text {
+	fill: var(--main-accent-color);
+	color: var(--main-accent-color);
+}
+
 
 a.case-study-card {
 	position: relative;
@@ -104,7 +164,13 @@ a.case-study-card {
 
 @media (prefers-reduced-motion: reduce) {
 	.case-study-image-wrapper::after,
-	.case-study-card .case-study-image {
+	.case-study-card .case-study-image,
+	#navicons > a:not(#monogram-link) svg,
+	#navicons > a:not(#monogram-link) .navicon-label,
+	#monogram,
+	#monogram-link .navicon-label {
+	#downloads a svg,
+	#downloads a .icon-link-text {
 		transition-duration: 0.01s;
 	}
 }
