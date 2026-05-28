@@ -1,7 +1,86 @@
 /* about.html */
 
+#sidebar-photo {
+	display: block;
+	width: 258px;
+	height: 348px;
+	object-fit: cover;
+	margin-top: 4rem;
+}
+
+body.about-page #content > #sidebar,
+body.about-page #content > #main-section {
+	min-height: 0;
+	height: 100%;
+}
+
+body.about-page #main-section {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-rows: minmax(0, 1fr) auto;
+	align-content: stretch;
+	overflow: hidden;
+	padding-bottom: 0;
+}
+
+body.about-page #main-section-content {
+	grid-column: 1;
+	grid-row: 1;
+	min-height: 0;
+	overflow-y: auto;
+	box-sizing: border-box;
+	padding-top: calc(30px + 1rem + 4rem + 348px / 2 - 100px);
+}
+
+body.about-page #navicons > a[href^="mailto"] {
+	display: none;
+}
+
+body.about-page .about-footer-row {
+	grid-column: 1;
+	grid-row: 2;
+	align-self: start;
+	margin-top: -35px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 40px;
+	width: fit-content;
+}
+
+body.about-page .about-footer-link {
+	display: block;
+	line-height: 0;
+	text-decoration: none;
+}
+
+body.about-page .about-footer-link[href^="mailto"] {
+	transform: translateY(4px);
+}
+
+body.about-page .about-footer-link #linkedin-link:hover,
+body.about-page .about-footer-link #linkedin-link:focus-visible {
+	fill: color-mix(in srgb, var(--main-text-color) 70%, black);
+}
+
+body.about-page .about-contact-link {
+	fill: var(--main-text-color);
+	transition: fill 150ms ease-out;
+}
+
+body.about-page .about-contact-link:hover,
+body.about-page .about-contact-link:focus-visible {
+	fill: var(--main-accent-color);
+}
+
+body.about-page .sidebar-footer {
+	margin: 0;
+	margin-top: auto;
+	line-height: 1;
+}
+
 #about-content p {
-	line-height: 63px;
+	line-height: 60px;
 	max-width: 50vw;
 	margin: 0;
 }
