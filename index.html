@@ -7,31 +7,7 @@
 	<link rel="stylesheet" href="assets/css/index.css">
 	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
 	<script type="module">
-		import { animate, hover, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
-
-		// Navbar icons lift up on hover
-		const navIconEase = { duration: 0.1, ease: "easeInOut" };
-		const monogramEase = { duration: 0.2, ease: "easeInOut" };
-		hover("#nav-buttons a:not(.active)", (link) => {
-			// Move the icon only (not the <a>) so the link's hover hit area stays put.
-			const icon = link.querySelector("img");
-			if (!icon) return;
-			const up = animate(icon, { y: [0, -5] }, navIconEase);
-			return () => {
-				up.stop();
-				animate(icon, { y: 0 }, navIconEase);
-			};
-		});
-
-		hover("#nav-buttons > a[href='index.html']", (link) => {
-			const mono = link.querySelector("#monogram");
-			if (!mono) return;
-			const grow = animate(mono, { scale: [1, 1.5] }, monogramEase);
-			return () => {
-				grow.stop();
-				animate(mono, { scale: 1 }, monogramEase);
-			};
-		});
+		import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
 
 		// Case study cards float in on page load, staggered
 		animate(
@@ -42,7 +18,7 @@
 	</script>
     <script src="assets/js/main.js"></script>
 </head>
-<body>
+<body class="layout-fixed">
 	<div id="header">
 		<div id="name-container">
 			<p id="name" class="metro-xbold black-text">ANNY LONG</p>
@@ -96,21 +72,21 @@
 	</div>
 	<div id="content">
 		<div id="sidebar">
-			<div id="sidebar-intro">
+			<div class="sidebar-shell">
 				<svg id="sidebar-greeting-image" class="main-accent" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20">
 					<path d="M0 0h20v20H0z" fill="none" />
 					<path d="M10 0c.412 0 .746.344.746.768l-.001 7.725l6.07-4.54a.73.73 0 0 1 .971.082l.072.087a.783.783 0 0 1-.166 1.073l-6.424 4.804l6.424 4.806c.334.25.408.73.166 1.073a.73.73 0 0 1-1.043.17l-6.07-4.542l.001 7.726A.757.757 0 0 1 10 20a.757.757 0 0 1-.746-.768v-7.726l-6.07 4.542a.73.73 0 0 1-.97-.083l-.072-.087a.783.783 0 0 1 .166-1.073L8.73 10L2.308 5.195a.783.783 0 0 1-.166-1.073a.73.73 0 0 1 1.043-.17l6.069 4.541V.768C9.254.344 9.588 0 10 0" />
-				</svg>				
+				</svg>
 				<div id="sidebar-greeting" class="lenia-bold main-accent">
 					<p class="lenia-mono-xbold txt-md spc-md main-accent">HELLO, I'M ANNY LONG!</p>
 				</div>
 				<p id="blurb" class="lenia-mono-reg txt-md spc-sm main-text">An interdisciplinary designer focused on product, transforming the monotonous into dynamic design, and compulsive tinker of all things pixel.</p>
-				<hr id="sidebar-divider" />
-				<div id="contact-info" grid-area="contact-info">
+				<hr class="sidebar-divider" />
+				<div id="contact-info" class="sidebar-block" grid-area="contact-info">
 					<p class="lenia-mono-semi txt-sm spc-md main-accent">Let's chat!</p>
 					<p class="lenia-mono-med txt-sm spc-md main-text"><a href="mailto:hi@annylongdesign.com">HI@ANNYLONGDESIGN.COM</a></p>
 				</div>
-				<a href="index.html">
+				<a class="sidebar-footer" href="https://www.linkedin.com/in/annylong">
 					<svg id="linkedin-link" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 14 14">
 						<path d="M0 0h14v14H0z" fill="none" />
 						<path fill-rule="evenodd" d="M2.913 2.362c.26-.268.403-.626.4-.998A1.417 1.417 0 0 0 1.928 0A1.43 1.43 0 0 0 .532 1.364a1.45 1.45 0 0 0 1.396 1.428a1.42 1.42 0 0 0 .985-.43M1.67 4.63c-.587-.013-.987-.022-.987.696v7.992c0 .703.382.689.932.668q.15-.007.314-.008q.165.001.314.008c.548.02.922.035.922-.668V5.327c0-.718-.392-.71-.976-.696q-.125.003-.26.004q-.135 0-.26-.004m4.084.015c-.266.053-.437.223-.437.681v7.991c0 .704.367.69.918.669q.15-.007.318-.008q.168.001.319.008c.554.02.928.035.928-.668V9.057a1.545 1.545 0 0 1 1.577-1.695a1.534 1.534 0 0 1 1.62 1.663v4.262c0 .703.366.689.917.668q.15-.007.318-.008q.168.001.319.008c.551.02.917.035.917-.668V7.83a3.195 3.195 0 0 0-3.388-3.335a2.67 2.67 0 0 0-2.387 1.066c.011-.394-.117-.916-.436-.916c-.092 0-.233-.005-.393-.01c-.4-.012-.92-.028-1.11.01" clip-rule="evenodd" />
