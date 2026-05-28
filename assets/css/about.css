@@ -81,9 +81,11 @@ body.about-page .sidebar-footer {
 }
 
 #about-content p {
-	line-height: 60px;
-	max-width: 50vw;
+	line-height: 50px;
+	max-width: 45vw;
 	margin: 0;
+	text-align: justify;
+	text-justify: inter-character;
 }
 
 .about-link {
