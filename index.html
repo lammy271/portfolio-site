@@ -15,6 +15,20 @@
 			{ opacity: [0, 1], y: [20, 0] },
 			{ delay: stagger(0.15, { startDelay: 0.3 }), duration: 0.6, ease: "easeOut" }
 		);
+
+		const syncSidebarDivider = () => {
+			const name = document.getElementById("name");
+			const divider = document.querySelector(".sidebar-divider");
+			if (!name || !divider) return;
+			document.documentElement.style.setProperty(
+				"--sidebar-divider-width",
+				`${name.getBoundingClientRect().width}px`
+			);
+		};
+
+		document.fonts.ready.then(syncSidebarDivider);
+		window.addEventListener("resize", syncSidebarDivider);
+		syncSidebarDivider();
 	</script>
     <script src="assets/js/main.js"></script>
 </head>
@@ -80,11 +94,11 @@
 				<div id="sidebar-greeting" class="lenia-bold main-accent">
 					<p class="lenia-mono-semi txt-md spc-md main-accent">HELLO, I'M ANNY LONG!</p>
 				</div>
-				<p id="blurb" class="lenia-mono-reg txt-md spc-sm main-text">An interdisciplinary designer focused on product, transforming the monotonous into dynamic design, and compulsive tinker of all things pixel.</p>
+				<p id="blurb" class="lenia-mono-reg txt-md spc-no main-text">An interdisciplinary designer focused on product, transforming the monotonous into dynamic design, and compulsive tinker of all things pixel.</p>
 				<hr class="sidebar-divider" />
 				<div id="contact-info" class="sidebar-block" grid-area="contact-info">
 					<p class="lenia-mono-semi txt-md spc-md main-accent">Let's chat!</p>
-					<p class="lenia-mono-med txt-md spc-md main-text"><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
+					<p class="lenia-mono-reg txt-md spc-md main-text"><a href="mailto:hi@annylongdesign.com">hi@annylongdesign.com</a></p>
 				</div>
 				<a class="sidebar-footer" href="https://www.linkedin.com/in/annylong">
 					<svg id="linkedin-link" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 14 14">

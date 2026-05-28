@@ -1,7 +1,10 @@
 /* index.html — case studies */
 
-#main-section {
-	padding-right: calc(3.5rem + 100px - 15px);
+.sidebar-divider {
+	width: var(--sidebar-divider-width, 80%);
+}
+
+#main-section {	padding-right: calc(3.5rem + 100px - 15px);
 }
 
 .highlight {
@@ -10,10 +13,12 @@
 }
 
 #blurb {
-	line-height: 39px;
+	line-height: 33px;
 	margin-top: 20px;
 	margin-bottom: 0;
-	max-width: 420px;
+	max-width: 330px;
+	text-align: justify;
+	text-justify: inter-character;
 }
 
 #case-studies,
