@@ -2,6 +2,7 @@
 
 .sidebar-divider {
 	width: var(--sidebar-divider-width, 80%);
+	margin-top: 50px;
 }
 
 #main-section {	padding-right: calc(3.5rem + 100px - 15px);
