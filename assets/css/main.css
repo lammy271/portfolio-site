@@ -106,7 +106,7 @@ textarea:not([rows]) {
 @property --main-fade-color {
 	syntax: "<color>";
 	inherits: false;
-	initial-value: #9C9C9C;
+	initial-value: #c3c3c3;
 }
 .main-fade {
 	color: var(--main-fade-color);
