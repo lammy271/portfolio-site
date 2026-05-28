@@ -325,7 +325,7 @@ body {
 
 #header {
 	display: grid;
-	grid-template-columns: 1.75fr 3fr 3fr;
+	grid-template-columns: 1.7fr 3fr 3fr;
 	grid-template-rows: 1fr;
 	grid-template-areas: "name location contact-info";
 	align-items: center;

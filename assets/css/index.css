@@ -1,16 +1,63 @@
 /* index.html — sidebar intro + case studies */
 
-.highlight {
-	background-color: var(--secondary-fade-color);
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	max-height: 100vh;
+}
+
+#header,
+footer {
+	flex-shrink: 0;
+}
+
+#content {
+	flex: 1;
+	min-height: 0;
+	overflow: hidden;
+	padding-top: 50px;
+	padding-bottom: 0;
+	grid-template-rows: minmax(0, 1fr);
+}
+
+#sidebar {
+	min-height: 0;
+	overflow: hidden;
+	height: 100%;
+}
+
+#sidebar-intro {
+	flex: 1;
+	min-height: 0;
+	height: 100%;
+}
+
+#sidebar-intro > a:has(#linkedin-link) {
+	margin-top: auto;
+}
+
+#main-section {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	overflow-y: auto;
+	padding-bottom: 3rem;
+	padding-right: calc(3.5rem + 100px - 15px);
+}
+
+.highlight {	background-color: var(--secondary-fade-color);
 	padding: 0 2px;
 }
 
 #blurb {
-	font-size: 13px;
-	line-height: 22px;
-	letter-spacing: 5%;
-	margin-block: 0;
-	max-width: 260px;
+	line-height: 39px;
+	margin-top: 20px;
+	margin-bottom: 0;
+	max-width: 360px;
 }
 
 @keyframes twinkle {
@@ -27,14 +74,22 @@
 
 #sidebar-greeting-image {
 	transform-origin: center;
-	animation: twinkle 2.5s ease-in-out infinite;
+	transition: transform 150ms ease-out, filter 150ms ease-out;
+}
+
+#sidebar-greeting-image:hover {
+	animation: twinkle 1.75s ease-in-out infinite;
 }
 
 #sidebar-divider {
-	width: 36px;
+	width: 80%;
 	margin-top: 30px;
 	margin-bottom: 10px;
-	width: 80%;
+	border-top-color: color-mix(in srgb, var(--main-text-color) 60%, white);
+}
+
+#main-section-header {
+	margin-bottom: 25px;
 }
 
 #case-studies,
@@ -48,7 +103,6 @@
 }
 
 #linkedin-link {
-	margin-top: 8rem;
 	fill: var(--main-text-color);
 	transition: fill 150ms ease-out;
 }
@@ -70,15 +124,19 @@
 	white-space: nowrap;
 	pointer-events: none;
 	opacity: 0;
-	transform: translateX(-50%) translateY(-8px);
-	transition: opacity 150ms ease-out, transform 150ms ease-out, color 150ms ease-out;
+	transform: translateX(-50%) translateY(-20px);
+	transition: opacity 120ms ease-out, transform 120ms ease-out, color 120ms ease-out;
+}
+
+#navicons > a:not(#monogram-link) .navicon-label {
+	top: calc(50% + 15px + 30px);
 }
 
 #navicons > a:not(#monogram-link):hover .navicon-label,
 #navicons > a:not(#monogram-link):focus-visible .navicon-label {
 	opacity: 1;
 	transform: translateX(-50%) translateY(0);
-	color: var(--main-accent-color);
+	color: color-mix(in srgb, var(--main-text-color) 70%, black);
 }
 
 #monogram-link {
@@ -94,12 +152,6 @@
 #monogram-link:hover #monogram,
 #monogram-link:focus-visible #monogram {
 	transform: scale(1.1);
-}
-
-#monogram-link:hover .navicon-label,
-#monogram-link:focus-visible .navicon-label {
-	opacity: 1;
-	transform: translateX(-50%) translateY(0);
 }
 
 #navicons > a:not(#monogram-link) svg,
@@ -131,7 +183,7 @@ a.case-study-card {
 .case-study-image-wrapper {
 	position: relative;
 	width: 100%;
-	height: 360px;
+	aspect-ratio: 6 / 4;
 	overflow: hidden;
 	background-color: #eee;
 }
@@ -185,7 +237,7 @@ a.case-study-card {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	#sidebar-greeting-image {
+	#sidebar-greeting-image:hover {
 		animation: none;
 	}
 
@@ -193,7 +245,6 @@ a.case-study-card {
 	#navicons > a:not(#monogram-link) svg,
 	#navicons > a:not(#monogram-link) .navicon-label,
 	#monogram,
-	#monogram-link .navicon-label,
 	#downloads a svg,
 	#downloads a .icon-link-text,
 	#linkedin-link {
