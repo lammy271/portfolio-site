@@ -704,7 +704,7 @@ body.layout-fixed #main-section {
 
 body.layout-fixed #main-section-header {
 	flex-shrink: 0;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 }
 
 footer {
