@@ -6,6 +6,7 @@
 	height: 348px;
 	object-fit: cover;
 	margin-top: 4rem;
+	margin-left: 120px;
 }
 
 body.about-page #content > #sidebar,
@@ -70,7 +71,7 @@ body.about-page .about-contact-link {
 
 body.about-page .about-contact-link:hover,
 body.about-page .about-contact-link:focus-visible {
-	fill: var(--main-accent-color);
+	fill: color-mix(in srgb, var(--main-text-color) 70%, black);
 }
 
 body.about-page .sidebar-footer {
