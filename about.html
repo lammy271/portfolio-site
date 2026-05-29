@@ -11,27 +11,25 @@
 
 		animate("#about-content", { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, ease: "easeOut" });
 
-		const overlay = document.getElementById("modal-overlay");
-		const modalImg = document.getElementById("modal-image");
+		const linkPreview = document.getElementById("link-preview");
+		const linkPreviewImg = document.getElementById("link-preview-image");
+		let hidePreviewTimeout;
 
 		document.querySelectorAll(".about-link").forEach(el => {
-			el.addEventListener("click", () => {
-				modalImg.src = el.dataset.image;
-				overlay.removeAttribute("hidden");
-				animate(overlay, { opacity: [0, 1] }, { duration: 0.2 });
+			el.addEventListener("mouseenter", () => {
+				clearTimeout(hidePreviewTimeout);
+				linkPreviewImg.src = el.dataset.image;
+				linkPreview.removeAttribute("hidden");
+				requestAnimationFrame(() => linkPreview.classList.add("is-visible"));
 			});
-		});
 
-		overlay.addEventListener("click", () => {
-			animate(overlay, { opacity: [1, 0] }, { duration: 0.15 }).then(() => {
-				overlay.setAttribute("hidden", "");
+			el.addEventListener("mouseleave", () => {
+				linkPreview.classList.remove("is-visible");
+				hidePreviewTimeout = setTimeout(() => {
+					linkPreview.setAttribute("hidden", "");
+					linkPreviewImg.removeAttribute("src");
+				}, 150);
 			});
-		});
-
-		document.addEventListener("keydown", e => {
-			if (e.key === "Escape" && !overlay.hasAttribute("hidden")) {
-				overlay.setAttribute("hidden", "");
-			}
 		});
 	</script>
     <script src="assets/js/main.js"></script>
@@ -104,7 +102,7 @@
 		<div id="main-section">
 			<div id="main-section-content">
 				<div id="about-content">
-					<p class="lenia-mono-med txt-md spc-no main-text">Hello, I'm Anny Long, raised in the Bay Area and currently based in San Francisco. I've recently graduated from CCA in Communication Design. I'm an interdisciplinary designer interested in products, identity, systems, packaging and UX design. Collaboration energizes me; I thrive working across teams with many disciplines—this has led to various projects such as Google Tone, community exhibitions, and The Children's Creativity Museum. In my downtime, I'm an avid photographer, film nerd, and a lover of all things pixel &amp; <span class="about-link" data-image="assets/image/latte.jpg">coffee</span>.</p>
+					<p class="lenia-mono-med txt-md spc-no main-text">Hello, I'm Anny Long, raised in the Bay Area and currently based in San Francisco. I've recently graduated from CCA in Communication Design. I'm an interdisciplinary designer interested in products, identity, systems, packaging and UX design. Collaboration energizes me; I thrive working across teams with many disciplines—this has led to various projects such as Google Tone, community exhibitions, and The Children's Creativity Museum. In my downtime, I'm an avid photographer, film nerd, and a lover of all things pixel &amp; <span class="about-link" data-image="assets/image/latte-small.jpg">coffee</span>.</p>
 				</div>
 			</div>
 			<div class="about-footer-row">
@@ -122,8 +120,8 @@
 			</div>
 		</div>
 	</div>
-	<div id="modal-overlay" hidden>
-		<img id="modal-image" src="" alt="" />
+	<div id="link-preview" hidden>
+		<img id="link-preview-image" src="" alt="" />
 	</div>
 	<footer>
 		<p id="footer-text" class="lenia-lite txt-sm spc-lg main-text">Copyright © 2026 Anny Long. All rights reserved.</p>
