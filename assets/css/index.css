@@ -210,6 +210,71 @@ a.case-study-card {
 	line-height: 1.15;
 }
 
+.case-study-overlay--v2 {
+	padding: 50px;
+	background-color: color-mix(in srgb, var(--main-accent-color) 22%, white);
+	color: var(--main-accent-color);
+	font-family: inherit;
+}
+
+.case-study-overlay-v2-top {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.case-study-overlay-v2-title {
+	margin: 0;
+	font-family: "Metropolis Bold", Arial, sans-serif;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1.05;
+	letter-spacing: 12%;
+	text-transform: uppercase;
+	text-align: left;
+}
+
+.case-study-overlay-v2-subtitle {
+	margin: 0.75rem 0 0;
+	align-self: flex-end;
+	font-family: "Lenia Mono SemiBold", "Courier New", monospace;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: 12%;
+	text-transform: uppercase;
+	text-align: right;
+}
+
+.case-study-overlay-v2-bottom {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	margin-top: auto;
+}
+
+.case-study-overlay-v2-tags {
+	margin: 0;
+	font-family: "Lenia Mono Bold", "Courier New", monospace;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.35;
+	letter-spacing: 12%;
+	text-transform: uppercase;
+	text-align: left;
+}
+
+.case-study-overlay-v2-arrow {
+	flex-shrink: 0;
+	width: 49px;
+	height: 42px;
+	color: var(--main-accent-color);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.case-study-overlay {
 		transition-duration: 0.01s;
