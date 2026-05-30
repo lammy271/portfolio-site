@@ -45,6 +45,18 @@
 #main-section {	padding-right: calc(3.5rem + 100px - 15px);
 }
 
+body.layout-fixed:has(#case-studies) #main-section {
+	overflow: hidden;
+	padding-bottom: 0;
+}
+
+body.layout-fixed:has(#case-studies) #main-section-content {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	padding-bottom: 3rem;
+}
+
 .highlight {
 	background-color: var(--secondary-fade-color);
 	padding: 0 2px;
