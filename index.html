@@ -29,6 +29,48 @@
 		document.fonts.ready.then(syncSidebarDivider);
 		window.addEventListener("resize", syncSidebarDivider);
 		syncSidebarDivider();
+
+		const syncLowerLayout = () => {
+			const lower = document.querySelector(".case-study-lower");
+			const leftCol = document.querySelector(".case-study-column--wide");
+			const rightCol = document.querySelector(".case-study-column--narrow");
+			if (!lower || !leftCol || !rightCol) return;
+
+			lower.querySelectorAll(".case-study-image-wrapper").forEach((wrapper) => {
+				wrapper.style.removeProperty("height");
+			});
+			leftCol.style.removeProperty("flex");
+			rightCol.style.removeProperty("flex");
+
+			if (window.innerWidth <= 800) return;
+
+			const gap = parseFloat(getComputedStyle(lower).getPropertyValue("--case-study-gap"));
+			const total = lower.clientWidth;
+			if (Number.isNaN(gap) || total <= gap) return;
+
+			const leftFactor = 529 / 761 + 381 / 761;
+			const rightSum = 418 / 333 + 497 / 333;
+			const rightWidth = ((total - gap) * leftFactor) / (rightSum + leftFactor);
+			const leftWidth = total - gap - rightWidth;
+
+			leftCol.style.flex = `0 0 ${leftWidth}px`;
+			rightCol.style.flex = `0 0 ${rightWidth}px`;
+
+			const setCardHeight = (cardSelector, colWidth, imgWidth, imgHeight) => {
+				const wrapper = lower.querySelector(`${cardSelector} .case-study-image-wrapper`);
+				if (wrapper) wrapper.style.height = `${(colWidth * imgHeight) / imgWidth}px`;
+			};
+
+			setCardHeight(".case-study-card--onthehill", leftWidth, 761, 529);
+			setCardHeight(".case-study-card--ccm", leftWidth, 761, 381);
+			setCardHeight(".case-study-card--pill", rightWidth, 333, 418);
+			setCardHeight(".case-study-card--purutan", rightWidth, 333, 497);
+		};
+
+		document.fonts.ready.then(syncLowerLayout);
+		window.addEventListener("load", syncLowerLayout);
+		window.addEventListener("resize", syncLowerLayout);
+		syncLowerLayout();
 	</script>
     <script src="assets/js/main.js"></script>
 </head>
@@ -114,86 +156,96 @@
 			</div>
 			<div id="main-section-content">
 				<div id="case-studies">
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/Google_tone_cover.png" alt="Google Tone" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">01. GOOGLE TONE</p>
-								<p class="case-study-overlay-description">DESIGNED A<br>SENTIMENT PLUGIN<br>IN 48 HOURS.</p>
-								<p class="case-study-overlay-tags">UXUI / DESIGN SPRINT</p>
+					<div class="case-study-row case-study-row--top case-study-row--hero">
+						<a href="index.html" class="case-study-card case-study-card--wide">
+							<div class="case-study-image-wrapper">
+								<img class="case-study-image" src="assets/image/chrysalis_thumb.png" alt="Chrysalis" />
+								<div class="case-study-overlay">
+									<p class="case-study-overlay-title">01. CHRYSALIS</p>
+									<p class="case-study-overlay-description">EXPLORING TRANSFORMATION THROUGH INTERACTIVE DESIGN.</p>
+									<p class="case-study-overlay-tags">CONCEPT / INTERACTION</p>
+								</div>
 							</div>
-						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/hobbihole.png" alt="Hobbihole" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">02. HOBBIHOLE</p>
-								<p class="case-study-overlay-description">RECYCLING THE<br>MAKERS SPACE INTO<br>A B2B APP.</p>
-								<p class="case-study-overlay-tags">B2B / APP DESIGN</p>
+						</a>
+						<a href="index.html" class="case-study-card case-study-card--narrow">
+							<div class="case-study-image-wrapper">
+								<img class="case-study-image" src="assets/image/sfxgoogle_thumb.png" alt="Google Tone" />
+								<div class="case-study-overlay">
+									<p class="case-study-overlay-title">02. GOOGLE TONE</p>
+									<p class="case-study-overlay-description">DESIGNED A<br>SENTIMENT PLUGIN<br>IN 48 HOURS.</p>
+									<p class="case-study-overlay-tags">UXUI / DESIGN SPRINT</p>
+								</div>
 							</div>
-						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/433taphouse.png" alt="4!33 Taphouse" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">03. 4!33 TAPHOUSE</p>
-								<p class="case-study-overlay-description">VISUALIZED A NEIGHBORHOOD BAR WITH A FLUXUS FLAIR.</p>
-								<p class="case-study-overlay-tags">IDENTITY / SYSTEMS DESIGN</p>
+						</a>
+					</div>
+					<div class="case-study-row case-study-row--top case-study-row--feature">
+						<a href="index.html" class="case-study-card case-study-card--narrow">
+							<div class="case-study-image-wrapper">
+								<img class="case-study-image" src="assets/image/hobbi_thumb.png" alt="Hobbihole" />
+								<div class="case-study-overlay">
+									<p class="case-study-overlay-title">03. HOBBIHOLE</p>
+									<p class="case-study-overlay-description">RECYCLING THE<br>MAKERS SPACE INTO<br>A B2B APP.</p>
+									<p class="case-study-overlay-tags">B2B / APP DESIGN</p>
+								</div>
 							</div>
-						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/purutan.png" alt="Purutan" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">04. PURUTAN</p>
-								<p class="case-study-overlay-description">DEVELOPED BRANDING FOR A SHAREABLE SNACK WITH PERSONALITY.</p>
-								<p class="case-study-overlay-tags">PACKAGE DESIGN / BRANDING</p>
+						</a>
+						<a href="index.html" class="case-study-card case-study-card--wide">
+							<div class="case-study-image-wrapper">
+								<img class="case-study-image" src="assets/image/433_thumb.png" alt="4!33 Taphouse" />
+								<div class="case-study-overlay">
+									<p class="case-study-overlay-title">04. 4!33 TAPHOUSE</p>
+									<p class="case-study-overlay-description">VISUALIZED A NEIGHBORHOOD BAR WITH A FLUXUS FLAIR.</p>
+									<p class="case-study-overlay-tags">IDENTITY / SYSTEMS DESIGN</p>
+								</div>
 							</div>
+						</a>
+					</div>
+					<div class="case-study-lower">
+						<div class="case-study-column case-study-column--wide">
+							<a href="index.html" class="case-study-card case-study-card--onthehill">
+								<div class="case-study-image-wrapper">
+									<img class="case-study-image" src="assets/image/onthehill_thumb.jpg" alt="On The Hill" />
+									<div class="case-study-overlay">
+										<p class="case-study-overlay-title">05. ON THE HILL</p>
+										<p class="case-study-overlay-description">PUBLISHED A BOOK ON A HISTORIC LOCAL ART SCENE.</p>
+										<p class="case-study-overlay-tags">PUBLISHING / EXHIBITION</p>
+									</div>
+								</div>
+							</a>
+							<a href="index.html" class="case-study-card case-study-card--ccm">
+								<div class="case-study-image-wrapper">
+									<img class="case-study-image" src="assets/image/ccm_thumb.png" alt="Children's Creativity Museum" />
+									<div class="case-study-overlay">
+										<p class="case-study-overlay-title">06. CHILDREN'S CREATIVITY MUSEUM</p>
+										<p class="case-study-overlay-description">DESIGNED STIMULATING VISUALS FOR A PUBLIC-FACING MUSEUM.</p>
+										<p class="case-study-overlay-tags">FELLOWSHIP</p>
+									</div>
+								</div>
+							</a>
 						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/potrerohill.png" alt="On The Hill" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">05. ON THE HILL</p>
-								<p class="case-study-overlay-description">PUBLISHED A BOOK ON A HISTORIC LOCAL ART SCENE.</p>
-								<p class="case-study-overlay-tags">PUBLISHING / EXHIBITION</p>
-							</div>
+						<div class="case-study-column case-study-column--narrow">
+							<a href="index.html" class="case-study-card case-study-card--pill">
+								<div class="case-study-image-wrapper">
+									<img class="case-study-image" src="assets/image/pill_dispenser_thumb.jpg" alt="Pill Dispenser" />
+									<div class="case-study-overlay">
+										<p class="case-study-overlay-title">07. PILL DISPENSER</p>
+										<p class="case-study-overlay-description">REIMAGINED THE HUMBLE PILL DISPENSOR.</p>
+										<p class="case-study-overlay-tags">PACKAGE DESIGN / BRANDING</p>
+									</div>
+								</div>
+							</a>
+							<a href="index.html" class="case-study-card case-study-card--purutan">
+								<div class="case-study-image-wrapper">
+									<img class="case-study-image" src="assets/image/purutan_thumb.jpg" alt="Purutan" />
+									<div class="case-study-overlay">
+										<p class="case-study-overlay-title">08. PURUTAN</p>
+										<p class="case-study-overlay-description">DEVELOPED BRANDING FOR A SHAREABLE SNACK WITH PERSONALITY.</p>
+										<p class="case-study-overlay-tags">PACKAGE DESIGN / BRANDING</p>
+									</div>
+								</div>
+							</a>
 						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/pill.png" alt="Pill Dispenser" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">06. PILL DISPENSER</p>
-								<p class="case-study-overlay-description">REIMAGINED THE HUMBLE PILL DISPENSOR.</p>
-								<p class="case-study-overlay-tags">PACKAGE DESIGN / BRANDING</p>
-							</div>
-						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/interviewisland.png" alt="Interview Island" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">07. INTERVIEW ISLAND</p>
-								<p class="case-study-overlay-description">EXPLAINED GAMES AS A TOOL FOR EDUCATION IN A PLAYFUL WAY.</p>
-								<p class="case-study-overlay-tags">CONCEPT 2023</p>
-							</div>
-						</div>
-					</a>
-					<a href="index.html" class="case-study-card">
-						<div class="case-study-image-wrapper">
-							<img class="case-study-image" src="assets/image/childrenmuseum.png" alt="Children's Creativity Museum" />
-							<div class="case-study-overlay">
-								<p class="case-study-overlay-title">08. CHILDREN'S CREATIVITY MUSEUM</p>
-								<p class="case-study-overlay-description">DESIGNED STIMULATING VISUALS FOR A PUBLIC-FACING MUSEUM.</p>
-								<p class="case-study-overlay-tags">FELLOWSHIP</p>
-							</div>
-						</div>
-					</a>
+					</div>
 				</div>
 			</div>
 		</div>
