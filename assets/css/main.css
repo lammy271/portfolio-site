@@ -16,7 +16,7 @@ html {
 /* Remove default margin in favour of better control in authored CSS */
 body, h1, h2, h3, h4, p,
 figure, blockquote, dl, dd {
-	margin-block-end: 0;
+	margin-block: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -71,66 +71,29 @@ textarea:not([rows]) {
 }
 
 /*** Defined Constants ***/
-@property --main-bg-color {
-	syntax: "<color>";
-	inherits: false;
-	initial-value: white;
+:root {
+	--main-bg-color: white;
+	--secondary-bg-color: #ECE7F9;
+	--main-text-color: #686767;
+	--main-accent-color: #000ED3;
+	--secondary-accent-color: #A288E3;
+	--centerfold-color: #5158BB;
 }
-
-/*** Defined Constants ***/
 .black-text {
 	color: black;
 	fill: black;
-}
-
-@property --main-text-color {
-	syntax: "<color>";
-	inherits: false;
-	initial-value: #909090;
 }
 .main-text {
 	color: var(--main-text-color);
 	fill: var(--main-text-color);
 }
-
-@property --main-accent-color {
-	syntax: "<color>";
-	inherits: false;
-	initial-value: #82C57B;
-}
 .main-accent {
 	color: var(--main-accent-color);
 	fill: var(--main-accent-color);
 }
-
-@property --main-fade-color {
-	syntax: "<color>";
-	inherits: false;
-	initial-value: #c3c3c3;
-}
-.main-fade {
-	color: var(--main-fade-color);
-	fill: var(--main-fade-color);
-}
-
-@property --secondary-accent-color {
-	syntax: "<color>";
-	inherits: false;
-	initial-value: #6DBA64;
-}
 .secondary-accent {
 	color: var(--secondary-accent-color);
 	fill: var(--secondary-accent-color);
-}
-
-@property --secondary-fade-color {
-	syntax: "<color>";
-	inherits: false;
-	initial-value: #A3F799;
-}
-.secondary-fade {
-	color: var(--secondary-fade-color);
-	fill: var(--secondary-fade-color);
 }
 
 @font-face {
@@ -286,29 +249,71 @@ textarea:not([rows]) {
 	font-weight: 300;
 }
 
+@font-face {
+	font-family: "Helvetica Neue";
+	src: url("../fonts/HelveticaNeueRoman.otf");
+}
+.helv-reg {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Helvetica Neue Italic";
+	src: url("../fonts/HelveticaNeueItalic.ttf")
+}
+.helv-reg-i {
+	font-family: "Helvetica Neue Italic", Arial, sans-serif;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Helvetica Neue Light";
+	src: url("../fonts/HelveticaNeueLight.otf");
+}
+.helv-lite {
+	font-family: "Helvetica Neue Light", Arial, sans-serif;
+	font-weight: 300;
+}
+@font-face {
+	font-family: "Helvetica Neue Bold";
+	src: url("../fonts/HelveticaNeueBold.otf");
+}
+.helv-bold {
+	font-family: "Helvetica Neue Bold", Arial, sans-serif;
+	font-weight: 700;
+}
+@font-face {
+	font-family: "Hogisogi";
+	src: url("../fonts/Hogisogi-Black.otf");
+}
+.hogi-black {
+	font-family: "Hogisogi", Arial, sans-serif;
+	font-weight: 900;
+}
+
 /*** Styles ***/
-.txt-sm {
-	font-size: 11.5px;
-}
 
-.txt-lk {
-	font-size: 13px;
-}
+/* mobile sizes (default) */
+.txt-xs { font-size: 8px; }
+.txt-sm { font-size: 12px; }
+.txt-md { font-size: 18px; }
+.txt-lg { font-size: 24px; }
+.txt-xl { font-size: 36px; }
 
-.txt-md {
-	font-size: 15px;
-}
-
-.txt-lg {
-	font-size: 25px;
-}
-
-.txt-xlg {
-	font-size: 45px;
+/* desktop sizes */
+@media (width >= 1024px) {
+	.txt-xs { font-size: 10px; }
+	.txt-sm { font-size: 12px; }
+	.txt-md { font-size: 18px; }
+	.txt-lg { font-size: 45px; }
+	.txt-xl { font-size: 45px; }
 }
 
 .spc-no {
 	letter-spacing: 0;
+}
+
+.spc-xs {
+	letter-spacing: 7.5%;
 }
 
 .spc-sm {
@@ -323,11 +328,73 @@ textarea:not([rows]) {
 	letter-spacing: 20%;
 }
 
+.inactive {
+	display: none;
+}
+
 body {
     background: var(--main-bg-color);
 }
 
 #header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2rem 3rem;
+	box-sizing: border-box;
+	background-color: var(--secondary-bg-color);
+}
+
+#header-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+#header-container h1, #header-container p {
+	display: inline-block;
+	margin-block: 0;
+}
+
+#header-subtext-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 0px;
+}
+
+#header-subtext-2 {
+	position: relative;
+	padding-left: 20px;
+	top: -5px;
+}
+
+/* mobile screens */
+@media (width < 1024px) {
+	#menu-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 10px;
+		width: 45vw;
+	}
+
+	.nav-menu-item {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;;
+		gap: 10px;
+		width: 100%;
+	}
+}
+
+/*#header {
 	display: grid;
 	grid-template-columns: 2.25fr 3fr 3fr;
 	grid-template-rows: 1fr;
@@ -338,7 +405,7 @@ body {
 
 #header > a:last-child {
 	justify-self: end;
-}
+}*/
 
 #location {
 	margin-block: 0;
@@ -354,7 +421,7 @@ body {
 
 #name {
 	font-size: 45px;
-	letter-spacing: 13%;
+	letter-spacing: 8%;
 	line-height: 37px;
 }
 
@@ -467,13 +534,19 @@ body {
 #content {
 	flex: 1;
 	display: grid;
-	grid-template-columns: 2.25fr 3fr 3fr;
+	grid-template-columns: 1fr;
 	grid-template-rows: auto;
 	width: 100%;
 	max-width: 100vw;
 	padding-inline: 3rem;
 	padding-bottom: 3rem;
 	box-sizing: border-box;
+}
+
+@media (width >= 1024px) {
+	#content {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 #sidebar {
@@ -605,30 +678,6 @@ body {
 	}
 }
 
-#main-section {
-	grid-column: 2 / 5;
-	display: grid;
-	grid-template-columns: 3fr 3fr;
-	align-content: start;
-	box-sizing: border-box;
-}
-
-#main-section-header {
-	grid-column: 1 / 3;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-}
-
-#main-section-content {
-	grid-column: 1 / 3;
-}
-
-#main-section-header-text {
-	margin: 0;
-}
-
 /* Fixed viewport layout (index, about) */
 html:has(body.layout-fixed),
 body.layout-fixed {
@@ -673,9 +722,23 @@ footer {
 	max-width: 100vw;
 	box-sizing: border-box;
 	padding: 2rem 3rem;
-	background-color: var(--main-bg-color);
+	background-color: var(--secondary-bg-color);
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
 	justify-content: flex-end;
+}
+
+/* mobile screens */
+@media (width < 1024px) {
+	.mobile-inactive, .nav-menu-inactive, .mobile-inactive *, .nav-menu-inactive * {
+		display: none;
+	}
+}
+
+/* desktop screens */
+@media (width >= 1024px) {
+	.desktop-inactive, .desktop-inactive * {
+		display: none;
+	}
 }
