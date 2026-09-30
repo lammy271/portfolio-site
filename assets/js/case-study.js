@@ -2,6 +2,40 @@
 	var toc = document.querySelector('.case-study-toc');
 	if (!toc) return;
 
+	// #region agent log
+	function debugLayoutMetrics() {
+		var prose = document.querySelector('#impact .case-study-prose');
+		var label = document.querySelector('#impact .case-study-prose-label');
+		var gallery = document.querySelector('.case-study-gallery-duo');
+		var panelGrid = document.querySelector('.case-study-panel-grid');
+		var imgs = gallery ? gallery.querySelectorAll('img') : [];
+		var impactSection = document.querySelector('#impact');
+		var impactStyle = impactSection ? window.getComputedStyle(impactSection) : null;
+		var vw = window.innerWidth;
+		var content = prose ? prose.querySelector('.case-study-prose-content') : null;
+		var proseRect = prose ? prose.getBoundingClientRect() : null;
+		var contentRect = content ? content.getBoundingClientRect() : null;
+		var galleryRect = gallery ? gallery.getBoundingClientRect() : null;
+		var panelRect = panelGrid ? panelGrid.getBoundingClientRect() : null;
+		var labelRect = label ? label.getBoundingClientRect() : null;
+		var galleryStyle = gallery ? window.getComputedStyle(gallery) : null;
+		var imgGapPx = imgs.length >= 2 ? (imgs[1].getBoundingClientRect().left - imgs[0].getBoundingClientRect().right).toFixed(1) : null;
+		var imgGapPct = galleryRect && imgGapPx ? ((parseFloat(imgGapPx) / galleryRect.width) * 100).toFixed(1) : null;
+		var imgTops = [];
+		imgs.forEach(function (img) { imgTops.push(img.getBoundingClientRect().top); });
+		var topsAligned = imgTops.length >= 2 && Math.abs(imgTops[0] - imgTops[1]) < 2;
+		var proseWidthVw = proseRect ? (proseRect.width / vw * 100).toFixed(1) : null;
+		var galleryWidthVw = galleryRect ? (galleryRect.width / vw * 100).toFixed(1) : null;
+		var panelWidthVw = panelRect ? (panelRect.width / vw * 100).toFixed(1) : null;
+		fetch('http://127.0.0.1:7894/ingest/965b0629-cd14-47af-b7f9-cb4a6fa0e4f7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'d70457'},body:JSON.stringify({sessionId:'d70457',location:'case-study.js:layout',message:'Impact spacing diagnostics',data:{vw:vw,impactPaddingTop:impactStyle?impactStyle.paddingTop:null,impactPaddingBottom:impactStyle?impactStyle.paddingBottom:null,impactPaddingTopVw:impactStyle?((parseFloat(impactStyle.paddingTop)/vw)*100).toFixed(1):null,impactPaddingBottomVw:impactStyle?((parseFloat(impactStyle.paddingBottom)/vw)*100).toFixed(1):null,galleryGap:galleryStyle?galleryStyle.columnGap:null,imgGapPctOfGallery:imgGapPct,imgTopsAligned:topsAligned},timestamp:Date.now(),runId:'impact-spacing',hypothesisId:'H1'})}).catch(function(){});
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', debugLayoutMetrics);
+	} else {
+		debugLayoutMetrics();
+	}
+	// #endregion
+
 	var links = toc.querySelectorAll('.case-study-toc-link[href^="#"]');
 	var sections = [];
 

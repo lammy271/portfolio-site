@@ -1,13 +1,15 @@
 // Script to handle case study menu functionality in jquery
 
 $(document).ready(function() {
-    // When a case study menu item is clicked, show the corresponding case study content in the right pane
-    $('.case-study-menu-item').click(function() {
-        var index = $(this).index();
-        var allCaseStudies = $('.case-study');
+    var allCaseStudies = $('.case-study');
+
+    function showCaseStudy(href) {
         allCaseStudies.addClass('desktop-inactive');
-        allCaseStudies.eq(index-1).removeClass('desktop-inactive');
+        allCaseStudies.filter('[href="' + href + '"]').removeClass('desktop-inactive');
+    }
+
+    // When a case study menu item is hovered, show the corresponding case study in the right pane
+    $('.case-study-menu-item').on('mouseenter', function() {
+        showCaseStudy($(this).attr('href'));
     });
 });
-
-// Script to handle case study menu functionality in jquery
