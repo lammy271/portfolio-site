@@ -354,6 +354,10 @@ body {
 	background-color: var(--secondary-bg-color);
 }
 
+#slash {
+	color: black;
+}
+
 #header-container {
 	display: flex;
 	flex-direction: row;
