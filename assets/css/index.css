@@ -29,7 +29,7 @@
 #case-study-menu-header-divider, .case-study-header-divider {
 	position: relative;
 	bottom: 0;
-	height: 1px;
+	height: 2px;
 	width: 100%;
 	background-image: linear-gradient(to right, black 2px, transparent 2px);
 	background-size: 4px 100%;
@@ -42,7 +42,7 @@
 #case-study-menu-header-end-divider {
 	position: relative;
 	bottom: 0;
-	height: 1px;
+	height: 2px;
 	width: 100%;
 	background-image: linear-gradient(to right, black 7px, transparent 7px);
 	background-size: 14px 100%;
