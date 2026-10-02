@@ -290,14 +290,21 @@ textarea:not([rows]) {
 	font-weight: 700;
 }
 @font-face {
-	font-family: "Hogisogi";
+	font-family: "Hogisogi Black";
 	src: url("../fonts/Hogisogi-Black.otf");
 }
 .hogi-black {
-	font-family: "Hogisogi", Arial, sans-serif;
+	font-family: "Hogisogi Black", Arial, sans-serif;
 	font-weight: 900;
 }
-
+@font-face {
+	font-family: "Hogisogi Regular";
+	src: url("../fonts/Hogisogi-Regular.otf");
+}
+.hogi-reg {
+	font-family: "Hogisogi Regular", Arial, sans-serif;
+	font-weight: 400;
+}
 /*** Styles ***/
 
 /* mobile sizes (default) */
@@ -714,7 +721,7 @@ body.layout-fixed footer {
 body.layout-fixed #content {
 	min-height: 0;
 	overflow: hidden;
-	padding-top: 50px;
+	padding-top: 25px;
 	padding-bottom: 0;
 	grid-template-rows: minmax(0, 1fr);
 }
@@ -798,7 +805,7 @@ footer {
 
 .icon-link .popup-text {
 	position: absolute;
-	bottom: 69px;
+	bottom: 65px;
 	width: fit-content;
 	white-space: nowrap;
 	visibility: hidden;

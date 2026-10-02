@@ -1,5 +1,6 @@
 /* index.html — case studies */
 #case-study-menu {
+	--case-study-menu-header-gap: 22px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -17,6 +18,31 @@
 	}
 }
 
+.case-study-menu-option {
+	font-family: "Hogisogi Regular", Arial, sans-serif;
+	font-weight: 400;
+	color: var(--main-text-color);
+	font-size: 18px;
+	letter-spacing: 10%;
+}
+.case-study-menu-item:hover > .case-study-menu-option,
+.case-study-menu-item.active > .case-study-menu-option {
+	font-family: "Hogisogi Black", Arial, sans-serif !important;
+	font-weight: 900 !important;
+	color: color-mix(in srgb, var(--main-text-color) 70%, black) !important;
+	letter-spacing: 3% !important;
+}
+.case-study-menu-item .number {
+	font-family: "Hogisogi Black", Arial, sans-serif;
+	font-weight: 900;
+	font-size: 18px;
+	color: var(--secondary-accent-color);
+}
+.case-study-menu-item:hover > .number,
+.case-study-menu-item.active > .number {
+	color: var(--main-accent-color);
+}
+
 #case-study-menu-header {
 	width: 100%;
 	height: 60px;
@@ -24,7 +50,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-end;
-	margin-bottom: 25px;
+	margin-bottom: var(--case-study-menu-header-gap);
 	flex-shrink: 0;
 }
 
@@ -62,7 +88,8 @@
 	padding-left: 5px;
 }
 
-.case-study-menu-item:hover {
+.case-study-menu-item:hover,
+.case-study-menu-item.active {
 	background-color: var(--secondary-bg-color);
 }
 
@@ -140,15 +167,27 @@ a.case-study:hover {
 }
 
 @media (width >= 1024px) {
+	#case-study-menu {
+		--index-first-row-offset: calc(60px + var(--case-study-menu-header-gap) + 0.5rem);
+	}
+
+	#main-section {
+		padding-top: var(--index-first-row-offset);
+	}
+
 	.case-study-number {
 		visibility: hidden;
+	}
+
+	#case-studies .case-study-metadata {
+		margin-bottom: 1rem;
 	}
 
 	.case-study-content {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		padding-block: 1rem;
+		padding-block: 0 1rem;
 	}
 }
 
@@ -157,6 +196,28 @@ a.case-study:hover {
 	position: relative;
 	left: 0;
 	max-width: calc(50vw - 6rem);
+}
+
+#index-contact-line {
+	flex-shrink: 0;
+	margin: 0;
+	padding-left: calc(5vw + 33px + 4rem);
+	padding-right: 5rem;
+	padding-bottom: 1.25rem;
+	max-width: calc(50vw - 6rem);
+	font-size: 18px;
+	line-height: 20px;
+	letter-spacing: 0.05em;
+}
+
+#index-contact-line a {
+	color: inherit;
+	text-decoration: none;
+}
+
+#index-contact-line a:hover,
+#index-contact-line a:focus-visible {
+	text-decoration: underline;
 }
 
 #center-divider {
