@@ -121,11 +121,11 @@ body.layout-fixed:has(#case-study-menu) #header {
 }
 
 .case-study-menu-item p:nth-child(2) {
-	flex: 0 0 45%;
+	flex: 0 0 56%;
 }
 
 .case-study-menu-item p:nth-child(3) {
-	flex: 0 0 45%;
+	flex: 0 0 34%;
 }
 
 a.case-study {
