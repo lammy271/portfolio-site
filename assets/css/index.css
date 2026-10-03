@@ -152,9 +152,10 @@ body.layout-fixed:has(#case-study-menu) #header {
 
 .case-study-preview-arrow {
 	flex-shrink: 0;
-	width: 1em;
-	height: 1em;
-	color: var(--main-accent-color);
+	width: 0.55em;
+	height: 0.55em;
+	margin-right: 0.5rem;
+	color: var(--main-text-color);
 }
 
 a.case-study {
