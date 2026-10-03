@@ -790,7 +790,7 @@ footer {
 	width: calc(50vw - 6rem);
 	padding-top: 3rem;
 	padding-bottom: 3rem;
-	padding-inline: 5rem 10rem;
+	padding-inline: 8vw calc(5rem + 8vw);
 }
 
 .icon-link {
