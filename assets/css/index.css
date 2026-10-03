@@ -128,6 +128,35 @@ body.layout-fixed:has(#case-study-menu) #header {
 	flex: 0 0 34%;
 }
 
+.case-study-title-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	/* Same scale as .txt-xl so 1em arrow matches title size */
+	font-size: 36px;
+}
+
+@media (width >= 1024px) {
+	.case-study-title-row {
+		font-size: 45px;
+	}
+}
+
+#case-studies .case-study-title {
+	margin: 0;
+	min-width: 0;
+}
+
+.case-study-preview-arrow {
+	flex-shrink: 0;
+	width: 1em;
+	height: 1em;
+	color: var(--main-accent-color);
+}
+
 a.case-study {
 	display: block;
 	text-decoration: none;
