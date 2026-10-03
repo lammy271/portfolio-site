@@ -69,7 +69,7 @@ body.layout-fixed:has(#case-study-menu) #header {
 	justify-content: flex-start;
 	gap: calc(6% - 18px);
 	width: 100%;
-	margin-top: 67px;
+	margin-top: 1rem;
 	padding-bottom: 22px;
 }
 
