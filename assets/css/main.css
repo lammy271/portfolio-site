@@ -721,7 +721,7 @@ body.layout-fixed footer {
 body.layout-fixed #content {
 	min-height: 0;
 	overflow: hidden;
-	padding-top: 25px;
+	padding-top: 50px;
 	padding-bottom: 0;
 	grid-template-rows: minmax(0, 1fr);
 }
