@@ -231,11 +231,6 @@ a.case-study:hover {
 
 #index-contact-line a {
 	color: inherit;
-	text-decoration: none;
-}
-
-#index-contact-line a:hover,
-#index-contact-line a:focus-visible {
 	text-decoration: underline;
 }
 
