@@ -790,7 +790,7 @@ footer {
 	width: calc(50vw - 6rem);
 	padding-top: 3rem;
 	padding-bottom: 3rem;
-	padding-inline: 8vw calc(5rem + 8vw);
+	padding-inline: 5vw calc(5rem + 5vw);
 }
 
 .icon-link {
@@ -819,9 +819,12 @@ footer {
 	opacity: 1;
 }
 
+#links .icon-link .popup-text {
+	left: 0;
+}
+
 #resume-icon {
-	position: relative;
-	left: -7px;
+	display: block;
 }
 
 /* mobile screens */

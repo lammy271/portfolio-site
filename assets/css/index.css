@@ -6,15 +6,16 @@ body.layout-fixed:has(#case-study-menu) #header {
 }
 
 #case-study-menu {
-	--case-study-menu-header-gap: 22px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
-	gap: min(6vh, 5%);
+	gap: 0;
 	width: calc(50vw - 6rem);
+	height: 100%;
 	margin-bottom: 3rem;
 	padding-right: 5vw;
+	min-height: 0;
 
 	h2 {
 		width: 100%;
@@ -56,8 +57,20 @@ body.layout-fixed:has(#case-study-menu) #header {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-end;
-	margin-bottom: var(--case-study-menu-header-gap);
 	flex-shrink: 0;
+}
+
+#case-study-menu-list {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 0;
+	min-height: 0;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: calc(8% - 18px);
+	width: 100%;
+	margin-top: 67px;
+	padding-bottom: 22px;
 }
 
 #case-study-menu-header-divider, .case-study-header-divider {
