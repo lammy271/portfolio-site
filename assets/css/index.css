@@ -1,10 +1,5 @@
 /* index.html — case studies */
 
-/* Match #content inset so the logo and monogram align with the CASE STUDIES header (not menu row padding). */
-body.layout-fixed:has(#case-study-menu) #header {
-	padding-inline: 5vw;
-}
-
 #case-study-menu {
 	display: flex;
 	flex-direction: column;
@@ -17,12 +12,6 @@ body.layout-fixed:has(#case-study-menu) #header {
 	padding-right: 5vw;
 	min-height: 0;
 
-	h2 {
-		width: 100%;
-		position: relative;
-		bottom: 0;
-		padding-bottom: 0.5rem;
-	}
 }
 
 .case-study-menu-option {
@@ -50,16 +39,6 @@ body.layout-fixed:has(#case-study-menu) #header {
 	color: var(--main-accent-color);
 }
 
-#case-study-menu-header {
-	width: 100%;
-	height: 60px;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-end;
-	flex-shrink: 0;
-}
-
 #case-study-menu-list {
 	display: flex;
 	flex-direction: column;
@@ -73,7 +52,7 @@ body.layout-fixed:has(#case-study-menu) #header {
 	padding-bottom: 22px;
 }
 
-#case-study-menu-header-divider, .case-study-header-divider {
+.case-study-header-divider {
 	position: relative;
 	bottom: 0;
 	height: 1px;

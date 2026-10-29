@@ -1,11 +1,29 @@
 // Script to handle case study menu functionality in jquery
 
+var motionReady = import('https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm');
+
+function animateCaseStudyPreview(element) {
+    if (!element) {
+        return;
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        element.style.opacity = '1';
+        element.style.transform = 'none';
+        return;
+    }
+    motionReady.then(function(motion) {
+        motion.animate(element, { opacity: [0, 1], y: [15, 0] }, { duration: 0.15, ease: 'easeOut' });
+    });
+}
+
 $(document).ready(function() {
     var allCaseStudies = $('.case-study');
 
     function showCaseStudy(href) {
         allCaseStudies.addClass('desktop-inactive');
-        allCaseStudies.filter('[href="' + href + '"]').removeClass('desktop-inactive');
+        var $visible = allCaseStudies.filter('[href="' + href + '"]');
+        $visible.removeClass('desktop-inactive');
+        animateCaseStudyPreview($visible[0]);
     }
 
     function setActiveMenuItem($item) {
