@@ -676,7 +676,7 @@ body.cs-layout .cs-pair img {
 body.cs-layout .cs-trio {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	gap: clamp(1rem, 2.5vw, 2.25rem);
 	margin: 0 0 3.5rem;
 }
@@ -688,6 +688,11 @@ body.cs-layout .cs-trio img {
 	max-height: 28rem;
 	height: auto;
 	object-fit: contain;
+}
+
+body.cs-layout .cs-trio img:nth-child(2),
+body.cs-layout .cs-trio img:nth-child(3) {
+	max-height: 22rem;
 }
 
 body.cs-layout .cs-gif {
