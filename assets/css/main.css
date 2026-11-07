@@ -77,6 +77,7 @@ textarea:not([rows]) {
 	--main-text-color: #686767;
 	--main-accent-color: #000ED3;
 	--secondary-accent-color: #A288E3;
+	--muted-text-color: #909090;
 	--centerfold-color: #5158BB;
 }
 .black-text {
@@ -94,6 +95,10 @@ textarea:not([rows]) {
 .secondary-accent {
 	color: var(--secondary-accent-color);
 	fill: var(--secondary-accent-color);
+}
+.muted-text {
+	color: var(--muted-text-color);
+	fill: var(--muted-text-color);
 }
 
 @font-face {
@@ -274,6 +279,14 @@ textarea:not([rows]) {
 	font-weight: 300;
 }
 @font-face {
+	font-family: "Helvetica Neue Thin";
+	src: url("../fonts/HelveticaNeueThin.otf");
+}
+.helv-thin {
+	font-family: "Helvetica Neue Thin", Arial, sans-serif;
+	font-weight: 100;
+}
+@font-face {
 	font-family: "Helvetica Neue Medium";
 	src: url("../fonts/HelveticaNeueMedium.otf");
 }
@@ -305,6 +318,14 @@ textarea:not([rows]) {
 	font-family: "Hogisogi Regular", Arial, sans-serif;
 	font-weight: 400;
 }
+@font-face {
+	font-family: "Hogisogi Medium";
+	src: url("../fonts/Hogisogi-Medium.otf");
+}
+.hogi-med {
+	font-family: "Hogisogi Medium", Arial, sans-serif;
+	font-weight: 500;
+}
 /*** Styles ***/
 
 /* mobile sizes (default) */
@@ -325,6 +346,10 @@ textarea:not([rows]) {
 
 .spc-no {
 	letter-spacing: 0;
+}
+
+.spc-xxs {
+	letter-spacing: 5%;
 }
 
 .spc-xs {
