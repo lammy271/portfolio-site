@@ -326,6 +326,15 @@ textarea:not([rows]) {
 	font-family: "Hogisogi Medium", Arial, sans-serif;
 	font-weight: 500;
 }
+@font-face {
+	font-family: "Epokha Regular";
+	src: url("../fonts/Epokha_STD_Regular.otf");
+}
+.epokha-reg {
+	font-family: "Epokha Regular", Arial, sans-serif;
+	font-weight: 400;
+}
+
 /*** Styles ***/
 
 /* mobile sizes (default) */
