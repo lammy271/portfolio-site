@@ -960,29 +960,40 @@ footer {
 		position: sticky;
 		top: 0;
 		z-index: 60;
-		padding: 0.2rem 0.15rem 0.2rem 1rem;
+		padding: 0.2rem 0.9rem 0.2rem 1rem;
 	}
 
 	body.layout-fixed #header {
-		padding-inline: 1rem 0.15rem;
+		padding-inline: 1rem 1vw;
 	}
 
 	#header #name,
 	#header #slash {
-		font-size: 18px;
+		font-size: 24px;
 		line-height: 1;
 		letter-spacing: 0.04em;
 	}
 
 	#header-subtext-container {
-		font-size: 9px;
+		font-size: 11px;
 		letter-spacing: 0.08em;
-		line-height: 1.05;
+		line-height: 1.25;
+		gap: 0;
+	}
+
+	#header-subtext-1,
+	#header-subtext-2 {
+		line-height: 1.25;
+	}
+
+	#header-subtext-1 {
+		position: relative;
+		top: -4px;
 	}
 
 	#header-subtext-2 {
 		padding-left: 8px;
-		top: -2px;
+		top: 0;
 	}
 
 	#menu-btn {
@@ -994,7 +1005,7 @@ footer {
 		cursor: pointer;
 		flex-shrink: 0;
 		padding: 0;
-		margin-right: -0.35rem;
+		margin-right: 0;
 	}
 
 	#menu-btn a {
@@ -1003,7 +1014,7 @@ footer {
 	}
 
 	#monogram {
-		height: 42px;
+		height: 62px;
 		width: auto;
 		display: block;
 	}
@@ -1012,9 +1023,12 @@ footer {
 		display: none;
 		width: 22px;
 		height: 22px;
-		margin-right: 0.85rem;
-		position: relative;
-		pointer-events: auto;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin: 0;
+		transform: translate(-50%, -50%);
+		pointer-events: none;
 	}
 
 	#menu-close::before,
@@ -1041,7 +1055,7 @@ footer {
 	}
 
 	body.nav-open #monogram {
-		display: none;
+		visibility: hidden;
 	}
 
 	body.nav-open #menu-close {
@@ -1068,6 +1082,7 @@ footer {
 	body.nav-open #header {
 		pointer-events: auto;
 		background-color: var(--secondary-bg-color);
+		border-bottom: 1px dotted var(--main-accent-color);
 	}
 
 	.site-nav-index {
@@ -1094,15 +1109,6 @@ footer {
 	.site-nav-files {
 		margin-top: 1.75rem;
 		padding-top: 1.75rem;
-		border-top: 1px dotted var(--main-accent-color);
-	}
-
-	#site-nav-menu::before {
-		content: "";
-		position: absolute;
-		top: 3.15rem;
-		left: 0;
-		right: 0;
 		border-top: 1px dotted var(--main-accent-color);
 	}
 }
