@@ -413,6 +413,11 @@ body.cs-layout .case-study-section + .case-study-section {
 	padding-top: 5.5rem;
 }
 
+body.cs-layout #process.case-study-section,
+body.cs-layout #packaging.case-study-section {
+	padding-top: 0;
+}
+
 body.cs-layout .cs-media-stack {
 	display: flex;
 	flex-direction: column;
@@ -443,6 +448,99 @@ body.cs-layout .cs-column > .cs-impact-body:last-child {
 body.cs-layout .cs-photo-credit {
 	margin-top: 1.25rem;
 	margin-bottom: 0;
+}
+
+body.cs-layout .cs-toc-minimal .case-study-toc-home {
+	margin-top: 0;
+}
+
+body.cs-layout .cs-intro {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+	column-gap: 2.5rem;
+	row-gap: 0.4rem;
+	align-items: start;
+	margin-top: 1.15rem;
+}
+
+body.cs-layout .cs-intro .case-study-heading,
+body.cs-layout #overview .cs-intro .case-study-heading {
+	grid-column: 1;
+	margin: 0;
+}
+
+body.cs-layout .cs-intro .cs-year {
+	grid-column: 2;
+	justify-self: end;
+	align-self: end;
+	margin: 0;
+}
+
+body.cs-layout .cs-intro .cs-meta {
+	grid-column: 1;
+	margin-top: 0.15rem;
+}
+
+body.cs-layout .cs-intro .cs-lede {
+	grid-column: 2;
+	margin: 0.9rem 0 0;
+}
+
+body.cs-layout .cs-rule {
+	border: 0;
+	border-top: 1px dotted color-mix(in srgb, var(--main-text-color) 40%, white);
+	width: 100%;
+	margin: 3.75rem 0 4rem;
+}
+
+body.cs-layout .cs-caption {
+	text-align: center;
+	margin: 2.75rem 0 1.1rem;
+}
+
+body.cs-layout .cs-rule + .cs-caption {
+	margin-top: 0;
+}
+
+body.cs-layout .cs-center {
+	text-align: center;
+	margin: 0 auto 2.5rem;
+	max-width: 54rem;
+	line-height: 1.55;
+}
+
+body.cs-layout .cs-block-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 0 1.5rem;
+}
+
+body.cs-layout .cs-prototype {
+	max-width: 72%;
+	margin-inline: auto;
+	margin-bottom: 1.5rem;
+}
+
+body.cs-layout .cs-ornament {
+	display: block;
+	width: min(220px, 28%);
+	height: auto;
+	margin: 0.5rem auto 2rem;
+	mix-blend-mode: screen;
+}
+
+body.cs-layout .cs-flavor-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0;
+	margin-bottom: 2.5rem;
+}
+
+body.cs-layout .cs-flavor-grid img {
+	width: 100%;
+	height: auto;
+	display: block;
 }
 
 @media (width < 1024px) {
@@ -477,5 +575,17 @@ body.cs-layout .cs-photo-credit {
 
 	body.cs-layout .cs-meta {
 		flex-wrap: wrap;
+	}
+
+	body.cs-layout .cs-intro {
+		grid-template-columns: 1fr;
+	}
+
+	body.cs-layout .cs-intro .cs-year {
+		justify-self: start;
+	}
+
+	body.cs-layout .cs-intro .cs-lede {
+		grid-column: 1;
 	}
 }
