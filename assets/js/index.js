@@ -18,10 +18,15 @@ function animateCaseStudyPreview(element) {
 
 $(document).ready(function() {
     var allCaseStudies = $('.case-study');
+    var desktopQuery = window.matchMedia('(width >= 1024px)');
 
     function showCaseStudy(href) {
+        if (!desktopQuery.matches) {
+            allCaseStudies.removeClass('desktop-inactive');
+            return;
+        }
         allCaseStudies.addClass('desktop-inactive');
-        var $visible = allCaseStudies.filter('[href="' + href + '"]');
+        var $visible = allCaseStudies.filter('[data-href="' + href + '"]');
         $visible.removeClass('desktop-inactive');
         animateCaseStudyPreview($visible[0]);
     }
@@ -33,13 +38,29 @@ $(document).ready(function() {
         $item.addClass('active').attr('aria-current', 'true');
     }
 
+    function syncLayout() {
+        var $active = $('.case-study-menu-item.active');
+        if (!$active.length) {
+            $active = $('.case-study-menu-item').first();
+            setActiveMenuItem($active);
+        }
+        showCaseStudy($active.attr('href'));
+    }
+
     var $defaultMenuItem = $('.case-study-menu-item').first();
     setActiveMenuItem($defaultMenuItem);
-    showCaseStudy($defaultMenuItem.attr('href'));
+    syncLayout();
 
     $('.case-study-menu-item').on('mouseenter', function() {
+        if (!desktopQuery.matches) return;
         var $item = $(this);
         showCaseStudy($item.attr('href'));
         setActiveMenuItem($item);
     });
+
+    if (typeof desktopQuery.addEventListener === 'function') {
+        desktopQuery.addEventListener('change', syncLayout);
+    } else if (typeof desktopQuery.addListener === 'function') {
+        desktopQuery.addListener(syncLayout);
+    }
 });

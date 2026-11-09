@@ -76,27 +76,44 @@ body.about-page #about-right {
 #about-right {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
+	align-items: center;
+	justify-content: center;
 	padding-left: 0;
 	min-height: 0;
 }
 
 #about-photo-cluster {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
-	justify-content: flex-start;
-	gap: 1.5rem;
-	margin-top: calc(60px + 1rem);
+	justify-content: center;
+	margin-top: 0;
+	max-width: 100%;
 }
 
 #about-portrait {
 	display: block;
-	width: 258px;
-	height: 348px;
-	object-fit: cover;
+	width: min(462px, 100%);
+	height: auto;
+	object-fit: contain;
 	flex-shrink: 0;
+}
+
+/* Center the portrait in the viewport's right half (divider to the right edge). */
+@media (width >= 1024px) {
+	body.about-page #about-right {
+		container-type: size;
+		width: calc(100% + 5vw);
+		margin-right: -5vw;
+	}
+
+	#about-portrait {
+		width: auto;
+		height: auto;
+		max-width: min(462px, 48.7cqi);
+		max-height: min(617px, 74cqb);
+	}
 }
 
 .about-link {
@@ -131,6 +148,14 @@ body.about-page #about-right {
 	display: none;
 }
 
+@media (width >= 1024px) {
+	#link-preview {
+		position: absolute;
+		top: 0;
+		left: calc(100% + 1.5rem);
+	}
+}
+
 #link-preview-image {
 	display: block;
 	max-width: min(260px, 18vw);
@@ -161,7 +186,9 @@ body.about-page #about-right {
 	body.about-page #about-right {
 		width: 100%;
 		height: auto;
+		margin-right: 0;
 		overflow: visible;
+		container-type: normal;
 	}
 
 	body.about-page #about-left {
@@ -172,6 +199,12 @@ body.about-page #about-right {
 	body.about-page #about-photo-cluster {
 		margin-top: 0;
 		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	body.about-page #about-portrait {
+		width: min(462px, 100%);
+		max-height: none;
 	}
 
 	body.about-page #about-intro {
