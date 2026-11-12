@@ -931,8 +931,9 @@ body.cs-layout .cs-hero-cover .cs-lede {
 
 /* On The Hill: inset cover, delayed sticky TOC */
 body.cs-layout .cs-oth.case-study-layout {
+	--cs-hero-page-margin: 17vw;
 	row-gap: 0;
-	padding-top: 2.75rem;
+	padding-top: 4rem;
 }
 
 body.cs-layout .cs-oth .case-study-toc {
@@ -957,7 +958,7 @@ body.cs-layout .cs-oth .case-study-cover {
 	max-width: none;
 	max-height: none;
 	height: auto;
-	margin: 0 0 2.75rem;
+	margin: 0 0 1.25rem;
 	border: none;
 	display: block;
 	object-fit: contain;
@@ -972,24 +973,46 @@ body.cs-layout .cs-oth .cs-hero-head {
 body.cs-layout .cs-oth .cs-hero-head .case-study-heading,
 body.cs-layout .cs-oth .cs-meta {
 	margin: 0;
-	color: var(--muted-text-color);
+}
+
+body.cs-layout .cs-oth .cs-hero-head .case-study-heading {
+	color: #000;
 }
 
 body.cs-layout .cs-oth .cs-meta {
+	color: var(--muted-text-color);
 	text-align: right;
-	flex: 0 1 auto;
-	max-width: 50%;
+	flex: 0 0 auto;
+	max-width: none;
+	white-space: nowrap;
 	line-height: 1.25;
 }
 
 body.cs-layout .cs-oth .cs-lede {
-	margin: 0 0 2.25rem;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	column-gap: 5vw;
+	margin: 0 0 7.5rem;
 	line-height: 33px;
 	color: #000;
 }
 
+body.cs-layout .cs-oth .cs-lede::before {
+	content: "THE IMPACT";
+	visibility: hidden;
+	white-space: nowrap;
+	letter-spacing: 5%;
+	font-weight: 300;
+	pointer-events: none;
+	user-select: none;
+}
+
 body.cs-layout .cs-oth .cs-notes {
-	margin-bottom: 2.75rem;
+	margin-bottom: 0;
+}
+
+body.cs-layout .cs-oth #article.case-study-section {
+	padding-top: 4rem;
 }
 
 body.cs-layout .cs-oth .cs-notes p {
@@ -1001,7 +1024,7 @@ body.cs-layout .cs-oth .cs-impact-intro {
 }
 
 body.cs-layout .cs-oth .cs-impact-intro .case-study-heading {
-	color: var(--muted-text-color);
+	color: #000;
 	font-weight: 300;
 	line-height: 33px;
 }
@@ -1038,13 +1061,19 @@ body.cs-layout .cs-oth .cs-photo-credit {
 	body.cs-layout .cs-oth .cs-meta {
 		text-align: left;
 		max-width: none;
+		white-space: normal;
 	}
 
 	body.cs-layout .cs-oth .cs-lede {
-		margin-bottom: 1.75rem;
+		display: block;
+		margin-bottom: 5rem;
+	}
+
+	body.cs-layout .cs-oth .cs-lede::before {
+		content: none;
 	}
 
 	body.cs-layout .cs-oth .case-study-cover {
-		margin-bottom: 1.75rem;
+		margin-bottom: 1rem;
 	}
 }
