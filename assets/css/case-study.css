@@ -137,10 +137,11 @@ body.case-study-page #copyright {
 	text-decoration: none;
 }
 
-.case-study-toc-home svg {
+.case-study-toc-home svg,
+.case-study-toc-home img {
 	display: block;
-	width: 50px;
-	height: 50px;
+	width: 35px;
+	height: 35px;
 }
 
 .case-study-article {
@@ -380,6 +381,10 @@ body.case-study-page #copyright {
 	.case-study-toc-link {
 		transition-duration: 0.01s;
 	}
+
+	body.cs-layout .cs-notes-link {
+		transition: none;
+	}
 }
 
 /* Shared case study desktop layout */
@@ -458,10 +463,18 @@ body.cs-layout .cs-notes p {
 
 body.cs-layout .cs-notes-link {
 	color: inherit;
-	text-decoration: underline;
-	text-decoration-thickness: 2px;
-	text-underline-offset: 4px;
-	text-decoration-skip-ink: none;
+	text-decoration: none;
+	padding-bottom: 3px;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+	background-size: 0 3px;
+	transition: background-size 0.4s ease;
+}
+
+body.cs-layout .cs-notes-link:hover,
+body.cs-layout .cs-notes-link:focus-visible {
+	background-size: 100% 3px;
 }
 
 body.cs-layout .case-study-section + .case-study-section {

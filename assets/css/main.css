@@ -279,6 +279,15 @@ textarea:not([rows]) {
 	font-weight: 300;
 }
 @font-face {
+	font-family: "Helvetica Neue Light Italic";
+	src: url("../fonts/HelveticaNeueLightItalic.otf");
+}
+.helv-lite-i {
+	font-family: "Helvetica Neue Light Italic", Arial, sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+@font-face {
 	font-family: "Helvetica Neue Thin";
 	src: url("../fonts/HelveticaNeueThin.otf");
 }
