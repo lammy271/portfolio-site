@@ -915,3 +915,123 @@ body.cs-layout .cs-hero-cover .cs-lede {
 		padding-top: 3rem;
 	}
 }
+
+/* On The Hill: inset cover, delayed sticky TOC */
+body.cs-layout .cs-oth.case-study-layout {
+	row-gap: 0;
+	padding-top: 2.75rem;
+}
+
+body.cs-layout .cs-oth .case-study-toc {
+	margin-top: 100vh;
+	gap: 0;
+}
+
+body.cs-layout .cs-oth .case-study-toc-link {
+	text-transform: none;
+	color: var(--muted-text-color);
+	line-height: 33px;
+}
+
+body.cs-layout .cs-oth .case-study-toc-link:hover,
+body.cs-layout .cs-oth .case-study-toc-link:focus-visible,
+body.cs-layout .cs-oth .case-study-toc-link.is-active {
+	color: var(--muted-text-color);
+}
+
+body.cs-layout .cs-oth .case-study-cover {
+	width: 100%;
+	max-width: none;
+	max-height: none;
+	height: auto;
+	margin: 0 0 2.75rem;
+	border: none;
+	display: block;
+	object-fit: contain;
+	object-position: center;
+}
+
+body.cs-layout .cs-oth .cs-hero-head {
+	align-items: flex-start;
+	margin-bottom: 2rem;
+}
+
+body.cs-layout .cs-oth .cs-hero-head .case-study-heading,
+body.cs-layout .cs-oth .cs-meta {
+	margin: 0;
+	color: var(--muted-text-color);
+}
+
+body.cs-layout .cs-oth .cs-meta {
+	text-align: right;
+	flex: 0 1 auto;
+	max-width: 50%;
+	line-height: 1.25;
+}
+
+body.cs-layout .cs-oth .cs-lede {
+	margin: 0 0 2.25rem;
+	line-height: 33px;
+	color: #000;
+}
+
+body.cs-layout .cs-oth .cs-notes {
+	margin-bottom: 2.75rem;
+}
+
+body.cs-layout .cs-oth .cs-notes p {
+	line-height: 25px;
+}
+
+body.cs-layout .cs-oth .cs-impact-intro {
+	margin-bottom: 3.5rem;
+}
+
+body.cs-layout .cs-oth .cs-impact-intro .case-study-heading {
+	color: var(--muted-text-color);
+	font-weight: 300;
+	line-height: 33px;
+}
+
+body.cs-layout .cs-oth .cs-impact-intro .cs-impact-body,
+body.cs-layout .cs-oth .cs-impact-body {
+	line-height: 33px;
+	color: #000;
+}
+
+body.cs-layout .cs-oth .cs-photo-credit {
+	color: var(--muted-text-color);
+	margin-top: 0;
+	margin-bottom: 0.85rem;
+}
+
+@media (width < 1024px) {
+	body.cs-layout .cs-oth.case-study-layout {
+		padding-top: 1.5rem;
+		row-gap: 0;
+	}
+
+	body.cs-layout .cs-oth .case-study-toc {
+		margin-top: 0;
+	}
+
+	body.cs-layout .cs-oth .cs-hero-head {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+		margin-bottom: 1.5rem;
+	}
+
+	body.cs-layout .cs-oth .cs-meta {
+		text-align: left;
+		max-width: none;
+	}
+
+	body.cs-layout .cs-oth .cs-lede {
+		margin-bottom: 1.75rem;
+	}
+
+	body.cs-layout .cs-oth .case-study-cover {
+		margin-bottom: 1.75rem;
+	}
+}
