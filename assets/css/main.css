@@ -285,7 +285,6 @@ textarea:not([rows]) {
 .helv-lite-i {
 	font-family: "Helvetica Neue Light Italic", Arial, sans-serif;
 	font-weight: 300;
-	font-style: italic;
 }
 @font-face {
 	font-family: "Helvetica Neue Thin";
