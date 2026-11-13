@@ -1028,11 +1028,10 @@ body.cs-layout .cs-oth .cs-lede::before {
 
 body.cs-layout .cs-oth .cs-notes {
 	margin-bottom: 0;
-	gap: 0;
 }
 
 body.cs-layout .cs-oth .cs-notes p {
-	line-height: 1.25;
+	line-height: 1.5;
 }
 
 body.cs-layout .cs-oth #article.case-study-section {
