@@ -941,6 +941,7 @@ body.cs-layout .cs-oth.case-study-layout {
 			max(0px, calc((100% - var(--cs-oth-min-col)) / 2))
 		)
 	);
+	--cs-media-gap: 1.25rem;
 	row-gap: 0;
 	padding-top: 4rem;
 }
@@ -959,7 +960,7 @@ body.cs-layout .cs-oth .case-study-toc-link {
 body.cs-layout .cs-oth .case-study-toc-link:hover,
 body.cs-layout .cs-oth .case-study-toc-link:focus-visible,
 body.cs-layout .cs-oth .case-study-toc-link.is-active {
-	color: var(--muted-text-color);
+	color: var(--main-accent-color);
 }
 
 body.cs-layout .cs-oth .case-study-cover {
@@ -1000,7 +1001,6 @@ body.cs-layout .cs-oth .cs-meta {
 }
 
 body.cs-layout .cs-oth .cs-lede,
-body.cs-layout .cs-oth .cs-notes p,
 body.cs-layout .cs-oth .cs-impact-body,
 body.cs-layout .cs-oth .cs-impact-intro .cs-impact-body,
 body.cs-layout .cs-hero-cover.cs-oth .cs-impact-intro .cs-impact-body,
@@ -1028,6 +1028,11 @@ body.cs-layout .cs-oth .cs-lede::before {
 
 body.cs-layout .cs-oth .cs-notes {
 	margin-bottom: 0;
+	gap: 0;
+}
+
+body.cs-layout .cs-oth .cs-notes p {
+	line-height: 1.25;
 }
 
 body.cs-layout .cs-oth #article.case-study-section {
@@ -1052,11 +1057,16 @@ body.cs-layout .cs-oth .cs-impact-body {
 body.cs-layout .cs-oth .cs-photo-credit {
 	color: var(--muted-text-color);
 	margin-top: 0;
-	margin-bottom: 0.85rem;
+	margin-bottom: 0;
+}
+
+body.cs-layout .cs-hero-cover.cs-oth #impact.case-study-section {
+	padding-top: 2.75rem;
 }
 
 @media (width < 1024px) {
 	body.cs-layout .cs-oth.case-study-layout {
+		--cs-media-gap: 0.75rem;
 		padding-top: 1.5rem;
 		row-gap: 0;
 	}
@@ -1089,5 +1099,9 @@ body.cs-layout .cs-oth .cs-photo-credit {
 
 	body.cs-layout .cs-oth .case-study-cover {
 		margin-bottom: 1rem;
+	}
+
+	body.cs-layout .cs-hero-cover.cs-oth #impact.case-study-section {
+		padding-top: 1.5rem;
 	}
 }
