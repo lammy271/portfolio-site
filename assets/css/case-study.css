@@ -1100,7 +1100,7 @@ body.cs-layout .cs-standard .cs-symbol-scale {
 
 body.cs-layout .cs-standard .cs-flush-pair {
 	display: flex;
-	gap: 0;
+	gap: var(--cs-flush-gap, 0);
 	align-items: stretch;
 	width: 100%;
 }
@@ -1175,11 +1175,13 @@ body.cs-layout .cs-hero-cover.cs-standard #explorations .cs-lede:has(+ .cs-block
 	margin-bottom: 7.5rem;
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #brand-symbol.case-study-section {
+body.cs-layout .cs-hero-cover.cs-standard #brand-symbol.case-study-section,
+body.cs-layout .cs-hero-cover.cs-standard #style-guide.case-study-section {
 	padding-top: 7.5rem;
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #brand-symbol .cs-column > .cs-impact-intro.cs-section-label:first-child:not(:has(.cs-impact-body)) {
+body.cs-layout .cs-hero-cover.cs-standard #brand-symbol .cs-column > .cs-impact-intro.cs-section-label:first-child:not(:has(.cs-impact-body)),
+body.cs-layout .cs-hero-cover.cs-standard #style-guide .cs-column > .cs-impact-intro.cs-section-label:first-child:not(:has(.cs-impact-body)) {
 	margin-top: 0;
 	margin-bottom: 0.5rem;
 }
