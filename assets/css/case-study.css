@@ -144,6 +144,63 @@ body.case-study-page #copyright {
 	height: 35px;
 }
 
+.case-study-toc-actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.85rem;
+	margin-top: 1.25rem;
+}
+
+.case-study-toc-icon {
+	position: relative;
+	display: block;
+	width: 32px;
+	height: 32px;
+	color: #b1b1b1;
+	line-height: 0;
+	text-decoration: none;
+}
+
+.case-study-toc-icon svg {
+	position: relative;
+	z-index: 1;
+	display: block;
+	width: 32px;
+	height: 32px;
+	fill: currentColor;
+}
+
+.case-study-toc-icon-label {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	z-index: 0;
+	color: var(--main-accent-color);
+	line-height: 1;
+	white-space: nowrap;
+	pointer-events: none;
+	opacity: 0;
+	transform: translate(30px, -50%);
+	transition: transform 80ms ease-in-out;
+}
+
+.case-study-toc-icon:hover,
+.case-study-toc-icon:focus-visible {
+	color: var(--main-accent-color);
+}
+
+.case-study-toc-icon:hover .case-study-toc-icon-label,
+.case-study-toc-icon:focus-visible .case-study-toc-icon-label {
+	opacity: 1;
+	transform: translate(38px, -50%);
+}
+
+.case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link,
+.case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link {
+	color: #b1b1b1;
+}
+
 .case-study-article {
 	margin-left: var(--case-study-article-margin-left);
 	margin-right: var(--case-study-article-margin-right);
@@ -394,7 +451,8 @@ body.cs-layout {
 	--cs-media-gap: 2.5rem;
 }
 
-body.cs-layout .case-study-toc-home {
+body.cs-layout .case-study-toc-home,
+body.cs-layout .case-study-toc-actions {
 	margin-top: 1.25rem;
 }
 
@@ -774,6 +832,13 @@ body.cs-layout .cs-hero-cover .case-study-toc-link.is-active {
 	color: var(--main-accent-color);
 }
 
+body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link,
+body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link,
+body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link.is-active,
+body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link.is-active {
+	color: #b1b1b1;
+}
+
 body.cs-layout .cs-hero-cover .cs-column {
 	width: 100%;
 	max-width: none;
@@ -967,6 +1032,13 @@ body.cs-layout .cs-standard .case-study-toc-link:hover,
 body.cs-layout .cs-standard .case-study-toc-link:focus-visible,
 body.cs-layout .cs-standard .case-study-toc-link.is-active {
 	color: var(--main-accent-color);
+}
+
+body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link,
+body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link,
+body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link.is-active,
+body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link.is-active {
+	color: #b1b1b1;
 }
 
 body.cs-layout .cs-standard .cs-lede,

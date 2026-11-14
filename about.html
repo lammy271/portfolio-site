@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css?v=18">
-    <link rel="stylesheet" href="assets/css/about.css?v=9">
+    <link rel="stylesheet" href="assets/css/about.css?v=26">
 	<script src="https://kit.fontawesome.com/657a431de6.js" crossorigin="anonymous"></script>
 	<script type="module">
 		import { animate } from 'https://cdn.jsdelivr.net/npm/motion@12.5.0/+esm'
@@ -17,24 +17,10 @@
 			animate(aboutContent, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, ease: "easeOut" });
 		}
 
-		const linkPreview = document.getElementById("link-preview");
-		const linkPreviewImg = document.getElementById("link-preview-image");
-		let hidePreviewTimeout;
-
 		document.querySelectorAll(".about-link").forEach(el => {
 			el.addEventListener("mouseenter", () => {
-				clearTimeout(hidePreviewTimeout);
-				linkPreviewImg.src = el.dataset.image;
-				linkPreview.removeAttribute("hidden");
-				requestAnimationFrame(() => linkPreview.classList.add("is-visible"));
-			});
-
-			el.addEventListener("mouseleave", () => {
-				linkPreview.classList.remove("is-visible");
-				hidePreviewTimeout = setTimeout(() => {
-					linkPreview.setAttribute("hidden", "");
-					linkPreviewImg.removeAttribute("src");
-				}, 150);
+				const piece = document.querySelector('.about-piece[data-piece="' + el.dataset.piece + '"]');
+				if (piece) piece.classList.add("is-shown");
 			});
 		});
 	</script>
@@ -69,20 +55,30 @@
 							<path d="M0 0h16v16H0z" fill="none" />
 							<path fill="currentColor" d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8L1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1" />
 						</svg>
-						<p id="about-hello" class="hogi-black main-accent">hello,</p>
+						<p id="about-hello" class="hogi-black spc-sm main-accent">hello,</p>
 					</div>
 					<div id="about-bio" class="helv-lite txt-md spc-no black-text">
-						<p>I'm Anny Long, a Bay Area native based in San Francisco. A film photographer and avid story chaser, I returned to school to study <span class="about-link" data-image="assets/image/Anny_Photo.jpg">communication design at CCA</span>, where I earned a BFA.</p>
-						<p>I'm an interdisciplinary designer focused on product design, data visualization, systems thinking, and UX. Collaboration energizes me, and I thrive across disciplines. This has led to projects such as Google Tone, community exhibitions, and work with The Children's Creativity Museum. In my downtime, I still photograph, travel, collecting <span class="about-link" data-image="assets/image/Anny_Photo.jpg">retro maps</span>, and all things pixel and <span class="about-link" data-image="assets/image/Anny_Photo.jpg">coffee</span>.</p>
+						<p>I'm Anny Long, raised in the Bay Area and currently based in San Francisco. I've recently graduated from <span class="about-link" data-piece="cca">CCA in Graphic Design</span>. I'm an interdisciplinary designer interested in products, data visualization, systems thinking and UX design.</p>
+						<p>Collaboration energizes me; I thrive working across teams with many disciplines—this has led to various projects such as Google Tone, community exhibitions, and The Children's Creativity Museum.</p>
+						<p>In my downtime, I'm an avid photographer, traveler, <span class="about-link" data-piece="maps">map collector</span> and lover of all things pixel &amp; <span class="about-link" data-piece="coffee">coffee</span>.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="about-right" class="mobile-inactive">
 			<div id="about-photo-cluster">
-				<img id="about-portrait" src="assets/image/anny_selfie.png" alt="Anny Long" width="462" height="617" />
-				<div id="link-preview" hidden>
-					<img id="link-preview-image" src="" alt="" />
+				<div class="about-piece about-piece--maps" data-piece="maps">
+					<img class="about-piece-media" src="assets/image/about/maps.png" alt="" width="542" height="547" />
+					<p class="about-caption hogi-black txt-sm spc-xxs secondary-accent">Old maps get me fired up.</p>
+				</div>
+				<div class="about-piece about-piece--coffee" data-piece="coffee">
+					<img class="about-piece-media" src="assets/image/about/latte.png" alt="" width="430" height="415" />
+					<p class="about-caption hogi-black txt-sm spc-xxs secondary-accent">My friends love<br>my latte art!</p>
+				</div>
+				<img id="about-portrait" src="assets/image/about/selfie.png" alt="Anny Long" width="333" height="444" />
+				<div class="about-piece about-piece--cca" data-piece="cca">
+					<img class="about-piece-media" src="assets/image/about/cca.png" alt="" width="300" height="289" />
+					<p class="about-caption hogi-black txt-sm spc-xxs secondary-accent">Graduated ’26</p>
 				</div>
 			</div>
 		</div>

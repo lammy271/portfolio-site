@@ -1,7 +1,6 @@
 /* about.html — Figma two-column layout */
 
-body.about-page #about-left,
-body.about-page #about-right {
+body.about-page #about-left {
 	min-height: 0;
 	height: 100%;
 	overflow: hidden;
@@ -34,17 +33,16 @@ body.about-page #about-right {
 }
 
 #about-intro {
-	display: grid;
-	grid-template-columns: minmax(0, auto) minmax(0, 1fr);
-	column-gap: 1.75rem;
-	align-items: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 #about-greeting {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 0.75rem;
+	gap: 1rem;
 }
 
 #about-greeting-asterisk {
@@ -55,20 +53,23 @@ body.about-page #about-right {
 
 #about-hello {
 	margin: 0;
-	font-size: clamp(45px, 4.5vw, 60px);
+	font-size: 30px;
 	line-height: 1;
-	letter-spacing: 0.02em;
 }
 
 #about-bio {
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: 1.35rem;
+	margin-top: 2rem;
+	padding-left: 4.5rem;
+	box-sizing: border-box;
+	max-width: 100%;
 }
 
 #about-bio p {
 	margin: 0;
-	line-height: 50px;
+	line-height: 34px;
 	text-align: left;
 	max-width: none;
 }
@@ -76,49 +77,176 @@ body.about-page #about-right {
 #about-right {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: stretch;
 	justify-content: center;
 	padding-left: 0;
 	min-height: 0;
+	overflow: visible;
 }
 
 #about-photo-cluster {
 	position: relative;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
+	width: 100%;
+	aspect-ratio: 1.18 / 1;
+	max-height: 92%;
 	margin-top: 0;
-	max-width: 100%;
+	padding: 0;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	align-self: center;
 }
 
 #about-portrait {
+	position: absolute;
+	left: 12%;
+	top: 28%;
+	z-index: 3;
 	display: block;
-	width: min(462px, 100%);
+	width: 38%;
 	height: auto;
 	object-fit: contain;
-	flex-shrink: 0;
+	pointer-events: none;
 }
 
-/* Center the portrait in the viewport's right half (divider to the right edge). */
+.about-piece {
+	position: absolute;
+	z-index: 2;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.about-piece.is-shown {
+	opacity: 1;
+}
+
+.about-piece-media {
+	display: block;
+	width: 100%;
+	height: auto;
+	transform: rotate(calc(var(--rest-rotate) - 270deg));
+	transform-origin: center center;
+}
+
+.about-piece.is-shown .about-piece-media {
+	animation: about-piece-spin 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes about-piece-spin {
+	from {
+		transform: rotate(calc(var(--rest-rotate) - 270deg));
+	}
+	to {
+		transform: rotate(var(--rest-rotate));
+	}
+}
+
+.about-caption {
+	position: absolute;
+	z-index: 5;
+	margin: 0;
+	line-height: 1.25;
+	opacity: 0;
+	white-space: nowrap;
+}
+
+.about-piece.is-shown .about-caption {
+	animation: about-caption-in 0.55s ease-out 0.7s forwards;
+}
+
+@keyframes about-caption-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.about-caption::after {
+	content: "";
+	position: absolute;
+	background: currentColor;
+	pointer-events: none;
+}
+
+.about-piece--maps {
+	left: 34%;
+	top: 6%;
+	width: 52%;
+	z-index: 1;
+	--rest-rotate: 7deg;
+}
+
+.about-piece--maps .about-caption {
+	top: 2%;
+	left: 22%;
+}
+
+.about-piece--maps .about-caption::after {
+	left: 42%;
+	top: calc(100% + 3px);
+	width: 1px;
+	height: 12px;
+	transform: rotate(8deg);
+	transform-origin: top center;
+}
+
+.about-piece--coffee {
+	left: 6%;
+	top: 2%;
+	width: 40%;
+	z-index: 2;
+	--rest-rotate: -8deg;
+}
+
+.about-piece--coffee .about-caption {
+	left: 2%;
+	top: 88%;
+}
+
+.about-piece--coffee .about-caption::after {
+	left: 4.4em;
+	bottom: calc(100% + 1px);
+	width: 1px;
+	height: 14px;
+	transform: rotate(12deg);
+	transform-origin: bottom center;
+}
+
+.about-piece--cca {
+	left: 42%;
+	top: 56%;
+	width: 28%;
+	z-index: 4;
+	--rest-rotate: 2deg;
+}
+
+.about-piece--cca .about-caption {
+	left: 78%;
+	top: 86%;
+}
+
+.about-piece--cca .about-caption::after {
+	left: 0;
+	top: -12px;
+	width: 1px;
+	height: 12px;
+	transform: rotate(-38deg);
+	transform-origin: bottom center;
+}
+
+/* Center the collage in the viewport's right half (divider to the right edge). */
 @media (width >= 1024px) {
 	body.about-page #about-right {
 		container-type: size;
-		width: calc(100% + 5vw);
-		margin-right: -5vw;
-	}
-
-	#about-portrait {
-		width: auto;
-		height: auto;
-		max-width: min(462px, 48.7cqi);
-		max-height: min(617px, 74cqb);
+		overflow: visible;
 	}
 }
 
 .about-link {
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	color: inherit;
 	text-decoration-line: underline;
-	text-decoration-color: var(--secondary-fade-color);
+	text-decoration-color: color-mix(in srgb, var(--secondary-accent-color) 55%, transparent);
 	text-decoration-thickness: 3px;
 	text-underline-offset: 3px;
 	text-decoration-skip-ink: none;
@@ -127,42 +255,6 @@ body.about-page #about-right {
 
 .about-link:hover {
 	text-decoration-color: var(--secondary-accent-color);
-}
-
-#link-preview {
-	position: relative;
-	flex-shrink: 0;
-	opacity: 0;
-	transform: translateY(8px);
-	transition: opacity 90ms ease-out, transform 90ms ease-out;
-	pointer-events: none;
-	align-self: flex-start;
-}
-
-#link-preview.is-visible {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-#link-preview[hidden] {
-	display: none;
-}
-
-@media (width >= 1024px) {
-	#link-preview {
-		position: absolute;
-		top: 0;
-		left: calc(100% + 1.5rem);
-	}
-}
-
-#link-preview-image {
-	display: block;
-	max-width: min(260px, 18vw);
-	max-height: 348px;
-	width: auto;
-	height: auto;
-	object-fit: contain;
 }
 
 #about-copyright {
@@ -197,25 +289,19 @@ body.about-page #about-right {
 	}
 
 	body.about-page #about-photo-cluster {
-		margin-top: 0;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
-	body.about-page #about-portrait {
-		width: min(462px, 100%);
-		max-height: none;
-	}
-
-	body.about-page #about-intro {
-		grid-template-columns: 1fr;
-		row-gap: 1rem;
+		width: min(92vw, 70vh);
+		margin-inline: auto;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.about-link,
-	#link-preview {
-		transition-duration: 0.01s;
+	.about-piece.is-shown .about-piece-media {
+		animation: none;
+		transform: rotate(var(--rest-rotate));
+	}
+
+	.about-piece.is-shown .about-caption {
+		animation: none;
+		opacity: 1;
 	}
 }
