@@ -1153,11 +1153,11 @@ body.cs-layout .cs-standard .case-study-section:has(.cs-block-image:last-child) 
 body.cs-layout .cs-standard .case-study-section:has(.cs-stagger-unit:last-child) + .case-study-section,
 body.cs-layout .cs-hero-cover.cs-standard #impact.case-study-section,
 body.cs-layout .cs-hero-cover.cs-standard #prototype.case-study-section,
-body.cs-layout .cs-hero-cover.cs-standard #application.case-study-section {
+body.cs-layout .cs-hero-cover.cs-standard #application.case-study-section,
+body.cs-layout .cs-hero-cover.cs-standard #process.case-study-section {
 	padding-top: var(--cs-prose-gap);
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #process.case-study-section,
 body.cs-layout .cs-hero-cover.cs-standard #explorations.case-study-section,
 body.cs-layout .cs-hero-cover.cs-standard #identity.case-study-section {
 	padding-top: 0;
