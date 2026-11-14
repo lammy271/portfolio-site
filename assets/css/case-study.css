@@ -1056,8 +1056,8 @@ body.cs-layout .cs-standard :is(.cs-pair, .cs-flush-pair, .cs-trio, .cs-flavor-g
 }
 
 body.cs-layout .cs-standard .cs-impact-intro .case-study-heading {
-	color: #000;
-	font-weight: 300;
+	color: #909090;
+	font-weight: 400;
 	line-height: 33px;
 	margin: 0;
 }
