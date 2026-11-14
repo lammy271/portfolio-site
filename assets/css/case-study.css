@@ -1158,29 +1158,31 @@ body.cs-layout .cs-hero-cover.cs-standard #identity.case-study-section {
 	padding-top: 0;
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #explorations .cs-column > .cs-impact-intro.cs-section-label:not(:has(.cs-impact-body)) {
-	margin-bottom: 0.5rem;
-}
-
-body.cs-layout .cs-hero-cover.cs-standard #explorations .cs-column > .cs-impact-intro.cs-section-label:first-child {
-	margin-top: 0;
-}
-
-body.cs-layout .cs-hero-cover.cs-standard #explorations .cs-block-image:has(+ .cs-lede) {
+body.cs-layout .cs-hero-cover.cs-standard #process .cs-block-image:has(+ .cs-impact-intro),
+body.cs-layout .cs-hero-cover.cs-standard #prototype .cs-trio:has(+ .cs-impact-intro) {
 	margin-bottom: 0;
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #explorations .cs-lede:has(+ .cs-block-image) {
+body.cs-layout .cs-hero-cover.cs-standard #process .cs-block-image + .cs-impact-intro,
+body.cs-layout .cs-hero-cover.cs-standard #prototype .cs-trio + .cs-impact-intro {
+	margin-top: var(--cs-prose-gap);
+}
+
+body.cs-layout .cs-hero-cover.cs-standard #overview .cs-block-image:has(+ .cs-lede) {
+	margin-bottom: 0;
+}
+
+body.cs-layout .cs-hero-cover.cs-standard #overview .cs-block-image + .cs-lede {
 	margin-top: 7.5rem;
 	margin-bottom: 7.5rem;
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #brand-symbol.case-study-section,
+body.cs-layout .cs-hero-cover.cs-standard #facade.case-study-section,
 body.cs-layout .cs-hero-cover.cs-standard #style-guide.case-study-section {
 	padding-top: 7.5rem;
 }
 
-body.cs-layout .cs-hero-cover.cs-standard #brand-symbol .cs-column > .cs-impact-intro.cs-section-label:first-child:not(:has(.cs-impact-body)),
+body.cs-layout .cs-hero-cover.cs-standard #facade .cs-column > .cs-impact-intro.cs-section-label:first-child:not(:has(.cs-impact-body)),
 body.cs-layout .cs-hero-cover.cs-standard #style-guide .cs-column > .cs-impact-intro.cs-section-label:first-child:not(:has(.cs-impact-body)) {
 	margin-top: 0;
 	margin-bottom: 0.5rem;
