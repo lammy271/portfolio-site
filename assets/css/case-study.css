@@ -936,7 +936,7 @@ body.cs-layout .cs-standard.case-study-layout {
 	--cs-cover-title-gap: 3rem;
 	--cs-title-nudge: 5px;
 	--cs-prose-gap: 80px;
-	--cs-prose-indent: 10vw;
+	--cs-prose-indent: 5vw;
 	--cs-section-label-gap-before: 7.5rem;
 	--cs-section-label-gap-after: 0.75rem;
 	--cs-hero-gutter: min(
@@ -1056,10 +1056,15 @@ body.cs-layout .cs-standard :is(.cs-pair, .cs-flush-pair, .cs-trio, .cs-flavor-g
 }
 
 body.cs-layout .cs-standard .cs-impact-intro .case-study-heading {
-	color: #909090;
+	color: #B1B1B1;
 	font-weight: 400;
-	line-height: 33px;
-	margin: 0;
+	line-height: 1.25;
+	margin: 0 0 1.5rem;
+	grid-column: 1 / -1;
+}
+
+body.cs-layout .cs-hero-cover.cs-standard .cs-impact-intro:has(.cs-impact-body) {
+	row-gap: 1.5rem;
 }
 
 body.cs-layout .cs-standard .cs-row-break {
@@ -1069,8 +1074,8 @@ body.cs-layout .cs-standard .cs-row-break {
 body.cs-layout .cs-standard .cs-impact-intro .cs-impact-body,
 body.cs-layout .cs-hero-cover.cs-standard .cs-impact-intro .cs-impact-body,
 body.cs-layout .cs-standard .cs-impact-body {
-	grid-column: auto;
-	grid-row: auto;
+	grid-column: 1 / -1;
+	grid-row: 2;
 	margin: 0 0 var(--cs-prose-gap);
 	padding-left: var(--cs-prose-indent);
 	line-height: 28px;
