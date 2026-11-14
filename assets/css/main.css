@@ -373,6 +373,10 @@ textarea:not([rows]) {
 	letter-spacing: 0;
 }
 
+.spc-xxxs {
+	letter-spacing: 3%;
+}
+
 .spc-xxs {
 	letter-spacing: 5%;
 }
