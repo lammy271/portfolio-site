@@ -1022,6 +1022,10 @@ body.cs-layout .cs-standard .case-study-toc {
 	gap: 0;
 }
 
+body.cs-layout .cs-standard .case-study-toc-actions {
+	margin-top: 2.75rem;
+}
+
 body.cs-layout .cs-standard .case-study-toc-link {
 	text-transform: none;
 	color: var(--muted-text-color);
