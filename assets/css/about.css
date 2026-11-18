@@ -73,7 +73,7 @@ body.about-page #about-left {
 
 #about-hello {
 	margin: 0;
-	font-size: 30px;
+	font-size: 1.875rem; /* 30px */
 	line-height: 1;
 }
 
@@ -99,7 +99,7 @@ body.about-page #about-left {
 
 #about-bio p {
 	margin: 0;
-	line-height: 34px;
+	line-height: 2.125rem; /* 34px */
 	text-align: left;
 	max-width: none;
 }

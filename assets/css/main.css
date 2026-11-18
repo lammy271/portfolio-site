@@ -353,20 +353,35 @@ textarea:not([rows]) {
 
 /*** Styles ***/
 
-/* mobile sizes (default) */
-.txt-xs { font-size: 8px; }
-.txt-sm { font-size: 12px; }
-.txt-md { font-size: 18px; }
-.txt-lg { font-size: 24px; }
-.txt-xl { font-size: 36px; }
+/* Type scale, in rem so it follows the root size.
+   Phone sizes assume a 16px root. Desktop sizes match the current
+   1080p / 1440p composition at a 16px root, and shrink with it on laptops. */
+.txt-xs { font-size: 0.5rem; }    /* 8px */
+.txt-sm { font-size: 0.75rem; }   /* 12px */
+.txt-md { font-size: 1.125rem; }  /* 18px */
+.txt-lg { font-size: 1.5rem; }    /* 24px */
+.txt-xl { font-size: 2.25rem; }   /* 36px */
 
-/* desktop sizes */
+/* 1920px wide and up (1080p, 1440p) stays at the browser default, so
+   those compositions hold. Narrower laptops, including a MacBook,
+   scale down with the width and stop at 13px. Height is left out on
+   purpose: a maximized 1080p window is shorter than 1080px once the
+   browser chrome is subtracted, and that should not shrink the type. */
 @media (width >= 1024px) {
-	.txt-xs { font-size: 10px; }
-	.txt-sm { font-size: 12px; }
-	.txt-md { font-size: 18px; }
-	.txt-lg { font-size: 45px; }
-	.txt-xl { font-size: 45px; }
+	html {
+		font-size: clamp(0.8125rem, 0.833vw, 1rem);
+	}
+
+	.txt-xs { font-size: 0.625rem; }   /* 10px */
+	.txt-sm { font-size: 0.75rem; }    /* 12px */
+	.txt-md { font-size: 1.125rem; }   /* 18px */
+	.txt-lg { font-size: 2.8125rem; }  /* 45px */
+	.txt-xl { font-size: 2.8125rem; }  /* 45px */
+
+	#monogram {
+		height: 6.25rem; /* 100px */
+		width: auto;
+	}
 }
 
 .spc-no {
@@ -498,17 +513,17 @@ body {
 }
 
 #name {
-	font-size: 45px;
+	font-size: 2.8125rem; /* 45px */
 	letter-spacing: 8%;
-	line-height: 37px;
+	line-height: 2.3125rem; /* 37px */
 }
 
 #name-subtext {
-	margin-top: 7px;
-	margin-right: 7px;
-	font-size: 20px;
+	margin-top: 0.4375rem;
+	margin-right: 0.4375rem;
+	font-size: 1.25rem; /* 20px */
 	letter-spacing: 4%;
-	line-height: 18px;
+	line-height: 1.125rem; /* 18px */
 }
 
 #downloads {
@@ -771,7 +786,7 @@ body.layout-fixed {
 #case-study-menu-header,
 #about-section-header {
 	width: 100%;
-	height: 60px;
+	height: 3.75rem; /* 60px */
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -809,7 +824,7 @@ body.layout-fixed footer {
 body.layout-fixed #content {
 	min-height: 0;
 	overflow: hidden;
-	padding-top: 50px;
+	padding-top: 3.125rem; /* 50px */
 	padding-bottom: 0;
 	grid-template-rows: minmax(0, 1fr);
 }
@@ -825,7 +840,7 @@ body.layout-fixed #main-section {
 
 body.layout-fixed #main-section-header {
 	flex-shrink: 0;
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem; /* 20px */
 }
 
 #center-divider {
@@ -859,8 +874,8 @@ body.layout-fixed #main-section-header {
 	padding-right: 5rem;
 	padding-bottom: 1.25rem;
 	max-width: calc(50vw - 6rem);
-	font-size: 18px;
-	line-height: 20px;
+	font-size: 1.125rem; /* 18px */
+	line-height: 1.25rem; /* 20px */
 	letter-spacing: 0.05em;
 }
 
@@ -919,8 +934,8 @@ footer {
 }
 
 #asterisk-icon {
-	height: 39px;
-	width: 33px;
+	height: 2.4375rem; /* 39px */
+	width: 2.0625rem; /* 33px */
 	flex-shrink: 0;
 }
 
@@ -960,6 +975,11 @@ footer {
 .icon-link:focus-visible .popup-text {
 	visibility: visible;
 	opacity: 1;
+}
+
+#links .icon-link svg {
+	width: 3.125rem; /* 50px */
+	height: 3.125rem;
 }
 
 #links .icon-link .popup-text {

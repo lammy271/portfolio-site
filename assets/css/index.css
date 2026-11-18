@@ -18,7 +18,7 @@
 	font-family: "Hogisogi Regular", Arial, sans-serif;
 	font-weight: 400;
 	color: var(--main-text-color);
-	font-size: 18px;
+	font-size: 1.125rem; /* 18px */
 	letter-spacing: 10%;
 }
 .case-study-menu-item:hover > .case-study-menu-option,
@@ -31,7 +31,7 @@
 .case-study-menu-item .number {
 	font-family: "Hogisogi Black", Arial, sans-serif;
 	font-weight: 900;
-	font-size: 18px;
+	font-size: 1.125rem; /* 18px */
 	color: var(--secondary-accent-color);
 }
 .case-study-menu-item:hover > .number,
@@ -46,7 +46,7 @@
 	min-height: 0;
 	align-items: flex-start;
 	justify-content: flex-start;
-	gap: calc(6% - 18px);
+	gap: max(0.75rem, calc(6% - 1.125rem));
 	width: 100%;
 	margin-top: 1rem;
 	padding-bottom: 22px;
@@ -115,12 +115,12 @@
 	gap: 1rem;
 	width: 100%;
 	/* Same scale as .txt-xl so 1em arrow matches title size */
-	font-size: 36px;
+	font-size: 2.25rem; /* 36px */
 }
 
 @media (width >= 1024px) {
 	.case-study-title-row {
-		font-size: 45px;
+		font-size: 2.8125rem; /* 45px */
 	}
 }
 
@@ -209,7 +209,7 @@
 
 @media (width >= 1024px) {
 	#case-study-menu {
-		--index-first-row-offset: calc(60px + var(--case-study-menu-header-gap) + 0.5rem);
+		--index-first-row-offset: calc(3.75rem + var(--case-study-menu-header-gap) + 0.5rem);
 	}
 
 	#main-section {
@@ -246,8 +246,8 @@
 	padding-right: 5rem;
 	padding-bottom: 1.25rem;
 	max-width: calc(50vw - 6rem);
-	font-size: 18px;
-	line-height: 20px;
+	font-size: 1.125rem; /* 18px */
+	line-height: 1.25rem; /* 20px */
 	letter-spacing: 0.05em;
 }
 
@@ -412,8 +412,8 @@ a.case-study-card {
 
 .case-study-row--top .case-study-image-wrapper {
 	flex: 1;
-	height: clamp(220px, 28vw, 464px);
-	min-height: 220px;
+	height: clamp(11rem, 28vw, 29rem);
+	min-height: 11rem;
 }
 
 .case-study-lower .case-study-card--onthehill .case-study-image-wrapper,
