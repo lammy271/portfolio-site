@@ -362,14 +362,12 @@ textarea:not([rows]) {
 .txt-lg { font-size: 1.5rem; }    /* 24px */
 .txt-xl { font-size: 2.25rem; }   /* 36px */
 
-/* 1920px wide and up (1080p, 1440p) stays at the browser default, so
-   those compositions hold. Narrower laptops, including a MacBook,
-   scale down with the width and stop at 13px. Height is left out on
-   purpose: a maximized 1080p window is shorter than 1080px once the
-   browser chrome is subtracted, and that should not shrink the type. */
+/* 1920px wide and up (1080p, 1440p) stays at the browser default.
+   Below that the size falls faster than the viewport, down to 11px,
+   so a short MacBook keeps the landing thumbnails inside the frame. */
 @media (width >= 1024px) {
 	html {
-		font-size: clamp(0.8125rem, 0.833vw, 1rem);
+		font-size: clamp(0.6875rem, calc(1.042vw - 0.25rem), 1rem);
 	}
 
 	.txt-xs { font-size: 0.625rem; }   /* 10px */
