@@ -1573,3 +1573,375 @@ html.cs-lightbox-open .case-study-toc {
 		display: none !important;
 	}
 }
+
+/* Shared Figma intro + end matter (4!33, Purutan) */
+body.cs-case-refresh.cs-layout .cs-standard.case-study-layout {
+	padding-top: 5.75rem;
+}
+
+body.cs-case-refresh #overview .cs-hero-head {
+	align-items: baseline;
+	margin: 0 0 0.5rem;
+}
+
+body.cs-case-refresh #overview .cs-hero-head .case-study-heading {
+	margin: 0;
+	top: 0;
+	color: #000;
+}
+
+body.cs-case-refresh #overview .cs-year {
+	margin: 0;
+	flex-shrink: 0;
+	line-height: 1;
+}
+
+body.cs-case-refresh #overview .case-study-cover {
+	margin: 0 0 2.25rem;
+}
+
+body.cs-case-refresh .cs-project-meta {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	column-gap: 1.5rem;
+	row-gap: 1.5rem;
+	margin: 0 0 4.75rem;
+	align-items: start;
+}
+
+body.taphouse-page .cs-project-meta {
+	grid-template-columns: 1fr 1fr 1fr 1fr auto;
+}
+
+body.taphouse-page .cs-project-meta-item--mentor {
+	justify-self: end;
+	width: max-content;
+	max-width: 8.5rem;
+}
+
+body.cs-case-refresh .cs-project-meta-item {
+	min-width: 0;
+}
+
+body.cs-case-refresh .cs-project-meta dt,
+body.cs-case-refresh .cs-project-meta dd {
+	margin: 0;
+	line-height: 1.45;
+	color: #000;
+}
+
+body.cs-case-refresh .cs-project-meta dt {
+	margin-bottom: 0.85rem;
+}
+
+body.cs-case-refresh .cs-pdf-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 6.25rem; /* 100px */
+	padding: 0.65em 0;
+	border: 1.5px solid #A288E3;
+	border-radius: 25px;
+	color: #A288E3;
+	text-decoration: none;
+	line-height: 1.2;
+}
+
+body.cs-case-refresh .cs-pdf-btn:hover,
+body.cs-case-refresh .cs-pdf-btn:focus-visible {
+	background: color-mix(in srgb, #A288E3 12%, white);
+}
+
+body.cs-case-refresh .cs-overview-block {
+	position: relative;
+	margin: 0 0 var(--cs-prose-gap);
+}
+
+body.cs-case-refresh .cs-overview-block .case-study-heading {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
+	color: var(--main-text-color);
+	line-height: 1.25;
+	white-space: nowrap;
+}
+
+body.cs-case-refresh .cs-overview-block .cs-lede,
+body.cs-case-refresh.cs-layout .cs-hero-cover.cs-standard .cs-overview-block .cs-lede {
+	margin: 0;
+	padding-left: max(var(--cs-prose-indent), 8.75rem);
+}
+
+body.cs-case-refresh.cs-layout .cs-standard .cs-impact-intro .case-study-heading,
+body.cs-case-refresh.cs-layout .cs-hero-cover.cs-standard .cs-impact-intro .case-study-heading {
+	color: var(--main-text-color);
+}
+
+@media (width < 1024px) {
+	body.cs-case-refresh.cs-layout .cs-standard.case-study-layout {
+		padding-top: 2.5rem;
+	}
+
+	body.cs-case-refresh.cs-layout .cs-standard #overview .cs-hero-head {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+
+	body.cs-case-refresh .cs-project-meta {
+		grid-template-columns: 1fr max-content;
+		grid-template-areas:
+			"process tools"
+			"duration mentor"
+			"role .";
+		column-gap: 1.75rem;
+		row-gap: 2rem;
+		align-items: start;
+		margin-bottom: 3.25rem;
+	}
+
+	body.cs-case-refresh .cs-project-meta-item--process { grid-area: process; }
+	body.cs-case-refresh .cs-project-meta-item--tools {
+		grid-area: tools;
+		justify-self: stretch;
+		width: auto;
+		max-width: none;
+	}
+	body.cs-case-refresh .cs-project-meta-item--duration { grid-area: duration; }
+	body.cs-case-refresh .cs-project-meta-item--mentor {
+		grid-area: mentor;
+		justify-self: stretch;
+		width: auto;
+		max-width: none;
+	}
+	body.cs-case-refresh .cs-project-meta-item--role { grid-area: role; }
+
+	body.cs-case-refresh .cs-overview-block {
+		margin-bottom: 3rem;
+	}
+
+	body.cs-case-refresh .cs-overview-block .case-study-heading {
+		position: static;
+		display: block;
+	}
+
+	body.cs-case-refresh .cs-overview-block .cs-lede,
+	body.cs-case-refresh.cs-layout .cs-hero-cover.cs-standard .cs-overview-block .cs-lede {
+		padding-left: 0;
+		margin-top: 1.5rem;
+	}
+}
+
+body.cs-case-refresh footer {
+	display: none;
+}
+
+body.cs-case-refresh .cs-end {
+	width: 100%;
+	margin-top: 3rem;
+}
+
+body.cs-case-refresh .cs-end-rule {
+	height: 1px;
+	margin-inline: 1.5rem;
+	background-image: linear-gradient(
+		to right,
+		var(--secondary-accent-color) 4px,
+		transparent 4px
+	);
+	background-size: 8px 1px;
+	background-repeat: repeat-x;
+	background-position: center;
+}
+
+body.cs-case-refresh .cs-end-inner {
+	padding: 1.75rem 1.5rem 5rem;
+}
+
+body.cs-case-refresh .cs-end-projects {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.85rem 3.5rem;
+	margin-bottom: 2.75rem;
+}
+
+body.cs-case-refresh .cs-end-projects-label {
+	margin: 0;
+	color: #000;
+}
+
+body.cs-case-refresh .cs-end-project-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+}
+
+body.cs-case-refresh .cs-end-project-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 0.65em 1.1em;
+	border-radius: 25px;
+	background: #A288E3;
+	color: #fff;
+	text-decoration: none;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+body.cs-case-refresh .cs-end-project-btn:hover,
+body.cs-case-refresh .cs-end-project-btn:focus-visible {
+	background: color-mix(in srgb, #A288E3 82%, black);
+}
+
+body.cs-case-refresh .cs-end-mark {
+	margin: 0 0 1.35rem;
+	color: #000;
+}
+
+body.cs-case-refresh .cs-end-chat,
+body.cs-case-refresh .cs-end-files {
+	margin: 0;
+	color: var(--main-text-color);
+	line-height: 1.45;
+}
+
+body.cs-case-refresh .cs-end-files {
+	margin-top: 0.15rem;
+}
+
+body.cs-case-refresh .cs-end-contact-row {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	margin-top: 0.55rem;
+}
+
+body.cs-case-refresh .cs-end-icon {
+	display: block;
+	flex-shrink: 0;
+	width: 32px;
+	height: 32px;
+	color: #b1b1b1;
+	line-height: 0;
+	text-decoration: none;
+}
+
+body.cs-case-refresh .cs-end-icon svg {
+	display: block;
+	width: 32px;
+	height: 32px;
+	fill: currentColor;
+}
+
+body.cs-case-refresh .cs-end-icon--portfolio {
+	width: 32px;
+	height: 32px;
+}
+
+body.cs-case-refresh .cs-end-icon--portfolio svg {
+	width: 32px;
+	height: 32px;
+	fill: none;
+	stroke: currentColor;
+}
+
+body.cs-case-refresh .cs-end-icon--linkedin {
+	width: 28px;
+	height: 28px;
+	margin-left: 0.22rem;
+}
+
+body.cs-case-refresh .cs-end-icon--linkedin svg {
+	width: 28px;
+	height: 28px;
+	fill: none;
+	stroke: currentColor;
+}
+
+body.cs-case-refresh .cs-end-icon:hover,
+body.cs-case-refresh .cs-end-icon:focus-visible {
+	color: var(--main-accent-color);
+}
+
+body.cs-case-refresh .cs-end-icon-captions {
+	position: relative;
+	min-width: 7rem;
+	height: 1em;
+}
+
+body.cs-case-refresh .cs-end-icon-caption {
+	position: absolute;
+	left: 0;
+	top: 96%;
+	margin: 0;
+	color: var(--main-accent-color);
+	line-height: 1;
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateY(calc(-50% + 0.45em));
+	pointer-events: none;
+	transition: opacity 80ms ease-out, transform 80ms ease-out;
+}
+
+body.cs-case-refresh .cs-end-contact-row:has(.cs-end-icon[aria-label="resume"]:hover) .cs-end-icon-caption[data-for="resume"],
+body.cs-case-refresh .cs-end-contact-row:has(.cs-end-icon[aria-label="resume"]:focus-visible) .cs-end-icon-caption[data-for="resume"],
+body.cs-case-refresh .cs-end-contact-row:has(.cs-end-icon[aria-label="portfolio"]:hover) .cs-end-icon-caption[data-for="portfolio"],
+body.cs-case-refresh .cs-end-contact-row:has(.cs-end-icon[aria-label="portfolio"]:focus-visible) .cs-end-icon-caption[data-for="portfolio"],
+body.cs-case-refresh .cs-end-contact-row:has(.cs-end-icon[aria-label="linkedin"]:hover) .cs-end-icon-caption[data-for="linkedin"],
+body.cs-case-refresh .cs-end-contact-row:has(.cs-end-icon[aria-label="linkedin"]:focus-visible) .cs-end-icon-caption[data-for="linkedin"] {
+	opacity: 1;
+	transform: translateY(-50%);
+}
+
+body.cs-case-refresh .cs-end-chat a,
+body.cs-case-refresh .cs-end-files a {
+	color: var(--main-accent-color);
+	text-decoration: none;
+}
+
+body.cs-case-refresh .cs-end-chat a:hover,
+body.cs-case-refresh .cs-end-files a:hover,
+body.cs-case-refresh .cs-end-chat a:focus-visible,
+body.cs-case-refresh .cs-end-files a:focus-visible {
+	text-decoration: underline;
+}
+
+body.cs-case-refresh .cs-end-bar {
+	height: 1.15rem;
+	background: var(--secondary-bg-color);
+}
+
+@media (width >= 1024px) {
+	body.cs-case-refresh .cs-end-rule {
+		margin-inline: 4vw;
+	}
+
+	body.cs-case-refresh .cs-end-inner {
+		padding: 2.25rem 4vw 6.5rem;
+	}
+}
+
+@media (width < 1024px) {
+	body.cs-case-refresh .cs-end-projects {
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.85rem 1rem;
+	}
+
+	body.cs-case-refresh .cs-end-project-links {
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	body.cs-case-refresh .cs-end-files {
+		display: none;
+	}
+}
