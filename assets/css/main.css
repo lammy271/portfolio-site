@@ -978,6 +978,13 @@ footer {
 #links .icon-link svg {
 	width: 3.125rem; /* 50px */
 	height: 3.125rem;
+	color: var(--main-accent-color);
+	fill: currentColor;
+	display: block;
+}
+
+#links .icon-link svg.icon-linkedin path {
+	stroke: none;
 }
 
 #links .icon-link .popup-text {

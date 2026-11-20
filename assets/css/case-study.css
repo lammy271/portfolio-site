@@ -442,6 +442,14 @@ body.case-study-page #copyright {
 	body.cs-layout .cs-notes-link {
 		transition: none;
 	}
+
+	body.cs-case-refresh .cs-pdf-btn {
+		transition: none;
+	}
+
+	body.cs-layout .case-study-toc.is-end {
+		transition: none;
+	}
 }
 
 /* Shared case study desktop layout */
@@ -813,6 +821,23 @@ body.cs-layout .cs-hero-cover .case-study-toc {
 	backdrop-filter: none;
 	-webkit-backdrop-filter: none;
 	border-radius: 0;
+}
+
+@media (width >= 1024px) {
+	body.cs-layout .case-study-toc.is-end,
+	body.cs-layout .cs-hero-cover .case-study-toc.is-end,
+	body.cs-layout .cs-standard .case-study-toc.is-end {
+		position: fixed !important;
+		top: 50%;
+		left: var(--case-study-page-margin);
+		right: auto;
+		margin-top: 0 !important;
+		margin-left: 0 !important;
+		transform: translateY(-50%);
+		justify-self: start;
+		align-self: auto;
+		z-index: 20;
+	}
 }
 
 body.cs-layout .cs-hero-cover .case-study-article {
@@ -1619,6 +1644,18 @@ body.cs-case-refresh .cs-project-meta-item {
 	min-width: 0;
 }
 
+body.cs-case-refresh .cs-project-meta-item--process {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: max-content;
+}
+
+body.cs-case-refresh .cs-project-meta-item--process dt,
+body.cs-case-refresh .cs-project-meta-item--process dd {
+	text-align: center;
+}
+
 body.cs-case-refresh .cs-project-meta dt,
 body.cs-case-refresh .cs-project-meta dd {
 	margin: 0;
@@ -1635,18 +1672,28 @@ body.cs-case-refresh .cs-pdf-btn {
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	width: 6.25rem; /* 100px */
-	padding: 0.65em 0;
-	border: 1.5px solid #A288E3;
+	width: 4.375rem; /* 70px */
+	height: 1.875rem; /* 30px */
+	padding: 0;
+	border: none;
 	border-radius: 25px;
-	color: #A288E3;
+	background: #A288E3;
+	color: #fff;
+	letter-spacing: 0.05em;
 	text-decoration: none;
-	line-height: 1.2;
+	line-height: 1;
+	box-shadow: -0.1875rem 0.1875rem 0 0.0625rem rgb(0 0 0 / 60%);
+	transition: transform 80ms ease-out, box-shadow 80ms ease-out;
 }
 
 body.cs-case-refresh .cs-pdf-btn:hover,
 body.cs-case-refresh .cs-pdf-btn:focus-visible {
-	background: color-mix(in srgb, #A288E3 12%, white);
+	background: color-mix(in srgb, #A288E3 82%, black);
+}
+
+body.cs-case-refresh .cs-pdf-btn:active {
+	transform: translate(-0.1875rem, 0.1875rem);
+	box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 60%);
 }
 
 body.cs-case-refresh .cs-overview-block {
@@ -1758,13 +1805,20 @@ body.cs-case-refresh .cs-end-inner {
 	padding: 1.75rem 1.5rem 5rem;
 }
 
+body.cs-case-refresh .cs-end-projects,
+body.cs-case-refresh .cs-end-mark,
+body.cs-case-refresh .cs-end-chat,
+body.cs-case-refresh .cs-end-contact-row {
+	width: min(100%, 33.625rem);
+}
+
 body.cs-case-refresh .cs-end-projects {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: flex-start;
-	gap: 0.85rem 3.5rem;
-	margin-bottom: 2.75rem;
+	justify-content: space-between;
+	gap: 0.85rem 1rem;
+	margin-bottom: 6.5rem;
 }
 
 body.cs-case-refresh .cs-end-projects-label {
@@ -1775,7 +1829,7 @@ body.cs-case-refresh .cs-end-projects-label {
 body.cs-case-refresh .cs-end-project-links {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.65rem;
+	gap: 1.15rem;
 }
 
 body.cs-case-refresh .cs-end-project-btn {
@@ -1783,12 +1837,14 @@ body.cs-case-refresh .cs-end-project-btn {
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	padding: 0.65em 1.1em;
+	width: 8.75rem;
+	height: 2.5rem;
+	padding: 0 0.75rem;
 	border-radius: 25px;
 	background: #A288E3;
 	color: #fff;
 	text-decoration: none;
-	line-height: 1.2;
+	line-height: 1;
 	white-space: nowrap;
 }
 
@@ -1799,7 +1855,7 @@ body.cs-case-refresh .cs-end-project-btn:focus-visible {
 
 body.cs-case-refresh .cs-end-mark {
 	margin: 0 0 1.35rem;
-	color: #000;
+	color: var(--secondary-accent-color);
 }
 
 body.cs-case-refresh .cs-end-chat,
@@ -1817,49 +1873,24 @@ body.cs-case-refresh .cs-end-contact-row {
 	display: flex;
 	align-items: center;
 	gap: 1.25rem;
-	margin-top: 0.55rem;
+	margin-top: 1.75rem;
 }
 
 body.cs-case-refresh .cs-end-icon {
 	display: block;
 	flex-shrink: 0;
-	width: 32px;
-	height: 32px;
-	color: #b1b1b1;
+	width: 2rem;
+	height: 2rem;
+	color: var(--main-accent-color);
 	line-height: 0;
 	text-decoration: none;
 }
 
 body.cs-case-refresh .cs-end-icon svg {
 	display: block;
-	width: 32px;
-	height: 32px;
+	width: 2rem;
+	height: 2rem;
 	fill: currentColor;
-}
-
-body.cs-case-refresh .cs-end-icon--portfolio {
-	width: 32px;
-	height: 32px;
-}
-
-body.cs-case-refresh .cs-end-icon--portfolio svg {
-	width: 32px;
-	height: 32px;
-	fill: none;
-	stroke: currentColor;
-}
-
-body.cs-case-refresh .cs-end-icon--linkedin {
-	width: 28px;
-	height: 28px;
-	margin-left: 0.22rem;
-}
-
-body.cs-case-refresh .cs-end-icon--linkedin svg {
-	width: 28px;
-	height: 28px;
-	fill: none;
-	stroke: currentColor;
 }
 
 body.cs-case-refresh .cs-end-icon:hover,
@@ -1911,8 +1942,7 @@ body.cs-case-refresh .cs-end-files a:focus-visible {
 }
 
 body.cs-case-refresh .cs-end-bar {
-	height: 1.15rem;
-	background: var(--secondary-bg-color);
+	display: none;
 }
 
 @media (width >= 1024px) {
@@ -1928,8 +1958,6 @@ body.cs-case-refresh .cs-end-bar {
 @media (width < 1024px) {
 	body.cs-case-refresh .cs-end-projects {
 		align-items: flex-start;
-		justify-content: space-between;
-		gap: 0.85rem 1rem;
 	}
 
 	body.cs-case-refresh .cs-end-project-links {

@@ -37,6 +37,101 @@
 		setActive(active.link);
 	}
 
+	var desktopMq = window.matchMedia('(min-width: 1024px)');
+	var atEnd = false;
+	var END_ON = 80;
+	var END_OFF = 220;
+	var endMatter = document.querySelector('.cs-end');
+	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	var tocMoveTimer = 0;
+
+	function distanceFromBottom() {
+		var el = document.scrollingElement || document.documentElement;
+		return el.scrollHeight - el.scrollTop - el.clientHeight;
+	}
+
+	function clearTocMove() {
+		if (tocMoveTimer) {
+			window.clearTimeout(tocMoveTimer);
+			tocMoveTimer = 0;
+		}
+		toc.style.transition = '';
+		toc.style.transform = '';
+	}
+
+	function playTocMove(applyState) {
+		clearTocMove();
+		if (reduceMotion.matches) {
+			applyState();
+			return;
+		}
+
+		var from = toc.getBoundingClientRect();
+		applyState();
+		var to = toc.getBoundingClientRect();
+		var dy = from.top - to.top;
+		if (Math.abs(dy) < 1) {
+			clearTocMove();
+			return;
+		}
+
+		toc.style.transition = 'none';
+		toc.style.transform = atEnd
+			? 'translateY(calc(-50% + ' + dy + 'px))'
+			: 'translateY(' + dy + 'px)';
+
+		window.requestAnimationFrame(function () {
+			window.requestAnimationFrame(function () {
+				toc.style.transition = 'transform 250ms ease-in-out';
+				toc.style.transform = '';
+				tocMoveTimer = window.setTimeout(clearTocMove, 300);
+			});
+		});
+	}
+
+	function dockToc() {
+		if (atEnd || !desktopMq.matches) return;
+		playTocMove(function () {
+			atEnd = true;
+			toc.classList.add('is-end');
+		});
+	}
+
+	function undockToc() {
+		if (!atEnd) return;
+		playTocMove(function () {
+			atEnd = false;
+			toc.classList.remove('is-end');
+		});
+	}
+
+	function updateTocEnd() {
+		if (!desktopMq.matches) {
+			undockToc();
+			return;
+		}
+		if (endMatter) return;
+
+		var dist = distanceFromBottom();
+		if (!atEnd && dist <= END_ON) dockToc();
+		else if (atEnd && dist > END_OFF) undockToc();
+	}
+
+	if (endMatter && typeof IntersectionObserver === 'function') {
+		var endObserver = new IntersectionObserver(function (entries) {
+			if (!desktopMq.matches) {
+				undockToc();
+				return;
+			}
+			if (entries[0].isIntersecting) dockToc();
+			else undockToc();
+		}, {
+			threshold: 0,
+			rootMargin: '0px 0px -8% 0px'
+		});
+		endObserver.observe(endMatter);
+	}
+
 	var ticking = false;
 	function onScrollOrResize() {
 		if (ticking) return;
@@ -44,6 +139,7 @@
 		window.requestAnimationFrame(function () {
 			ticking = false;
 			updateActive();
+			updateTocEnd();
 		});
 	}
 
@@ -72,6 +168,7 @@
 	});
 
 	updateActive();
+	updateTocEnd();
 })();
 
 (function () {
