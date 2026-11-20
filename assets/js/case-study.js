@@ -38,70 +38,114 @@
 	}
 
 	var desktopMq = window.matchMedia('(min-width: 1024px)');
-	var atEnd = false;
+	var phase = 'idle';
 	var END_ON = 80;
 	var END_OFF = 220;
 	var endMatter = document.querySelector('.cs-end');
+	var article = document.querySelector('.case-study-article');
 	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-	var tocMoveTimer = 0;
+	var animRaf = 0;
+	var homeNudgeTimer = 0;
+
+	function clearHomeNudge() {
+		if (homeNudgeTimer) {
+			window.clearTimeout(homeNudgeTimer);
+			homeNudgeTimer = 0;
+		}
+		toc.classList.remove('is-home-nudge');
+	}
+
+	function scheduleHomeNudge() {
+		if (homeNudgeTimer || toc.classList.contains('is-home-nudge')) return;
+		homeNudgeTimer = window.setTimeout(function () {
+			homeNudgeTimer = 0;
+			if (phase === 'docked' || phase === 'docking') {
+				toc.classList.add('is-home-nudge');
+			}
+		}, 1000);
+	}
 
 	function distanceFromBottom() {
 		var el = document.scrollingElement || document.documentElement;
 		return el.scrollHeight - el.scrollTop - el.clientHeight;
 	}
 
-	function clearTocMove() {
-		if (tocMoveTimer) {
-			window.clearTimeout(tocMoveTimer);
-			tocMoveTimer = 0;
-		}
-		toc.style.transition = '';
-		toc.style.transform = '';
+	function articleProperBottom() {
+		if (!article) return window.innerHeight * 0.45;
+		var last = article.querySelector('.case-study-section:last-of-type .cs-column > :last-child');
+		if (!last) last = article;
+		return last.getBoundingClientRect().bottom;
 	}
 
-	function playTocMove(applyState) {
-		clearTocMove();
-		if (reduceMotion.matches) {
-			applyState();
-			return;
+	function dockedTargetTop() {
+		var top = articleProperBottom() - toc.offsetHeight;
+		var minTop = 32 + window.innerHeight * 0.05;
+		var maxTop = window.innerHeight - toc.offsetHeight - 16;
+		return Math.max(minTop, Math.min(maxTop, top));
+	}
+
+	function easeInOut(t) {
+		return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+	}
+
+	function cancelAnim() {
+		if (animRaf) {
+			window.cancelAnimationFrame(animRaf);
+			animRaf = 0;
 		}
+	}
 
-		var from = toc.getBoundingClientRect();
-		applyState();
-		var to = toc.getBoundingClientRect();
-		var dy = from.top - to.top;
-		if (Math.abs(dy) < 1) {
-			clearTocMove();
-			return;
+	function runAnim(step) {
+		cancelAnim();
+		var start = performance.now();
+		var duration = reduceMotion.matches ? 0 : 250;
+		function frame(now) {
+			animRaf = 0;
+			var t = duration === 0 ? 1 : Math.min(1, (now - start) / duration);
+			step(easeInOut(t), t >= 1);
+			if (t < 1) animRaf = window.requestAnimationFrame(frame);
 		}
+		animRaf = window.requestAnimationFrame(frame);
+	}
 
-		toc.style.transition = 'none';
-		toc.style.transform = atEnd
-			? 'translateY(calc(-50% + ' + dy + 'px))'
-			: 'translateY(' + dy + 'px)';
-
-		window.requestAnimationFrame(function () {
-			window.requestAnimationFrame(function () {
-				toc.style.transition = 'transform 250ms ease-in-out';
-				toc.style.transform = '';
-				tocMoveTimer = window.setTimeout(clearTocMove, 300);
-			});
-		});
+	function placeDockedToc() {
+		if (phase !== 'docked') return;
+		toc.style.top = dockedTargetTop() + 'px';
 	}
 
 	function dockToc() {
-		if (atEnd || !desktopMq.matches) return;
-		playTocMove(function () {
-			atEnd = true;
-			toc.classList.add('is-end');
+		if (phase === 'docked' || phase === 'docking' || !desktopMq.matches) return;
+		var from = toc.getBoundingClientRect().top;
+		phase = 'docking';
+		toc.classList.add('is-end');
+		toc.style.top = from + 'px';
+		runAnim(function (k, done) {
+			if (phase !== 'docking') return;
+			toc.style.top = from + (dockedTargetTop() - from) * k + 'px';
+			if (done) phase = 'docked';
 		});
+		scheduleHomeNudge();
 	}
 
 	function undockToc() {
-		if (!atEnd) return;
-		playTocMove(function () {
-			atEnd = false;
-			toc.classList.remove('is-end');
+		if (phase === 'idle' || phase === 'undocking') return;
+		clearHomeNudge();
+		cancelAnim();
+		var from = toc.getBoundingClientRect().top;
+		phase = 'undocking';
+		toc.classList.remove('is-end');
+		toc.style.top = '';
+		var to = toc.getBoundingClientRect().top;
+		toc.classList.add('is-end');
+		toc.style.top = from + 'px';
+		runAnim(function (k, done) {
+			if (phase !== 'undocking') return;
+			toc.style.top = from + (to - from) * k + 'px';
+			if (done) {
+				phase = 'idle';
+				toc.classList.remove('is-end');
+				toc.style.top = '';
+			}
 		});
 	}
 
@@ -113,8 +157,8 @@
 		if (endMatter) return;
 
 		var dist = distanceFromBottom();
-		if (!atEnd && dist <= END_ON) dockToc();
-		else if (atEnd && dist > END_OFF) undockToc();
+		if (phase === 'idle' && dist <= END_ON) dockToc();
+		else if ((phase === 'docked' || phase === 'docking') && dist > END_OFF) undockToc();
 	}
 
 	if (endMatter && typeof IntersectionObserver === 'function') {
@@ -140,6 +184,7 @@
 			ticking = false;
 			updateActive();
 			updateTocEnd();
+			if (phase === 'docked') placeDockedToc();
 		});
 	}
 
@@ -288,4 +333,24 @@
 	window.addEventListener('resize', function () {
 		if (!isDesktop()) close();
 	});
+})();
+
+(function () {
+	var row = document.querySelector('.cs-end-project-links');
+	if (!row) return;
+
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		row.classList.add('is-in');
+		return;
+	}
+
+	var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (entry) {
+			if (!entry.isIntersecting) return;
+			entry.target.classList.add('is-in');
+			io.unobserve(entry.target);
+		});
+	}, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+
+	io.observe(row);
 })();
