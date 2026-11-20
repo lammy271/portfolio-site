@@ -62,7 +62,7 @@
 			if (phase === 'docked' || phase === 'docking') {
 				toc.classList.add('is-home-nudge');
 			}
-		}, 1000);
+		}, 1500);
 	}
 
 	function distanceFromBottom() {
@@ -347,8 +347,10 @@
 	var io = new IntersectionObserver(function (entries) {
 		entries.forEach(function (entry) {
 			if (!entry.isIntersecting) return;
-			entry.target.classList.add('is-in');
 			io.unobserve(entry.target);
+			window.setTimeout(function () {
+				entry.target.classList.add('is-in');
+			}, 500);
 		});
 	}, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
 

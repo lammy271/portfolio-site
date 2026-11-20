@@ -1914,7 +1914,7 @@ body.cs-case-refresh .cs-end-project-btn {
 }
 
 body.cs-case-refresh .cs-end-project-links.is-in .cs-end-project-btn:nth-child(2) {
-	transition-delay: 0.38s;
+	transition-delay: 0.38s, 0.38s, 0s, 0s;
 }
 
 body.cs-case-refresh .cs-end-project-links.is-in .cs-end-project-btn {
@@ -1925,6 +1925,7 @@ body.cs-case-refresh .cs-end-project-links.is-in .cs-end-project-btn {
 body.cs-case-refresh .cs-end-project-btn:hover,
 body.cs-case-refresh .cs-end-project-btn:focus-visible {
 	background: color-mix(in srgb, #A288E3 82%, black);
+	transition-delay: 0s, 0s, 0s, 0s;
 }
 
 body.cs-case-refresh .cs-end-project-btn:active,
