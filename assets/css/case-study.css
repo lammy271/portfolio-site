@@ -1602,18 +1602,14 @@ body.cs-case-refresh #overview .case-study-cover {
 
 body.cs-case-refresh .cs-project-meta {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: 1fr 1fr 1fr 1fr auto;
 	column-gap: 1.5rem;
 	row-gap: 1.5rem;
 	margin: 0 0 4.75rem;
 	align-items: start;
 }
 
-body.taphouse-page .cs-project-meta {
-	grid-template-columns: 1fr 1fr 1fr 1fr auto;
-}
-
-body.taphouse-page .cs-project-meta-item--mentor {
+body.cs-case-refresh .cs-project-meta-item--mentor {
 	justify-self: end;
 	width: max-content;
 	max-width: 8.5rem;
