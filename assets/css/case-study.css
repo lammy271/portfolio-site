@@ -1701,27 +1701,6 @@ body.cs-case-refresh .cs-pdf-btn:active {
 	box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 60%);
 }
 
-body.cs-case-refresh .cs-video-btn,
-body.cs-case-refresh .cs-outline-btn {
-	background: #fff;
-	color: #A288E3;
-	border: 1.5px solid #A288E3;
-	box-shadow: none;
-}
-
-body.cs-case-refresh .cs-video-btn:hover,
-body.cs-case-refresh .cs-video-btn:focus-visible,
-body.cs-case-refresh .cs-outline-btn:hover,
-body.cs-case-refresh .cs-outline-btn:focus-visible {
-	background: color-mix(in srgb, #A288E3 12%, white);
-}
-
-body.cs-case-refresh .cs-video-btn:active,
-body.cs-case-refresh .cs-outline-btn:active {
-	transform: none;
-	box-shadow: none;
-}
-
 body.cs-case-refresh .cs-overview-block {
 	position: relative;
 	margin: 0 0 5rem;
