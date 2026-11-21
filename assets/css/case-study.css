@@ -1231,7 +1231,7 @@ body.cs-layout .cs-standard .cs-gif {
 	margin-bottom: var(--cs-media-gap);
 }
 
-body.cs-layout .cs-standard .cs-column > :last-child:not(.cs-lede),
+body.cs-layout .cs-standard .cs-column > :last-child:not(.cs-lede):not(.cs-overview-block),
 body.cs-layout .cs-standard .cs-column.cs-media-stack {
 	margin-bottom: 0;
 }
@@ -1724,7 +1724,7 @@ body.cs-case-refresh .cs-outline-btn:active {
 
 body.cs-case-refresh .cs-overview-block {
 	position: relative;
-	margin: 0 0 var(--cs-prose-gap);
+	margin: 0 0 5rem;
 }
 
 body.cs-case-refresh .cs-overview-block .case-study-heading {
@@ -1791,7 +1791,7 @@ body.cs-case-refresh.cs-layout .cs-hero-cover.cs-standard .cs-impact-intro .case
 	body.cs-case-refresh .cs-project-meta-item--role { grid-area: role; }
 
 	body.cs-case-refresh .cs-overview-block {
-		margin-bottom: 3rem;
+		margin-bottom: 3.25rem;
 	}
 
 	body.cs-case-refresh .cs-overview-block .case-study-heading {
