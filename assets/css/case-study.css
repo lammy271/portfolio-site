@@ -1630,7 +1630,7 @@ body.cs-case-refresh .cs-project-meta {
 	grid-template-columns: 1fr 1fr 1fr 1fr auto;
 	column-gap: 1.5rem;
 	row-gap: 1.5rem;
-	margin: 0 0 4.75rem;
+	margin: 0 0 9.5rem;
 	align-items: start;
 }
 
@@ -1744,7 +1744,7 @@ body.cs-case-refresh.cs-layout .cs-hero-cover.cs-standard .cs-impact-intro .case
 		column-gap: 1.75rem;
 		row-gap: 2rem;
 		align-items: start;
-		margin-bottom: 3.25rem;
+		margin-bottom: 6.5rem;
 	}
 
 	body.cs-case-refresh .cs-project-meta-item--process { grid-area: process; }
