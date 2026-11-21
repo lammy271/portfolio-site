@@ -45,25 +45,6 @@
 	var article = document.querySelector('.case-study-article');
 	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 	var animRaf = 0;
-	var homeNudgeTimer = 0;
-
-	function clearHomeNudge() {
-		if (homeNudgeTimer) {
-			window.clearTimeout(homeNudgeTimer);
-			homeNudgeTimer = 0;
-		}
-		toc.classList.remove('is-home-nudge');
-	}
-
-	function scheduleHomeNudge() {
-		if (homeNudgeTimer || toc.classList.contains('is-home-nudge')) return;
-		homeNudgeTimer = window.setTimeout(function () {
-			homeNudgeTimer = 0;
-			if (phase === 'docked' || phase === 'docking') {
-				toc.classList.add('is-home-nudge');
-			}
-		}, 1500);
-	}
 
 	function distanceFromBottom() {
 		var el = document.scrollingElement || document.documentElement;
@@ -124,12 +105,10 @@
 			toc.style.top = from + (dockedTargetTop() - from) * k + 'px';
 			if (done) phase = 'docked';
 		});
-		scheduleHomeNudge();
 	}
 
 	function undockToc() {
 		if (phase === 'idle' || phase === 'undocking') return;
-		clearHomeNudge();
 		cancelAnim();
 		var from = toc.getBoundingClientRect().top;
 		phase = 'undocking';
@@ -333,26 +312,4 @@
 	window.addEventListener('resize', function () {
 		if (!isDesktop()) close();
 	});
-})();
-
-(function () {
-	var row = document.querySelector('.cs-end-project-links');
-	if (!row) return;
-
-	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-		row.classList.add('is-in');
-		return;
-	}
-
-	var io = new IntersectionObserver(function (entries) {
-		entries.forEach(function (entry) {
-			if (!entry.isIntersecting) return;
-			io.unobserve(entry.target);
-			window.setTimeout(function () {
-				entry.target.classList.add('is-in');
-			}, 500);
-		});
-	}, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
-
-	io.observe(row);
 })();

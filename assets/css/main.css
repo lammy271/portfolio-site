@@ -382,31 +382,31 @@ textarea:not([rows]) {
 	}
 }
 
-.spc-no {
+.spc-0 {
 	letter-spacing: 0;
 }
 
-.spc-xxxs {
+.spc-3 {
 	letter-spacing: 3%;
 }
 
-.spc-xxs {
+.spc-5 {
 	letter-spacing: 5%;
 }
 
-.spc-xs {
+.spc-7-5 {
 	letter-spacing: 7.5%;
 }
 
-.spc-sm {
+.spc-10 {
 	letter-spacing: 10%;
 }
 
-.spc-md {
+.spc-15 {
 	letter-spacing: 15%;
 }
 
-.spc-lg {
+.spc-20 {
 	letter-spacing: 20%;
 }
 
@@ -458,10 +458,15 @@ body {
 	gap: 0px;
 }
 
+#header-subtext-1 {
+	position: relative;
+	top: 2px;
+}
+
 #header-subtext-2 {
 	position: relative;
 	padding-left: 19px;
-	top: -5px;
+	top: -6px;
 }
 
 /* mobile screens */
@@ -1051,7 +1056,7 @@ footer {
 
 	#header-subtext-container {
 		font-size: 11px;
-		letter-spacing: 0.08em;
+		letter-spacing: 0.10em;
 		line-height: 1.25;
 		gap: 0;
 	}

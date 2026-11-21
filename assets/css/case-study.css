@@ -182,7 +182,7 @@ body.case-study-page #copyright {
 	pointer-events: none;
 	opacity: 0;
 	transform: translate(30px, -50%);
-	transition: transform 80ms ease-in-out, opacity 80ms ease-in-out;
+	transition: transform 80ms ease-in-out;
 }
 
 .case-study-toc-icon:hover,
@@ -197,45 +197,8 @@ body.case-study-page #copyright {
 }
 
 .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link,
-.case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link,
-.case-study-toc.is-home-nudge .case-study-toc-link,
-.case-study-toc.is-home-nudge .case-study-toc-link.is-active {
+.case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link {
 	color: #b1b1b1;
-}
-
-.case-study-toc.is-end .case-study-toc-link,
-.case-study-toc.is-end .case-study-toc-icon {
-	transition: color 0.45s ease-out;
-}
-
-.case-study-toc.is-end .case-study-toc-icon-label {
-	transition: transform 250ms cubic-bezier(0.2, 0.9, 0.1, 1), opacity 250ms ease-out;
-}
-
-.case-study-toc.is-home-nudge .case-study-toc-icon[aria-label="home"] {
-	color: var(--main-accent-color);
-}
-
-.case-study-toc.is-home-nudge .case-study-toc-icon[aria-label="home"] .case-study-toc-icon-label {
-	opacity: 1;
-	transform: translate(38px, -50%);
-}
-
-.case-study-toc.is-home-nudge .case-study-toc-link:hover,
-.case-study-toc.is-home-nudge .case-study-toc-link:focus-visible {
-	color: var(--main-accent-color);
-	transition-duration: 120ms;
-}
-
-.case-study-toc.is-home-nudge:has(.case-study-toc-link:hover) .case-study-toc-icon[aria-label="home"],
-.case-study-toc.is-home-nudge:has(.case-study-toc-link:focus-visible) .case-study-toc-icon[aria-label="home"] {
-	color: #b1b1b1;
-}
-
-.case-study-toc.is-home-nudge:has(.case-study-toc-link:hover) .case-study-toc-icon[aria-label="home"] .case-study-toc-icon-label,
-.case-study-toc.is-home-nudge:has(.case-study-toc-link:focus-visible) .case-study-toc-icon[aria-label="home"] .case-study-toc-icon-label {
-	opacity: 0;
-	transform: translate(30px, -50%);
 }
 
 .case-study-article {
@@ -480,12 +443,8 @@ body.case-study-page #copyright {
 		transition: none;
 	}
 
-	body.cs-case-refresh .cs-pdf-btn,
-	body.cs-case-refresh .cs-end-project-btn {
+	body.cs-case-refresh .cs-pdf-btn {
 		transition: none;
-		animation: none;
-		opacity: 1;
-		transform: none;
 	}
 
 	body.cs-layout .case-study-toc.is-end {
@@ -901,15 +860,8 @@ body.cs-layout .cs-hero-cover .case-study-toc-link.is-active {
 body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link,
 body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link,
 body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link.is-active,
-body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link.is-active,
-body.cs-layout .cs-hero-cover .case-study-toc.is-home-nudge .case-study-toc-link,
-body.cs-layout .cs-hero-cover .case-study-toc.is-home-nudge .case-study-toc-link.is-active {
+body.cs-layout .cs-hero-cover .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link.is-active {
 	color: #b1b1b1;
-}
-
-body.cs-layout .cs-hero-cover .case-study-toc.is-home-nudge .case-study-toc-link:hover,
-body.cs-layout .cs-hero-cover .case-study-toc.is-home-nudge .case-study-toc-link:focus-visible {
-	color: var(--main-accent-color);
 }
 
 body.cs-layout .cs-hero-cover .cs-column {
@@ -1114,15 +1066,8 @@ body.cs-layout .cs-standard .case-study-toc-link.is-active {
 body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link,
 body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link,
 body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:hover) .case-study-toc-link.is-active,
-body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link.is-active,
-body.cs-layout .cs-standard .case-study-toc.is-home-nudge .case-study-toc-link,
-body.cs-layout .cs-standard .case-study-toc.is-home-nudge .case-study-toc-link.is-active {
+body.cs-layout .cs-standard .case-study-toc:has(.case-study-toc-icon:focus-visible) .case-study-toc-link.is-active {
 	color: #b1b1b1;
-}
-
-body.cs-layout .cs-standard .case-study-toc.is-home-nudge .case-study-toc-link:hover,
-body.cs-layout .cs-standard .case-study-toc.is-home-nudge .case-study-toc-link:focus-visible {
-	color: var(--main-accent-color);
 }
 
 body.cs-layout .cs-standard .cs-lede,
@@ -1895,50 +1840,22 @@ body.cs-case-refresh .cs-end-project-btn {
 	width: 8.75rem;
 	height: 2.5rem;
 	padding: 0 0.75rem;
-	border: none;
 	border-radius: 25px;
 	background: #A288E3;
 	color: #fff;
-	letter-spacing: 0.05em;
 	text-decoration: none;
 	line-height: 1;
 	white-space: nowrap;
-	opacity: 0;
-	transform: translateX(2rem);
-	box-shadow: -0.1875rem 0.1875rem 0 0.0625rem rgb(0 0 0 / 60%);
-	transition:
-		opacity 0.9s cubic-bezier(0.08, 1.12, 0, 1),
-		transform 0.9s cubic-bezier(0.08, 1.12, 0, 1),
-		background 80ms ease-out,
-		box-shadow 80ms ease-out;
-}
-
-body.cs-case-refresh .cs-end-project-links.is-in .cs-end-project-btn:nth-child(2) {
-	transition-delay: 0.38s, 0.38s, 0s, 0s;
-}
-
-body.cs-case-refresh .cs-end-project-links.is-in .cs-end-project-btn {
-	opacity: 1;
-	transform: none;
 }
 
 body.cs-case-refresh .cs-end-project-btn:hover,
 body.cs-case-refresh .cs-end-project-btn:focus-visible {
 	background: color-mix(in srgb, #A288E3 82%, black);
-	transition-delay: 0s, 0s, 0s, 0s;
-}
-
-body.cs-case-refresh .cs-end-project-btn:active,
-body.cs-case-refresh .cs-end-project-links.is-in .cs-end-project-btn:active {
-	transform: translate(-0.1875rem, 0.1875rem);
-	box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 60%);
-	transition: transform 80ms ease-out, box-shadow 80ms ease-out;
-	transition-delay: 0s;
 }
 
 body.cs-case-refresh .cs-end-mark {
 	margin: 0 0 1.35rem;
-	color: var(--secondary-accent-color);
+	color: #000;
 }
 
 body.cs-case-refresh .cs-end-chat,

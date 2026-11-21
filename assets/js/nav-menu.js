@@ -26,16 +26,16 @@
 			menu.id = 'site-nav-menu';
 			menu.setAttribute('aria-label', 'Site');
 			menu.innerHTML =
-				'<p class="site-nav-index helv-bold txt-md spc-xxs">index</p>' +
+				'<p class="site-nav-index helv-bold txt-md spc-5">index</p>' +
 				'<ul class="site-nav-primary">' +
-					'<li><a class="helv-lite txt-lg spc-xxs" href="' + prefix + 'index.html">1. WORK</a></li>' +
-					'<li><a class="helv-lite txt-lg spc-xxs" href="' + prefix + 'about.html">2. ABOUT ME</a></li>' +
-					'<li><a class="helv-lite txt-lg spc-xxs" href="mailto:hi@annylongdesign.com">3. CONTACT</a></li>' +
+					'<li><a class="helv-lite txt-lg spc-5" href="' + prefix + 'index.html">1. WORK</a></li>' +
+					'<li><a class="helv-lite txt-lg spc-5" href="' + prefix + 'about.html">2. ABOUT ME</a></li>' +
+					'<li><a class="helv-lite txt-lg spc-5" href="mailto:hi@annylongdesign.com">3. CONTACT</a></li>' +
 				'</ul>' +
 				'<ul class="site-nav-files">' +
-					'<li><a class="helv-lite txt-lg spc-xxs" href="' + prefix + 'index.html">Portfolio PDF</a></li>' +
-					'<li><a class="helv-lite txt-lg spc-xxs" href="' + prefix + 'assets/file/Anny_Long_Resume_2026.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a></li>' +
-					'<li><a class="helv-lite txt-lg spc-xxs" href="https://www.linkedin.com/in/annylong" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>' +
+					'<li><a class="helv-lite txt-lg spc-5" href="' + prefix + 'index.html">Portfolio PDF</a></li>' +
+					'<li><a class="helv-lite txt-lg spc-5" href="' + prefix + 'assets/file/Anny_Long_Resume_2026.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a></li>' +
+					'<li><a class="helv-lite txt-lg spc-5" href="https://www.linkedin.com/in/annylong" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>' +
 				'</ul>';
 			document.body.appendChild(menu);
 		}
